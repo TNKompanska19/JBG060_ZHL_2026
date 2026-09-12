@@ -35,4 +35,10 @@ linear_regression = LinearRegression()
 linear_regression.fit(X_train, Y_train)
 print("score: " + str(linear_regression.score(X_test, Y_test)))
 weights = linear_regression.coef_
-print(weights)
+params = list(X.keys())
+weight_param = {}
+for i in range(len(weights)):
+    weight_param[params[i]] = float(weights[i])
+
+sorted_weights = sorted(weight_param.items(), key=lambda x: x[1], reverse=True)
+print(sorted_weights)
