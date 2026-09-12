@@ -24,12 +24,7 @@ def ET_eda(years_list,latitude,longitude):
     #plot.set_xlim(right = '2000-12-31')
     plot2000 = evo[2000].plot(x='date', y='gridcell')
     plt.show()
-    #rainRun: xr.Dataset = ld.load_rainfall_runoff(years)
-    #print(type(rainRun))
-    #pp = rainRun['tp'].drop_vars(['latitude', 'longitude'])
-    #rainRun.info()    
 
-    #plt.plot(rainRun['tp'])
 
 def health_eda():
     health = ld_imp.load_health_facilities()
@@ -43,12 +38,21 @@ def health_eda():
 
     plt.show()
 
+def rainrun(years):
+    rainRun: xr.Dataset = ld.load_rainfall_runoff(years)
+    #print(type(rainRun))
+    #pp = rainRun['tp'].drop_vars(['latitude', 'longitude'])
+    #rainRun.info()    
+
+    #plt.plot(rainRun['tp'])
+
 def main():
     years_list = range(2000,2026)
     longitude: float = 30.725
     latitude: float = 9.475
-    #ET_eda(years_list=years_list,longitude=longitude,latitude=latitude)
+    ET_eda(years_list=years_list,longitude=longitude,latitude=latitude)
     health_eda()
+    #rainrun(years= years_list)
 
 
 if __name__ == "__main__":
