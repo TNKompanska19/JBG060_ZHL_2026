@@ -6,11 +6,9 @@ import cfgrib as grib
 import pandas as pd
 import datetime as dt
 
-def main():
+def ET_eda(years_list,latitude,longitude):
     
-    years_list = range(2000,2026)
-    longitude: float = 30.725
-    latitude: float = 9.475
+    
     for year in years_list:
         ld.process_ET(year=year, target_latitude=latitude,target_longitude=longitude)
 
@@ -26,13 +24,32 @@ def main():
     #plot.set_xlim(right = '2000-12-31')
     plot2000 = evo[2000].plot(x='date', y='gridcell')
     plt.show()
-
     #rainRun: xr.Dataset = ld.load_rainfall_runoff(years)
     #print(type(rainRun))
     #pp = rainRun['tp'].drop_vars(['latitude', 'longitude'])
     #rainRun.info()    
 
     #plt.plot(rainRun['tp'])
+
+def health_eda():
+    health = ld_imp.load_health_facilities()
+    print(health.value_counts('Facility_t'))
+    
+    h_type_plot = health.plot('Facility_t', legend=True)
+    h_type_plot.set_title('Healthcare locations by type')
+    health_no_PHCU = health[~health['Facility_t'].isin(['Primary Health Care Unit', 'Primary Health Care Centre'])]
+    print(health_no_PHCU.value_counts('Facility_t'))
+    h_no_phcu_plot = health_no_PHCU.plot('Facility_t', legend=True)
+
+    plt.show()
+
+def main():
+    years_list = range(2000,2026)
+    longitude: float = 30.725
+    latitude: float = 9.475
+    #ET_eda(years_list=years_list,longitude=longitude,latitude=latitude)
+    health_eda()
+
 
 if __name__ == "__main__":
     main()
