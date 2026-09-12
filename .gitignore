@@ -9,3 +9,4 @@ __pycache__/
 cache
 .idea
 .git
+/Data_overview.xlsx
