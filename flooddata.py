@@ -1,4 +1,3 @@
-from importlib.metadata import pass_none
 
 import pandas as pd
 import xarray as xr
@@ -8,8 +7,6 @@ from pathlib import Path
 from tqdm import tqdm
 
 #Loading the data first.
-import os
-os.chdir("C:/Users/20233608/PyCharmProjects/JBG060_ZHL_2026")
 def load_data():
     base = "./raw_data/Darthmouth Flood Observatory/"
     data_per_item: dict={}
