@@ -196,7 +196,7 @@ def process_ET(year:int, target_longitude: float = 30.725, target_latitude: floa
     """
      
     ET_dir = Path(f'./raw_data/evapotranspiration/ET_{year}')
-    out_dir = Path(f'./processing_data/evapotranspiration')
+    out_dir = Path(f'./processed_data/evapotranspiration')
     out_dir.mkdir(parents=True, exist_ok=True)
     variable = 'ReferenceET_PenmanMonteith_FAO56'
 
@@ -243,7 +243,7 @@ def load_processed_ET(years: np.ndarray, target_longitude: float, target_latitud
     Loads the processed ET variables into a single dictionary, containing for each year a dataframe
     with the daily ET value at the given grid cell.
     """
-    base_path = Path(f'./processing_data/evapotranspiration')
+    base_path = Path(f'./processed_data/evapotranspiration')
     lat_str = f"{target_latitude:.3f}N"
     lon_str = f"{target_longitude:.3f}E"
 
@@ -378,7 +378,7 @@ def main():
 
     ## Process ET data if not done yet with a progress bar
     raw_dir = Path(f'./raw_data/evapotranspiration')
-    processed_dir = Path(f'./processing_data/evapotranspiration')
+    processed_dir = Path(f'./processed_data/evapotranspiration')
 
     files_raw = list(raw_dir.glob("*"))
     files_processed = list(processed_dir.glob("*"))
