@@ -83,7 +83,8 @@ def load_lake_stations() -> dict[int, pd.DataFrame]:
         else:
             fname = f'{base_path}/water_level_{name}.txt'
             mission_names = {'TOPEX', 'JASON-1', 'JASON-2', 'JASON-3', 'J1', 'J2',
-                             'J3', 'S3A', 'S3B', 'S6A', 'ENVISAT', 'ERS-1', 'ERS-2'}
+                             'J3', 'S3A', 'S3B', 'S6A', 'ENVISAT', 'ERS-1', 'ERS-2',
+                             'POSDN', 'JASN1', 'JASN2', 'JASN3', 'SEN6A'}
 
             # Names for the unnamed columns based on the column descriptions
             col_names = [
@@ -94,25 +95,31 @@ def load_lake_stations() -> dict[int, pd.DataFrame]:
             ]
 
             # Add lines from specific missions to the dataset
-            data_lines = []
+            seen, kept = set(), []
             with open(fname, 'r', encoding='latin-1') as f:
                 for line in f:
-                    first_token = line.strip().split()[0] if line.strip() else ''
-                    if first_token in mission_names:
-                        data_lines.append(line.strip())
+                    t = line.split()
+                    if len(t) == 16 and t[2].isdigit() and len(t[2]) == 8:
+                        seen.add(t[0])
+                        if t[0] in mission_names:
+                            kept.append(line.strip())
+
+            missed = seen - mission_names
+            if missed:
+                raise ValueError(f"{fname}: missions in file but not in "
+                                 f"mission_names: {sorted(missed)}")
+            data_lines = kept
 
             # Convert to a dataframe and set date as the index
-            df = pd.read_csv(
-                io.StringIO('\n'.join(data_lines)),
-                sep=r'\s+',
-                names=col_names,
-                na_values=['999.99', '99.999', '9999.99']
-            )
-            df = df.dropna()    
-            df['date'] = pd.to_datetime(df['date'].astype(str), format='%Y%m%d')
-            df = df.set_index('date', drop = True).sort_index()
-            
-            print(df.head())        
+            df = pd.read_csv(io.StringIO('\n'.join(data_lines)),
+                             sep=r'\s+',
+                             names=col_names,
+                             na_values=['999.99', '99.999', '9999.99'])
+            df['date'] = pd.to_datetime(df['date'].astype(str), format='%Y%m%d', errors='coerce')
+            df = df.dropna(subset=['date', 'height_wrt_ref'])
+            df = df.set_index('date', drop=True).sort_index()
+
+            print(df.head())     
                     
         data[name] = df
     return data
@@ -240,17 +247,22 @@ def load_processed_ET(years: np.ndarray, target_longitude: float, target_latitud
     lat_str = f"{target_latitude:.3f}N"
     lon_str = f"{target_longitude:.3f}E"
 
-    # Create dictionary with all years and warn for processing gone wrong
+    # Create dictionary with all years, failing loudly on a missing year
     data = {}
+    missing = []
     for year in years:
-        try:
-            df = pd.read_csv(f'{base_path}/ET_{year}_{lat_str}_{lon_str}_processed.csv')
-            data[year] = df
-        except:
-            print(f"  WARNING: no processed .csv files found for year {year} in {base_path}")
+        path = base_path / f'ET_{year}_{lat_str}_{lon_str}_processed.csv'
+        if not path.exists():
+            missing.append(int(year))
+            continue
+        data[year] = pd.read_csv(path)
+
+    if missing:
+        raise FileNotFoundError(
+            f"ET not processed for {len(missing)} year(s) at {lat_str} {lon_str} ")
 
     print(data[years[0]].head())
-        
+
     return data
 
 
@@ -290,16 +302,23 @@ def load_flood_masks(years: np.array, bbox: dict = None) -> pd.DataFrame:
     unusual_parts   = []
 
     # Create lists of recurring and unusual floods from the parquet files
+    # Create lists of recurring and unusual floods from the parquet files.
+    # The bounding box is applied per file, before concatenation, to keep
+    # peak memory proportional to the AOI.
     for year in years:
         for tile in tiles:
             recurring_path = base_path + f'/compact_recurring/flood_events_{tile}_{year}.parquet'
             unusual_path = base_path + f'/compact_unusual/flood_events_{tile}_{year}.parquet'
 
             df = pd.read_parquet(recurring_path, engine='pyarrow', columns=['date', 'lat', 'lon', 'tile'])
+            if bbox is not None:
+                df = flood_mask_bbox(df, bbox)
             df['flood_type'] = 0
             recurring_parts.append(df)
-            
+
             df = pd.read_parquet(unusual_path, engine='pyarrow', columns=['date', 'lat', 'lon', 'tile'])
+            if bbox is not None:
+                df = flood_mask_bbox(df, bbox)
             df['flood_type'] = 1
             unusual_parts.append(df)
 
@@ -321,10 +340,6 @@ def load_flood_masks(years: np.array, bbox: dict = None) -> pd.DataFrame:
         .sort_values(['date', 'lat', 'lon'])
         .reset_index(drop=True)
     )
-
-    # If a bounding box is provided, filter according to it
-    if bbox is not None:
-        combined = flood_mask_bbox(combined, bbox)
 
     return combined
 
