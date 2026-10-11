@@ -13,7 +13,7 @@ from pathlib import Path
 
 import cdsapi
 
-DEST = Path(__file__).resolve().parent.parent / "raw_data" / "glofas"
+DEST = Path(__file__).resolve().parents[2] / "raw_data" / "glofas"
 DEST.mkdir(parents=True, exist_ok=True)
 
 YEARS = [str(y) for y in range(2017, 2027)]     # the model's input clock starts Aug 2017

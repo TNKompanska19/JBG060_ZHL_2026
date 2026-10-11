@@ -13,7 +13,7 @@ for username and password and stores them in your home folder. Rerunning skips
 files already downloaded.
 
     pip install earthaccess
-    python flood_pred_modelling/get_cygnss.py
+    python flood_pred_modelling/1_download/get_cygnss.py
 """
 from pathlib import Path
 
@@ -22,9 +22,9 @@ import numpy as np
 import pandas as pd
 import xarray as xr
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 RAW = ROOT / "raw_data" / "cygnss"
-OUT = Path(__file__).resolve().parent / "output"
+OUT = Path(__file__).resolve().parents[1] / "checks" / "output"
 SHORT = "CYGNSS_L3_UC_BERKELEY_WATERMASK_V3.1"
 SUDD = (29.0, 6.0, 32.5, 10.0)       # lon_min, lat_min, lon_max, lat_max; same box as the GFM work
 
@@ -53,7 +53,7 @@ def sudd_water_pct(path):
 
 def main():
     RAW.mkdir(parents=True, exist_ok=True)
-    OUT.mkdir(exist_ok=True)
+    OUT.mkdir(parents=True, exist_ok=True)
     earthaccess.login(persist=True)
     granules = earthaccess.search_data(short_name=SHORT, bounding_box=SUDD)
     print(f"{len(granules)} monthly files")

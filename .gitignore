@@ -4,8 +4,7 @@ cache
 .idea
 .git
 processed_data
-flood_pred_modelling/output
-flood_pred_modelling/experiments
+flood_pred_modelling/**/output/
 flood_pred_modelling/README.md
 .venv
 __pycache__/
