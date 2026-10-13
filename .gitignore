@@ -3,7 +3,6 @@ eda_output
 cache
 .idea
 .git
-processed_data
 flood_pred_modelling/**/output/
 flood_pred_modelling/README.md
 .venv
