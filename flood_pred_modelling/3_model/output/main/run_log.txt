@@ -1,0 +1,366 @@
+[22:11:52] run_all --smoke-only --no-build
+[22:11:53] !!! INPUTS NOT IN THE PANEL: ['uprain']
+[22:11:54] scope: 57,561 squares flooded in >= 2 different years (>= 3 years: 49,512; old 5-90% rule: 42,677)
+[22:11:54] ===== SMOKE TEST
+[22:11:56] blocks: correlation distance 40 km, block 80 km, buffer 20 km, 4 groups
+[22:11:56] === strict h=1
+[22:11:56] 10,320 samples, issue months 2018-11 to 2025-12, cropland share 50%
+[22:12:41]   h=1 strict test 2020 occurrence: train 2,389 test 416, 43 configs (0.8 min so far)
+[22:13:00]   h=1 strict test 2020 persistence: train 700 test 108, 43 configs (1.1 min so far)
+[22:14:30]   h=1 strict test 2022 occurrence: train 3,855 test 165, 43 configs (2.6 min so far)
+[22:15:06]   h=1 strict test 2022 persistence: train 1,214 test 66, 43 configs (3.2 min so far)
+[22:15:06] wrote preds_strict_h1.parquet (3.2 min)
+[22:15:06] === strict h=1 done, 3 min total
+[22:15:06] === strict h=1, M1-physical
+[22:15:06] 10,320 samples, issue months 2018-11 to 2025-12, cropland share 50%
+[22:15:23]   h=1 strict test 2020 occurrence: train 2,389 test 416, 25 configs (0.3 min so far)
+[22:15:28]   h=1 strict test 2020 persistence: train 700 test 108, 25 configs (0.4 min so far)
+[22:15:58]   h=1 strict test 2022 occurrence: train 3,855 test 165, 25 configs (0.9 min so far)
+[22:16:06]   h=1 strict test 2022 persistence: train 1,214 test 66, 25 configs (1.0 min so far)
+[22:16:06] wrote preds_strict_h1_physical.parquet (1.0 min)
+[22:16:07] === strict h=1, M1-physical done, 4 min total
+[22:16:07] === strict h=3
+[22:16:07] 10,320 samples, issue months 2018-11 to 2025-12, cropland share 50%
+[22:17:08]   h=3 strict test 2020 occurrence: train 2,316 test 415, 40 configs (1.0 min so far)
+[22:17:21]   h=3 strict test 2020 persistence: train 671 test 110, 40 configs (1.2 min so far)
+[22:18:29]   h=3 strict test 2022 occurrence: train 3,752 test 173, 40 configs (2.4 min so far)
+[22:18:51]   h=3 strict test 2022 persistence: train 1,152 test 55, 40 configs (2.7 min so far)
+[22:18:51] wrote preds_strict_h3.parquet (2.7 min)
+[22:18:51] === strict h=3 done, 7 min total
+[22:18:51] === strict h=2
+[22:18:51] 10,320 samples, issue months 2018-11 to 2025-12, cropland share 50%
+[22:19:00]   h=2 strict test 2020 occurrence: train 2,357 test 417, 4 configs (0.1 min so far)
+[22:19:02]   h=2 strict test 2020 persistence: train 683 test 107, 4 configs (0.2 min so far)
+[22:19:15]   h=2 strict test 2022 occurrence: train 3,805 test 165, 4 configs (0.4 min so far)
+[22:19:19]   h=2 strict test 2022 persistence: train 1,183 test 56, 4 configs (0.5 min so far)
+[22:19:19] wrote preds_strict_h2.parquet (0.5 min)
+[22:19:19] === strict h=2 done, 7 min total
+[22:19:19] === year-only h=1
+[22:19:19] 10,320 samples, issue months 2018-11 to 2025-12, cropland share 50%
+[22:19:26]   h=1 year test 2020 occurrence: train 5,620 test 1,096, 2 configs (0.1 min so far)
+[22:19:30]   h=1 year test 2020 persistence: train 1,700 test 344, 2 configs (0.2 min so far)
+[22:19:39]   h=1 year test 2022 occurrence: train 5,612 test 1,036, 2 configs (0.3 min so far)
+[22:19:42]   h=1 year test 2022 persistence: train 1,708 test 404, 2 configs (0.4 min so far)
+[22:19:42] wrote preds_year_h1.parquet (0.4 min)
+[22:19:42] === year-only h=1 done, 8 min total
+[22:19:42] === year-only h=3
+[22:19:42] 10,320 samples, issue months 2018-11 to 2025-12, cropland share 50%
+[22:19:49]   h=3 year test 2020 occurrence: train 5,452 test 1,101, 2 configs (0.1 min so far)
+[22:19:52]   h=3 year test 2020 persistence: train 1,628 test 339, 2 configs (0.2 min so far)
+[22:20:02]   h=3 year test 2022 occurrence: train 5,467 test 1,061, 2 configs (0.3 min so far)
+[22:20:05]   h=3 year test 2022 persistence: train 1,613 test 379, 2 configs (0.4 min so far)
+[22:20:05] wrote preds_year_h3.parquet (0.4 min)
+[22:20:05] === year-only h=3 done, 8 min total
+[22:20:05] === forward h=1
+[22:20:06] 10,320 samples, issue months 2018-11 to 2025-12, cropland share 50%
+[22:20:11]   h=1 forward test 2022 occurrence: train 3,329 test 1,036, 2 configs (0.1 min so far)
+[22:20:15]   h=1 forward test 2022 persistence: train 1,111 test 404, 2 configs (0.2 min so far)
+[22:20:15] wrote preds_forward_h1.parquet (0.2 min)
+[22:20:15] === forward h=1 done, 8 min total
+[22:20:15] === forward h=3
+[22:20:15] 10,320 samples, issue months 2018-11 to 2025-12, cropland share 50%
+[22:20:20]   h=3 forward test 2022 occurrence: train 3,184 test 1,061, 2 configs (0.1 min so far)
+[22:20:22]   h=3 forward test 2022 persistence: train 1,016 test 379, 2 configs (0.1 min so far)
+[22:20:22] wrote preds_forward_h3.parquet (0.1 min)
+[22:20:22] === forward h=3 done, 8 min total
+[22:20:22] === EBM
+[22:20:23] 10,320 samples, issue months 2018-11 to 2025-12, cropland share 50%
+[22:20:30] EBM occurrence: groups ['dartmouth', 'climate_indices', 'heterogeneity', 'local_rain']
+[22:20:41]   EBM occurrence test 2020: train 2,389 test 416
+[22:21:00]   EBM occurrence test 2022: train 3,000 test 165
+[22:21:12] EBM persistence: groups ['terrain', 'heterogeneity', 'evapotranspiration', 'rain_shape']
+[22:21:17]   EBM persistence test 2020: train 700 test 108
+[22:21:24]   EBM persistence test 2022: train 1,214 test 66
+[22:21:36] === EBM done, 10 min total
+[22:21:36] === EBM on M1-physical
+[22:21:36] 10,320 samples, issue months 2018-11 to 2025-12, cropland share 50%
+[22:21:44] EBM_physical occurrence: groups ['glofas', 'terrain', 'upstream_rain', 'soil']
+[22:21:51]   EBM_physical occurrence test 2020: train 2,389 test 416
+[22:21:59]   EBM_physical occurrence test 2022: train 3,000 test 165
+[22:22:10] EBM_physical persistence: groups ['terrain', 'soil', 'climate_indices', 'soil_moisture']
+[22:22:16]   EBM_physical persistence test 2020: train 700 test 108
+[22:22:23]   EBM_physical persistence test 2022: train 1,214 test 66
+[22:22:33] === EBM on M1-physical done, 11 min total
+[22:22:33] === susceptibility
+[22:23:22] wrote susceptibility.csv
+[22:23:22] === susceptibility done, 11 min total
+[22:23:22] === harvest map 2022
+[22:23:22] 10,320 samples, issue months 2018-11 to 2025-12, cropland share 50%
+[22:23:55] wrote map_2022 (287,805 square-months)
+[22:23:55] === harvest map 2022 done, 12 min total
+wrote D:\TUe\Y3_Q1_Capstone_Datachallenge\JBG060_ZHL_2026\flood_pred_modelling\output\explain_smoke\results.md
+[22:24:26] ===== SMOKE TEST PASSED
+[23:02:01] run_all --skip-smoke --no-build --stages s1 p1
+[23:02:02] !!! INPUTS NOT IN THE PANEL: ['uprain']
+[23:02:02] scope: 57,561 squares flooded in >= 2 different years (>= 3 years: 49,512; old 5-90% rule: 42,677)
+[23:02:02] ===== FULL RUN
+[23:02:04] blocks: correlation distance 40 km, block 80 km, buffer 20 km, 4 groups
+[23:02:04] === strict h=1
+[23:02:04] 172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+[23:07:51]   h=1 strict test 2019 occurrence: train 42,015 test 6,325, 43 configs (5.8 min so far)
+[23:11:55]   h=1 strict test 2019 persistence: train 11,908 test 1,947, 43 configs (9.8 min so far)
+[23:18:15]   h=1 strict test 2020 occurrence: train 45,658 test 5,533, 43 configs (16.2 min so far)
+[23:22:06]   h=1 strict test 2020 persistence: train 13,038 test 1,710, 43 configs (20.0 min so far)
+[23:29:29]   h=1 strict test 2021 occurrence: train 59,698 test 3,262, 43 configs (27.4 min so far)
+[23:32:20]   h=1 strict test 2021 persistence: train 19,132 test 978, 43 configs (30.3 min so far)
+[23:35:20]   h=1 strict test 2022 occurrence: train 59,695 test 3,192, 43 configs (33.3 min so far)
+[23:37:19]   h=1 strict test 2022 persistence: train 18,756 test 1,191, 43 configs (35.2 min so far)
+[23:39:53]   h=1 strict test 2023 occurrence: train 41,998 test 6,227, 43 configs (37.8 min so far)
+[23:41:25]   h=1 strict test 2023 persistence: train 11,926 test 2,113, 43 configs (39.3 min so far)
+[23:44:09]   h=1 strict test 2024 occurrence: train 44,186 test 5,709, 43 configs (42.1 min so far)
+[23:45:54]   h=1 strict test 2024 persistence: train 14,378 test 1,668, 43 configs (43.8 min so far)
+[23:49:12]   h=1 strict test 2025 occurrence: train 69,320 test 3,491, 43 configs (47.1 min so far)
+[23:51:19]   h=1 strict test 2025 persistence: train 25,018 test 633, 43 configs (49.2 min so far)
+[23:51:19] wrote preds_strict_h1.parquet (49.2 min)
+[23:51:19] === strict h=1 done, 49 min total
+[23:51:19] === strict h=1, M1-physical
+[23:51:19] 172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+[23:52:20]   h=1 strict test 2019 occurrence: train 42,015 test 6,325, 25 configs (1.0 min so far)
+[23:52:56]   h=1 strict test 2019 persistence: train 11,908 test 1,947, 25 configs (1.6 min so far)
+[23:53:53]   h=1 strict test 2020 occurrence: train 45,658 test 5,533, 25 configs (2.6 min so far)
+[23:54:18]   h=1 strict test 2020 persistence: train 13,038 test 1,710, 25 configs (3.0 min so far)
+[23:55:17]   h=1 strict test 2021 occurrence: train 59,698 test 3,262, 25 configs (4.0 min so far)
+[23:55:54]   h=1 strict test 2021 persistence: train 19,132 test 978, 25 configs (4.6 min so far)
+[23:56:54]   h=1 strict test 2022 occurrence: train 59,695 test 3,192, 25 configs (5.6 min so far)
+[23:57:32]   h=1 strict test 2022 persistence: train 18,756 test 1,191, 25 configs (6.2 min so far)
+[23:58:25]   h=1 strict test 2023 occurrence: train 41,998 test 6,227, 25 configs (7.1 min so far)
+[23:58:53]   h=1 strict test 2023 persistence: train 11,926 test 2,113, 25 configs (7.6 min so far)
+[23:59:44]   h=1 strict test 2024 occurrence: train 44,186 test 5,709, 25 configs (8.4 min so far)
+[00:00:13]   h=1 strict test 2024 persistence: train 14,378 test 1,668, 25 configs (8.9 min so far)
+[00:01:20]   h=1 strict test 2025 occurrence: train 69,320 test 3,491, 25 configs (10.0 min so far)
+[00:02:07]   h=1 strict test 2025 persistence: train 25,018 test 633, 25 configs (10.8 min so far)
+[00:02:07] wrote preds_strict_h1_physical.parquet (10.8 min)
+[00:02:07] === strict h=1, M1-physical done, 60 min total
+wrote D:\TUe\Y3_Q1_Capstone_Datachallenge\JBG060_ZHL_2026\flood_pred_modelling\output\explain\results.md
+[00:02:30] ===== FINISHED, 0 errors
+[00:16:19] run_all --skip-smoke --no-build --stages s3 s2 y1 y3 f1 f3 susc map
+[00:16:19] !!! INPUTS NOT IN THE PANEL: ['uprain']
+[00:16:19] scope: 57,561 squares flooded in >= 2 different years (>= 3 years: 49,512; old 5-90% rule: 42,677)
+[00:16:19] ===== FULL RUN
+[00:16:20] blocks: correlation distance 40 km, block 80 km, buffer 20 km, 4 groups
+[00:16:20] === strict h=3
+[00:16:20] 172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+[00:49:08] run_all --skip-smoke --no-build --stages s1 p1
+[00:49:09] scope: 57,561 squares flooded in >= 2 different years (>= 3 years: 49,512; old 5-90% rule: 42,677)
+[00:49:09] ===== FULL RUN
+[00:49:09] blocks: correlation distance 40 km, block 80 km, buffer 20 km, 4 groups
+[00:49:09] === strict h=1
+[00:49:10] 172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+[00:54:30]   h=1 strict test 2019 occurrence: train 42,015 test 6,325, 45 configs (5.3 min so far)
+[00:57:48]   h=1 strict test 2019 persistence: train 11,908 test 1,947, 45 configs (8.6 min so far)
+[01:02:27]   h=1 strict test 2020 occurrence: train 45,658 test 5,533, 45 configs (13.3 min so far)
+[01:04:08]   h=1 strict test 2020 persistence: train 13,038 test 1,710, 45 configs (15.0 min so far)
+[01:07:36]   h=1 strict test 2021 occurrence: train 59,698 test 3,262, 45 configs (18.4 min so far)
+[01:09:37]   h=1 strict test 2021 persistence: train 19,132 test 978, 45 configs (20.5 min so far)
+[01:12:53]   h=1 strict test 2022 occurrence: train 59,695 test 3,192, 45 configs (23.7 min so far)
+[01:14:55]   h=1 strict test 2022 persistence: train 18,756 test 1,191, 45 configs (25.8 min so far)
+[01:17:44]   h=1 strict test 2023 occurrence: train 41,998 test 6,227, 45 configs (28.6 min so far)
+[01:19:20]   h=1 strict test 2023 persistence: train 11,926 test 2,113, 45 configs (30.2 min so far)
+[01:22:48]   h=1 strict test 2024 occurrence: train 44,186 test 5,709, 45 configs (33.6 min so far)
+[01:24:34]   h=1 strict test 2024 persistence: train 14,378 test 1,668, 45 configs (35.4 min so far)
+[01:27:56]   h=1 strict test 2025 occurrence: train 69,320 test 3,491, 45 configs (38.8 min so far)
+[01:30:12]   h=1 strict test 2025 persistence: train 25,018 test 633, 45 configs (41.0 min so far)
+[01:30:12] wrote preds_strict_h1.parquet (41.0 min)
+[01:30:12] === strict h=1 done, 41 min total
+[01:30:12] === strict h=1, M1-physical
+[01:30:13] 172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+[01:31:07]   h=1 strict test 2019 occurrence: train 42,015 test 6,325, 26 configs (0.9 min so far)
+[01:31:37]   h=1 strict test 2019 persistence: train 11,908 test 1,947, 26 configs (1.4 min so far)
+[01:32:39]   h=1 strict test 2020 occurrence: train 45,658 test 5,533, 26 configs (2.4 min so far)
+[01:33:10]   h=1 strict test 2020 persistence: train 13,038 test 1,710, 26 configs (3.0 min so far)
+[01:34:18]   h=1 strict test 2021 occurrence: train 59,698 test 3,262, 26 configs (4.1 min so far)
+[01:35:00]   h=1 strict test 2021 persistence: train 19,132 test 978, 26 configs (4.8 min so far)
+[01:36:08]   h=1 strict test 2022 occurrence: train 59,695 test 3,192, 26 configs (5.9 min so far)
+[01:36:49]   h=1 strict test 2022 persistence: train 18,756 test 1,191, 26 configs (6.6 min so far)
+[01:37:53]   h=1 strict test 2023 occurrence: train 41,998 test 6,227, 26 configs (7.7 min so far)
+[01:38:31]   h=1 strict test 2023 persistence: train 11,926 test 2,113, 26 configs (8.3 min so far)
+[01:39:33]   h=1 strict test 2024 occurrence: train 44,186 test 5,709, 26 configs (9.3 min so far)
+[01:40:08]   h=1 strict test 2024 persistence: train 14,378 test 1,668, 26 configs (9.9 min so far)
+[01:41:23]   h=1 strict test 2025 occurrence: train 69,320 test 3,491, 26 configs (11.2 min so far)
+[01:42:09]   h=1 strict test 2025 persistence: train 25,018 test 633, 26 configs (11.9 min so far)
+[01:42:09] wrote preds_strict_h1_physical.parquet (11.9 min)
+[01:42:09] === strict h=1, M1-physical done, 53 min total
+wrote D:\TUe\Y3_Q1_Capstone_Datachallenge\JBG060_ZHL_2026\flood_pred_modelling\output\explain\results.md
+[01:42:44] ===== FINISHED, 0 errors
+[01:43:23] run_all --skip-smoke --no-build --stages s3 s2 y1 y3 f1 f3 susc map
+[01:43:24] scope: 57,561 squares flooded in >= 2 different years (>= 3 years: 49,512; old 5-90% rule: 42,677)
+[01:43:24] ===== FULL RUN
+[01:43:24] blocks: correlation distance 40 km, block 80 km, buffer 20 km, 4 groups
+[01:43:24] === strict h=3
+[01:43:24] 172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+[01:46:14]   h=3 strict test 2019 occurrence: train 41,304 test 5,995, 42 configs (2.8 min so far)
+[01:47:57]   h=3 strict test 2019 persistence: train 11,729 test 1,587, 42 configs (4.6 min so far)
+[01:50:34]   h=3 strict test 2020 occurrence: train 44,451 test 5,461, 42 configs (7.2 min so far)
+[01:52:13]   h=3 strict test 2020 persistence: train 12,332 test 1,837, 42 configs (8.8 min so far)
+[01:55:11]   h=3 strict test 2021 occurrence: train 58,082 test 3,264, 42 configs (11.8 min so far)
+[01:57:01]   h=3 strict test 2021 persistence: train 18,206 test 980, 42 configs (13.6 min so far)
+[01:59:59]   h=3 strict test 2022 occurrence: train 58,114 test 3,207, 42 configs (16.6 min so far)
+[02:01:51]   h=3 strict test 2022 persistence: train 17,719 test 1,106, 42 configs (18.5 min so far)
+[02:04:28]   h=3 strict test 2023 occurrence: train 41,037 test 6,025, 42 configs (21.1 min so far)
+[02:05:57]   h=3 strict test 2023 persistence: train 11,121 test 2,302, 42 configs (22.6 min so far)
+[02:08:37]   h=3 strict test 2024 occurrence: train 42,770 test 5,744, 42 configs (25.2 min so far)
+[02:10:26]   h=3 strict test 2024 persistence: train 13,894 test 1,618, 42 configs (27.0 min so far)
+[02:13:39]   h=3 strict test 2025 occurrence: train 67,574 test 3,480, 42 configs (30.2 min so far)
+[02:15:46]   h=3 strict test 2025 persistence: train 24,178 test 652, 42 configs (32.4 min so far)
+[02:15:46] wrote preds_strict_h3.parquet (32.4 min)
+[02:15:46] === strict h=3 done, 32 min total
+[02:15:46] === strict h=2
+[02:15:46] 172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+[02:16:13]   h=2 strict test 2019 occurrence: train 41,304 test 6,441, 4 configs (0.4 min so far)
+[02:16:24]   h=2 strict test 2019 persistence: train 11,729 test 1,852, 4 configs (0.6 min so far)
+[02:16:49]   h=2 strict test 2020 occurrence: train 45,075 test 5,529, 4 configs (1.1 min so far)
+[02:17:03]   h=2 strict test 2020 persistence: train 12,675 test 1,743, 4 configs (1.3 min so far)
+[02:17:32]   h=2 strict test 2021 occurrence: train 58,924 test 3,277, 4 configs (1.8 min so far)
+[02:17:46]   h=2 strict test 2021 persistence: train 18,639 test 979, 4 configs (2.0 min so far)
+[02:18:17]   h=2 strict test 2022 occurrence: train 58,916 test 3,201, 4 configs (2.5 min so far)
+[02:18:32]   h=2 strict test 2022 persistence: train 18,251 test 1,151, 4 configs (2.8 min so far)
+[02:18:59]   h=2 strict test 2023 occurrence: train 41,514 test 6,134, 4 configs (3.2 min so far)
+[02:19:12]   h=2 strict test 2023 persistence: train 11,528 test 2,198, 4 configs (3.4 min so far)
+[02:19:39]   h=2 strict test 2024 occurrence: train 43,471 test 5,700, 4 configs (3.9 min so far)
+[02:19:51]   h=2 strict test 2024 persistence: train 14,134 test 1,631, 4 configs (4.1 min so far)
+[02:20:24]   h=2 strict test 2025 occurrence: train 68,421 test 3,432, 4 configs (4.6 min so far)
+[02:20:41]   h=2 strict test 2025 persistence: train 24,607 test 668, 4 configs (4.9 min so far)
+[02:20:41] wrote preds_strict_h2.parquet (4.9 min)
+[02:20:41] === strict h=2 done, 37 min total
+[02:20:41] === year-only h=1
+[02:20:41] 172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+[02:21:00]   h=1 year test 2019 occurrence: train 92,567 test 18,784, 2 configs (0.3 min so far)
+[02:21:11]   h=1 year test 2019 persistence: train 29,433 test 5,216, 2 configs (0.5 min so far)
+[02:21:30]   h=1 year test 2020 occurrence: train 93,863 test 18,129, 2 configs (0.8 min so far)
+[02:21:40]   h=1 year test 2020 persistence: train 28,137 test 5,871, 2 configs (1.0 min so far)
+[02:21:58]   h=1 year test 2021 occurrence: train 94,938 test 17,444, 2 configs (1.3 min so far)
+[02:22:08]   h=1 year test 2021 persistence: train 27,062 test 6,556, 2 configs (1.4 min so far)
+[02:22:27]   h=1 year test 2022 occurrence: train 93,989 test 17,244, 2 configs (1.8 min so far)
+[02:22:37]   h=1 year test 2022 persistence: train 28,011 test 6,756, 2 configs (1.9 min so far)
+[02:22:56]   h=1 year test 2023 occurrence: train 92,482 test 18,173, 2 configs (2.2 min so far)
+[02:23:05]   h=1 year test 2023 persistence: train 29,518 test 5,827, 2 configs (2.4 min so far)
+[02:23:24]   h=1 year test 2024 occurrence: train 91,333 test 18,757, 2 configs (2.7 min so far)
+[02:23:34]   h=1 year test 2024 persistence: train 30,667 test 5,243, 2 configs (2.9 min so far)
+[02:23:54]   h=1 year test 2025 occurrence: train 110,090 test 19,170, 2 configs (3.2 min so far)
+[02:24:04]   h=1 year test 2025 persistence: train 35,910 test 4,830, 2 configs (3.4 min so far)
+[02:24:04] wrote preds_year_h1.parquet (3.4 min)
+[02:24:04] === year-only h=1 done, 41 min total
+[02:24:04] === year-only h=3
+[02:24:04] 172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+[02:24:24]   h=3 year test 2019 occurrence: train 91,008 test 17,882, 2 configs (0.3 min so far)
+[02:24:32]   h=3 year test 2019 persistence: train 28,992 test 4,118, 2 configs (0.5 min so far)
+[02:24:51]   h=3 year test 2020 occurrence: train 91,402 test 18,001, 2 configs (0.8 min so far)
+[02:25:01]   h=3 year test 2020 persistence: train 26,598 test 5,999, 2 configs (0.9 min so far)
+[02:25:20]   h=3 year test 2021 occurrence: train 92,349 test 17,569, 2 configs (1.3 min so far)
+[02:25:30]   h=3 year test 2021 persistence: train 25,651 test 6,431, 2 configs (1.4 min so far)
+[02:25:49]   h=3 year test 2022 occurrence: train 91,525 test 17,515, 2 configs (1.7 min so far)
+[02:26:00]   h=3 year test 2022 persistence: train 26,475 test 6,485, 2 configs (1.9 min so far)
+[02:26:18]   h=3 year test 2023 occurrence: train 90,289 test 17,440, 2 configs (2.2 min so far)
+[02:26:27]   h=3 year test 2023 persistence: train 27,711 test 6,560, 2 configs (2.4 min so far)
+[02:26:45]   h=3 year test 2024 occurrence: train 88,407 test 18,855, 2 configs (2.7 min so far)
+[02:26:55]   h=3 year test 2024 persistence: train 29,593 test 5,145, 2 configs (2.8 min so far)
+[02:27:14]   h=3 year test 2025 occurrence: train 107,262 test 18,930, 2 configs (3.2 min so far)
+[02:27:24]   h=3 year test 2025 persistence: train 34,738 test 5,070, 2 configs (3.3 min so far)
+[02:27:24] wrote preds_year_h3.parquet (3.3 min)
+[02:27:24] === year-only h=3 done, 44 min total
+[02:27:24] === forward h=1
+[02:27:24] 172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+[02:27:39]   h=1 forward test 2021 occurrence: train 38,472 test 17,444, 2 configs (0.3 min so far)
+[02:27:47]   h=1 forward test 2021 persistence: train 11,528 test 6,556, 2 configs (0.4 min so far)
+[02:28:04]   h=1 forward test 2022 occurrence: train 55,916 test 17,244, 2 configs (0.7 min so far)
+[02:28:13]   h=1 forward test 2022 persistence: train 18,084 test 6,756, 2 configs (0.8 min so far)
+[02:28:32]   h=1 forward test 2023 occurrence: train 73,160 test 18,173, 2 configs (1.1 min so far)
+[02:28:42]   h=1 forward test 2023 persistence: train 24,840 test 5,827, 2 configs (1.3 min so far)
+[02:29:00]   h=1 forward test 2024 occurrence: train 91,333 test 18,757, 2 configs (1.6 min so far)
+[02:29:09]   h=1 forward test 2024 persistence: train 30,667 test 5,243, 2 configs (1.7 min so far)
+[02:29:28]   h=1 forward test 2025 occurrence: train 110,090 test 19,170, 2 configs (2.1 min so far)
+[02:29:39]   h=1 forward test 2025 persistence: train 35,910 test 4,830, 2 configs (2.2 min so far)
+[02:29:39] wrote preds_forward_h1.parquet (2.2 min)
+[02:29:39] === forward h=1 done, 46 min total
+[02:29:39] === forward h=3
+[02:29:39] 172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+[02:29:54]   h=3 forward test 2021 occurrence: train 35,883 test 17,569, 2 configs (0.3 min so far)
+[02:30:01]   h=3 forward test 2021 persistence: train 10,117 test 6,431, 2 configs (0.4 min so far)
+[02:30:18]   h=3 forward test 2022 occurrence: train 53,452 test 17,515, 2 configs (0.7 min so far)
+[02:30:25]   h=3 forward test 2022 persistence: train 16,548 test 6,485, 2 configs (0.8 min so far)
+[02:30:42]   h=3 forward test 2023 occurrence: train 70,967 test 17,440, 2 configs (1.0 min so far)
+[02:30:50]   h=3 forward test 2023 persistence: train 23,033 test 6,560, 2 configs (1.2 min so far)
+[02:31:09]   h=3 forward test 2024 occurrence: train 88,407 test 18,855, 2 configs (1.5 min so far)
+[02:31:19]   h=3 forward test 2024 persistence: train 29,593 test 5,145, 2 configs (1.7 min so far)
+[02:31:38]   h=3 forward test 2025 occurrence: train 107,262 test 18,930, 2 configs (2.0 min so far)
+[02:31:46]   h=3 forward test 2025 persistence: train 34,738 test 5,070, 2 configs (2.1 min so far)
+[02:31:47] wrote preds_forward_h3.parquet (2.1 min)
+[02:31:47] === forward h=3 done, 48 min total
+[02:31:47] === susceptibility
+[02:35:15] wrote susceptibility.csv
+[02:35:15] === susceptibility done, 52 min total
+[02:35:15] === harvest map 2022
+[02:35:15] 172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+[02:36:00] wrote map_2022 (287,805 square-months)
+[02:36:00] === harvest map 2022 done, 53 min total
+wrote D:\TUe\Y3_Q1_Capstone_Datachallenge\JBG060_ZHL_2026\flood_pred_modelling\output\explain\results.md
+[02:36:59] ===== FINISHED, 0 errors
+[02:37:01] run_all --skip-smoke --no-build --stages ebm ebmp
+[02:37:02] scope: 57,561 squares flooded in >= 2 different years (>= 3 years: 49,512; old 5-90% rule: 42,677)
+[02:37:02] ===== FULL RUN
+[02:37:02] blocks: correlation distance 40 km, block 80 km, buffer 20 km, 4 groups
+[02:37:02] === EBM
+[02:37:02] 172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+[02:37:03] EBM occurrence: groups ['soil', 'heterogeneity', 'terrain']
+[02:37:31]   EBM occurrence test 2019: train 42,015 test 6,325
+[02:37:57]   EBM occurrence test 2020: train 45,658 test 5,533
+[02:39:05]   EBM occurrence test 2021: train 59,698 test 3,262
+[02:40:18]   EBM occurrence test 2022: train 59,695 test 3,192
+[02:40:39]   EBM occurrence test 2023: train 41,998 test 6,227
+[02:41:04]   EBM occurrence test 2024: train 44,186 test 5,709
+[02:41:58]   EBM occurrence test 2025: train 60,000 test 3,491
+[02:42:33] EBM persistence: groups ['soil', 'terrain', 'glofas', 'heterogeneity']
+[02:42:58]   EBM persistence test 2019: train 11,908 test 1,947
+[02:43:17]   EBM persistence test 2020: train 13,038 test 1,710
+[02:44:05]   EBM persistence test 2021: train 19,132 test 978
+[02:44:52]   EBM persistence test 2022: train 18,756 test 1,191
+[02:45:09]   EBM persistence test 2023: train 11,926 test 2,113
+[02:45:28]   EBM persistence test 2024: train 14,378 test 1,668
+[02:46:34]   EBM persistence test 2025: train 25,018 test 633
+[02:48:17] === EBM done, 11 min total
+[02:48:17] === EBM on M1-physical
+[02:48:17] 172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+[02:48:52] EBM_physical occurrence: groups ['terrain']
+[02:49:23]   EBM_physical occurrence test 2019: train 42,015 test 6,325
+[02:49:45]   EBM_physical occurrence test 2020: train 45,658 test 5,533
+[02:50:40]   EBM_physical occurrence test 2021: train 59,698 test 3,262
+[02:51:48]   EBM_physical occurrence test 2022: train 59,695 test 3,192
+[02:52:18]   EBM_physical occurrence test 2023: train 41,998 test 6,227
+[02:52:42]   EBM_physical occurrence test 2024: train 44,186 test 5,709
+[02:53:57]   EBM_physical occurrence test 2025: train 60,000 test 3,491
+[02:54:34] EBM_physical persistence: groups ['terrain', 'soil', 'heterogeneity', 'dartmouth']
+[02:54:53]   EBM_physical persistence test 2019: train 11,908 test 1,947
+[02:55:08]   EBM_physical persistence test 2020: train 13,038 test 1,710
+[02:55:32]   EBM_physical persistence test 2021: train 19,132 test 978
+[02:56:00]   EBM_physical persistence test 2022: train 18,756 test 1,191
+[02:56:22]   EBM_physical persistence test 2023: train 11,926 test 2,113
+[02:56:41]   EBM_physical persistence test 2024: train 14,378 test 1,668
+[02:57:27]   EBM_physical persistence test 2025: train 25,018 test 633
+[02:58:28] === EBM on M1-physical done, 21 min total
+wrote D:\TUe\Y3_Q1_Capstone_Datachallenge\JBG060_ZHL_2026\flood_pred_modelling\output\explain\results.md
+[02:59:07] ===== FINISHED, 0 errors
+[12:48:23] run_all --skip-smoke --no-build --stages ebmp
+[12:48:25] scope: 57,561 squares flooded in >= 2 different years (>= 3 years: 49,512; old 5-90% rule: 42,677)
+[12:48:25] ===== FULL RUN
+[12:48:26] blocks: correlation distance 40 km, block 80 km, buffer 20 km, 4 groups
+[12:48:26] === EBM on M1-physical
+[12:48:26] 172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+[12:48:26] EBM_physical occurrence: groups ['local_rain', 'rain_shape', 'upstream_rain', 'evapotranspiration', 'atmosphere', 'soil_moisture', 'upstream_catchment_rain', 'terrain', 'soil', 'heterogeneity']
+[12:49:55]   EBM_physical occurrence test 2019: train 42,015 test 6,325
+[12:51:38]   EBM_physical occurrence test 2020: train 45,658 test 5,533
+[12:55:19]   EBM_physical occurrence test 2021: train 59,698 test 3,262
+[13:00:06]   EBM_physical occurrence test 2022: train 59,695 test 3,192
+[13:01:36]   EBM_physical occurrence test 2023: train 41,998 test 6,227
+[13:03:09]   EBM_physical occurrence test 2024: train 44,186 test 5,709
+[13:06:20]   EBM_physical occurrence test 2025: train 60,000 test 3,491
+[13:07:56] EBM_physical persistence: groups ['terrain', 'soil', 'heterogeneity']
+[13:08:41]   EBM_physical persistence test 2019: train 11,908 test 1,947
+[13:09:18]   EBM_physical persistence test 2020: train 13,038 test 1,710
+[13:10:17]   EBM_physical persistence test 2021: train 19,132 test 978
+[13:11:42]   EBM_physical persistence test 2022: train 18,756 test 1,191
+[13:12:37]   EBM_physical persistence test 2023: train 11,926 test 2,113
+[13:13:05]   EBM_physical persistence test 2024: train 14,378 test 1,668
+[13:14:12]   EBM_physical persistence test 2025: train 25,018 test 633
+[13:16:19] === EBM on M1-physical done, 28 min total
+wrote D:\TUe\Y3_Q1_Capstone_Datachallenge\JBG060_ZHL_2026\flood_pred_modelling\output\explain\results.md
+[13:17:56] ===== FINISHED, 0 errors
