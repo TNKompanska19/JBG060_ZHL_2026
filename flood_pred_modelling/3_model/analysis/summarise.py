@@ -22,7 +22,7 @@ from sklearn.metrics import (average_precision_score, brier_score_loss, log_loss
 
 import sys  # noqa: E402
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))   # 3_model, for explain_models
-from explain_models import CROP_MIN_PCT, HARVEST, plot_ebm, pretty
+from explain_models import CROP_MIN_PCT, HARVEST, pretty
 
 OUT = Path(__file__).resolve().parents[1] / "output" / "main"
 KEYS = ["cv", "h", "target"]
@@ -70,8 +70,7 @@ def confusion(y, pred):
                 false_alarm_rate=fp / max(fp + tn, 1))
 
 
-FULL_METRIC_CONFIGS = {"climatology", "persistence", "M1", "M1_physical", "M2", "M2_physical", "M3",
-                       "EBM_physical", "EBM_selected"}
+FULL_METRIC_CONFIGS = {"climatology", "persistence", "M1", "M1_physical", "M2", "M2_physical", "M3"}
 
 
 SWEEP_COLS = ["p_clim", "p_pers", "p|M1|gbm", "p|M1_physical|gbm", "p|M3|gbm"]
@@ -84,8 +83,6 @@ def cutoff_sweep(out_dir):
     strict validation, main models. A sweep shows the trade-off; it does not pick a cutoff."""
     rows = []
     for f in sorted(out_dir.glob("preds_strict_h*.parquet")):
-        if "_ebm" in f.name:
-            continue
         d = pd.read_parquet(f)
         for (h, target), g in d.groupby(["h", "target"]):
             for sub, m in subsets(g).items():
@@ -250,7 +247,7 @@ def year_bootstrap(g, cols, pairs, B=200, seed=0):
 
 def intervals(out_dir):
     """Bootstrap intervals for the main comparisons (strict validation), cached in intervals.csv."""
-    files = [f for f in sorted(out_dir.glob("preds_strict_*.parquet")) if "_ebm" not in f.name]
+    files = sorted(out_dir.glob("preds_strict_*.parquet"))
     cache = out_dir / "intervals.csv"
     if cache.exists() and files and cache.stat().st_mtime > max(f.stat().st_mtime for f in files):
         return pd.read_csv(cache)
@@ -297,7 +294,7 @@ def main(out_dir=OUT):
 
     ladder = [("climatology", "baseline"), ("persistence", "baseline"), ("S", "gbm"), ("M1", "logreg"), ("M1", "gbm"),
               ("M1_physical", "logreg"), ("M1_physical", "gbm"), ("M2", "gbm"), ("M2_physical", "gbm"),
-              ("M3", "logreg"), ("M3", "gbm"), ("EBM_selected", "ebm"), ("EBM_physical", "ebm")]
+              ("M3", "logreg"), ("M3", "gbm")]
     for metric in ("pr_auc", "brier"):
         t = sc.assign(cm=sc.config + ": " + sc.model)
         t = t[t.cm.isin([f"{a}: {b}" for a, b in ladder])]
@@ -362,8 +359,7 @@ def main(out_dir=OUT):
                     continue
                 gg = g[m]
                 y = gg.y.to_numpy()
-                for col in ["p_clim", "p_pers", "p|M1|gbm", "p|M1_physical|gbm", "p|M3|gbm", "p|EBM_selected|ebm",
-                            "p|EBM_physical|ebm"]:
+                for col in ["p_clim", "p_pers", "p|M1|gbm", "p|M1_physical|gbm", "p|M3|gbm"]:
                     if col in gg:
                         rows.append(dict(zip(KEYS, key), subset=sub, model=col.replace("p|", "").replace("|", ": ").replace("p_", ""),
                                          recall_at_fpr05=recall_at(y, gg[col].to_numpy(float), 0.05),
@@ -386,21 +382,14 @@ def main(out_dir=OUT):
                      + md(pd.DataFrame(rows).query("cv == 'strict'").drop(columns="cv")
                           .drop_duplicates(["h", "target", "subset", "model"])))
 
-    for name, title in (("ebm_occurrence_importance.csv", "EBM occurrence, term importance"),
-                        ("ebm_persistence_importance.csv", "EBM persistence, term importance"),
-                        ("ebm_physical_occurrence_importance.csv", "EBM on M1-physical, occurrence, term importance"),
-                        ("ebm_physical_persistence_importance.csv", "EBM on M1-physical, persistence, term importance"),
-                        ("susceptibility.csv", "Susceptibility (flood frequency per square, spatial-block CV)"),
-                        ("susceptibility_drop_one.csv", "Susceptibility, static model without one covariate"),
-                        ("ebm_susceptibility_importance.csv", "Susceptibility EBM, term importance")):
+    for name, title in (("susceptibility.csv", "Susceptibility (flood frequency per square, spatial-block CV)"),
+                        ("susceptibility_drop_one.csv", "Susceptibility, static model without one covariate")):
         if (out_dir / name).exists():
             t = pd.read_csv(out_dir / name).head(20)
             for col in ("term", "dropped"):
                 if col in t:
                     t.insert(1, "meaning", t[col].map(pretty))
             parts.append(f"## {title}\n\n" + md(t))
-    for f in out_dir.glob("ebm_*_curves.csv"):
-        plot_ebm(str(f).replace("_curves.csv", ""))
     (out_dir / "results.md").write_text("\n\n".join(parts) + "\n", encoding="utf8")
     print(f"wrote {out_dir / 'results.md'}")
 

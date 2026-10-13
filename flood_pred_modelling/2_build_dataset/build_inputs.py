@@ -305,7 +305,7 @@ def rain_extra(lat2, lon2, n_cells, res):
     R = (W_ @ flat) / np.maximum(cnt, 1)[:, None]                                  # [basin, month] mean rain
     area = b["SUB_AREA"].to_numpy(float) * (cnt > 0)                              # basins outside ERA5 get no weight
     A = upstream_matrix(b["HYBAS_ID"].to_numpy(), b["NEXT_DOWN"].to_numpy(), area)
-    up = (A @ (R * area[:, None])) / np.maximum(np.asarray(A.sum(1)).ravel(), 1e-6)[:, None]
+    up = (A @ R) / np.maximum(np.asarray(A.sum(1)).ravel(), 1e-6)[:, None]       # A already holds basin areas
     up[:, np.isnan(full).all((1, 2))] = np.nan                                      # months without ERA5
     up = np.vstack([up, np.full((1, len(MONTHS)), np.nan)]).T.astype(np.float32)    # last column: outside all basins
     sq = rasterize(((g, k + 1) for k, g in enumerate(b.geometry)), out_shape=(lat2.size, lon2.size),

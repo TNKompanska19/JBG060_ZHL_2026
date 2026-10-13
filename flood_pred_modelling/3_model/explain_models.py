@@ -1,4 +1,4 @@
-"""Which inputs explain flood occurrence and persistence? Model ladder, two-way ablation, EBM, susceptibility.
+"""Which inputs explain flood occurrence and persistence? Model ladder, two-way ablation, susceptibility.
 
 Run through run_all.py. Everything below is our design; the choices are stated in the constants.
 
@@ -28,8 +28,6 @@ VALIDATION
 BASELINES: climatology, persistence (share at t-1).
 """
 import json
-import time
-import traceback
 import warnings
 from pathlib import Path
 
@@ -114,7 +112,7 @@ def group_of(name):
 
 
 def log(msg):
-    print(f"[{time.strftime('%H:%M:%S')}] {msg}", flush=True)
+    print(msg, flush=True)
 
 
 BASE_LABELS = {
@@ -148,9 +146,7 @@ SUFFIX_LABELS = {"raw1": "this month", "raw3": "mean of last 3 months", "anom3":
 
 
 def pretty(term):
-    """Plain-language name of a model input (or an EBM pair 'a & b')."""
-    if " & " in term:
-        return " x ".join(pretty(t) for t in term.split(" & "))
+    """Plain-language name of a model input."""
     base, _, suf = term.partition("__")
     if base in BASE_LABELS:
         b = BASE_LABELS[base]
@@ -165,9 +161,6 @@ def pretty(term):
     else:
         b = base
     return f"{b}, {SUFFIX_LABELS.get(suf, suf)}" if suf else b
-
-
-ERRORS = []          # every caught error, so run_all can fail the smoke test on them
 
 
 # ---------------------------------------------------------------- panel
@@ -526,7 +519,7 @@ def fit_predict(model, Xtr, ytr, Xte, opts, seed):
     return m.predict_proba(z(Xte))[:, 1]
 
 
-def run_pass(P, cfg, out_dir, h, cv, grp, excl, years=None, variant=""):
+def run_pass(P, cfg, out_dir, h, cv, grp, excl, variant=""):
     """All configs for one horizon and one validation scheme. Writes preds_<cv>_h<h>[_variant].parquet.
     variant='physical': only the M1-physical configs."""
     phys = variant == "physical"
@@ -537,8 +530,7 @@ def run_pass(P, cfg, out_dir, h, cv, grp, excl, years=None, variant=""):
     s = sample(P, cfg["per_month"], max(cfg["horizons"]), cfg["sample_seed"])
     lab = P.y[s[:, 0] + h, s[:, 1], s[:, 2]] >= 0.5
     state = P.y[s[:, 0] - 1, s[:, 1], s[:, 2]] >= 0.5
-    parts, t0 = [], time.time()
-    yrs = years or TEST_YEARS
+    parts, yrs = [], TEST_YEARS
     if cv == "forward":
         yrs = [Y for Y in yrs if Y >= FORWARD_START]
     for Y in yrs:
@@ -549,8 +541,6 @@ def run_pass(P, cfg, out_dir, h, cv, grp, excl, years=None, variant=""):
         if phys:
             groups, phys_cols = physical_sets(names, P)
             C = physical_configs(groups, phys_cols, st_cols)
-        if cfg.get("max_configs"):
-            C = dict(list(C.items())[:cfg["max_configs"]])
         train, test, g = fold_masks(P, s, h, Y, cv, grp, excl)
         for target, sel in (("occurrence", ~state), ("persistence", state)):
             tr, te = np.flatnonzero(train & sel), np.flatnonzero(test & sel)
@@ -566,154 +556,21 @@ def run_pass(P, cfg, out_dir, h, cv, grp, excl, years=None, variant=""):
             pcols = {}
             for name, cf in C.items():
                 for model in cf["models"]:
-                    try:
-                        trr = tr
-                        if cf.get("sub"):
-                            rng = np.random.default_rng(cf["sub"])
-                            trr = np.sort(rng.choice(tr, size=int(0.8 * tr.size), replace=False))
-                        cols = np.array(cf["cols"])
-                        p = fit_predict(model, X[np.ix_(trr, cols)], lab[trr], X[np.ix_(te, cols)], cf, cfg["model_seed"])
-                        pcols[f"p|{name}|{model}"] = p.astype(np.float32)
-                    except Exception as e:
-                        ERRORS.append(f"{cv} h={h} {Y} {target} {name} {model}: {e}")
-                        log(f"  !! {cv} h={h} {Y} {target} {name} {model}: {type(e).__name__}: {e}")
+                    trr = tr
+                    if cf.get("sub"):
+                        rng = np.random.default_rng(cf["sub"])
+                        trr = np.sort(rng.choice(tr, size=int(0.8 * tr.size), replace=False))
+                    cols = np.array(cf["cols"])
+                    p = fit_predict(model, X[np.ix_(trr, cols)], lab[trr], X[np.ix_(te, cols)], cf, cfg["model_seed"])
+                    pcols[f"p|{name}|{model}"] = p.astype(np.float32)
             parts.append(pd.concat([base, pd.DataFrame(pcols)], axis=1))
-            log(f"  h={h} {cv} test {Y} {target}: train {tr.size:,} test {te.size:,}, {len(C)} configs "
-                f"({(time.time() - t0) / 60:.1f} min so far)")
+            log(f"  h={h} {cv} test {Y} {target}: train {tr.size:,} test {te.size:,}, {len(C)} configs")
         if Y == yrs[0]:
             (out_dir / f"columns_h{h}{'_' + variant if variant else ''}.json").write_text(json.dumps(
                 {"names": names, "groups": {k: [names[i] for i in v] for k, v in groups.items()}}, indent=1))
     if parts:
         pd.concat(parts, ignore_index=True).to_parquet(out, index=False)
-        log(f"wrote {out.name} ({(time.time() - t0) / 60:.1f} min)")
-
-
-# ---------------------------------------------------------------- EBM
-
-def informative_groups(out_dir, target, direction="drop", k_fallback=4):
-    """Inputs for the EBM. 'pdrop' (M1-physical): every group of each FAMILY whose removal costs PR-AUC with a 95%
-    interval above zero (strict, h=1, all rows; from intervals.csv). Families, not single groups, because correlated
-    groups substitute for each other in single-group tests. 'drop' (M1): single groups, as before."""
-    if direction == "pdrop" and (out_dir / "intervals.csv").exists():
-        iv = pd.read_csv(out_dir / "intervals.csv")
-        iv = iv[(iv.h == 1) & (iv.target == target) & (iv.subset == "all") & iv.what.str.contains("fdrop_")]
-        fams = [f for f in FAMILIES if not iv[iv.what.str.contains(f"fdrop_{f}:") & (iv.lo > 0)].empty]
-        if fams:
-            return [g for f in fams for g in FAMILIES[f]]
-    from summarise import ablation_table
-    abl = ablation_table(out_dir)
-    if abl.empty:
-        return []
-    a = abl[(abl.cv == "strict") & (abl.h == 1) & (abl.target == target) & (abl.model == "gbm")
-            & (abl.direction == direction) & (abl.subset == "all")].sort_values("delta_pr_auc", ascending=False)
-    sel = a[a.informative].group.tolist()
-    return sel if sel else a.group.head(k_fallback).tolist()
-
-
-def run_ebm(P, cfg, out_dir, grp, excl, variant=""):
-    """EBM on the informative groups. variant='physical': groups and inputs of M1-physical."""
-    from interpret.glassbox import ExplainableBoostingClassifier
-    phys = variant == "physical"
-    tag = "_physical" if phys else ""
-    out = out_dir / f"preds_strict_h1_ebm{tag}.parquet"
-    if out.exists():
-        log(f"skip EBM{tag} (exists)")
-        return
-    h = 1
-    s = sample(P, cfg["per_month"], max(cfg["horizons"]), cfg["sample_seed"])
-    lab = P.y[s[:, 0] + h, s[:, 1], s[:, 2]] >= 0.5
-    state = P.y[s[:, 0] - 1, s[:, 1], s[:, 2]] >= 0.5
-    parts, rng = [], np.random.default_rng(0)
-    groups_of = (lambda names: physical_sets(names, P)[0]) if phys else (lambda names: column_sets(names, P)[0])  # noqa: E731
-    for target, sel in (("occurrence", ~state), ("persistence", state)):
-        gsel = informative_groups(out_dir, target, "pdrop" if phys else "drop")
-        log(f"EBM{tag} {target}: groups {gsel}")
-        if not gsel:
-            continue
-        for Y in cfg.get("years") or TEST_YEARS:
-            X, names = features(P, s, h, normals(P, Y, sd=phys), physical=phys)
-            groups = groups_of(names)
-            cols = sorted(i for g in gsel for i in groups.get(g, []))
-            train, test, g = fold_masks(P, s, h, Y, "strict", grp, excl)
-            tr, te = np.flatnonzero(train & sel), np.flatnonzero(test & sel)
-            if te.size < 20 or tr.size < 200:
-                continue
-            if tr.size > cfg["ebm_rows"]:
-                tr = np.sort(rng.choice(tr, cfg["ebm_rows"], replace=False))
-            m = ExplainableBoostingClassifier(feature_names=[names[i] for i in cols], interactions=10,
-                                              outer_bags=4, n_jobs=-1, random_state=0)
-            m.fit(X[np.ix_(tr, cols)], lab[tr])
-            p = m.predict_proba(X[np.ix_(te, cols)])[:, 1]
-            parts.append(pd.DataFrame({"cv": "strict", "h": h, "target": target, "test_year": Y, "block_group": g,
-                                       "issue": P.months[s[te, 0]].astype(str), "tmonth": P.cal[s[te, 0] + h] + 1,
-                                       "row": s[te, 1], "col": s[te, 2], "y": lab[te].astype(np.int8),
-                                       "p_clim": np.nan_to_num(X[te, names.index("climatology")]),
-                                       "p_pers": X[te, names.index("y_t-1")], "crop": P.crop[s[te, 1], s[te, 2]],
-                                       f"p|EBM{tag}|ebm" if phys else "p|EBM_selected|ebm": p.astype(np.float32)}))
-            log(f"  EBM{tag} {target} test {Y}: train {tr.size:,} test {te.size:,}")
-        # final fit on all rows of this target (normals from all years) for the curves
-        X, names = features(P, s, h, normals(P, None, sd=phys), physical=phys)
-        groups = groups_of(names)
-        cols = sorted(i for g in gsel for i in groups.get(g, []))
-        idx = np.flatnonzero(sel)
-        if idx.size > cfg["ebm_rows"]:
-            idx = np.sort(rng.choice(idx, cfg["ebm_rows"], replace=False))
-        m = ExplainableBoostingClassifier(feature_names=[names[i] for i in cols], interactions=10,
-                                          outer_bags=4, n_jobs=-1, random_state=0)
-        m.fit(X[np.ix_(idx, cols)], lab[idx])
-        export_ebm(m, out_dir / f"ebm{tag}_{target}")
-    if parts:
-        pd.concat(parts, ignore_index=True).to_parquet(out, index=False)
-
-
-def export_ebm(m, stem):
-    """Term importances (csv) and main-effect curves (csv + png of the top 8)."""
-    imp = pd.DataFrame({"term": m.term_names_, "importance": m.term_importances()}).sort_values("importance", ascending=False)
-    imp.to_csv(f"{stem}_importance.csv", index=False)
-    rows = []
-    g = m.explain_global()
-    for i, term in enumerate(m.term_names_):
-        if " & " in term:
-            continue
-        try:
-            d = g.data(i)
-            x, sc = np.asarray(d["names"]), np.asarray(d["scores"], float)
-            if x.size == sc.size + 1:
-                x = (x[:-1].astype(float) + x[1:].astype(float)) / 2
-            rows += [{"term": term, "x": float(a), "score": float(b)} for a, b in zip(x, sc)]
-        except Exception as e:
-            ERRORS.append(f"EBM curve {term}: {e}")
-            log(f"  !! EBM curve {term}: {e}")
-    cur = pd.DataFrame(rows)
-    cur.to_csv(f"{stem}_curves.csv", index=False)
-    plot_ebm(stem)
-
-
-def plot_ebm(stem):
-    """Top 8 main-effect curves from the saved csv files, with plain-language titles."""
-    stem = str(stem)
-    try:
-        import matplotlib
-        matplotlib.use("Agg")
-        import matplotlib.pyplot as plt
-        imp, cur = pd.read_csv(f"{stem}_importance.csv"), pd.read_csv(f"{stem}_curves.csv")
-        top = [t for t in imp.term if " & " not in t and t in set(cur.term)][:8]
-        fig, axs = plt.subplots(2, 4, figsize=(18, 8))
-        for ax, t in zip(axs.ravel(), top):
-            d = cur[cur.term == t]
-            ax.step(d.x, d.score, where="mid")
-            ax.axhline(0, color="grey", lw=0.5)
-            ax.set_title(pretty(t), fontsize=9, wrap=True)
-            ax.set_xlabel("input value", fontsize=8)
-            ax.set_ylabel("effect on flood chance (log-odds)", fontsize=8)
-        for ax in axs.ravel()[len(top):]:
-            ax.axis("off")
-        fig.tight_layout()
-        fig.savefig(f"{stem}_curves.png", dpi=120)
-        plt.close(fig)
-    except Exception as e:
-        ERRORS.append(f"EBM plot {stem}: {e}")
-        log(f"  !! EBM plot {stem}: {e}")
+        log(f"wrote {out.name}")
 
 
 # ---------------------------------------------------------------- susceptibility
@@ -769,14 +626,6 @@ def susceptibility(P, cfg, out_dir, grp, excl):
         r2 = 1 - ((y[k] - p[k]) ** 2).sum() / ((y[k] - y[k].mean()) ** 2).sum()
         imp.append({"dropped": n, "r2": r2, "r2_loss": base["all"] - r2})
     pd.DataFrame(imp).sort_values("r2_loss", ascending=False).to_csv(out_dir / "susceptibility_drop_one.csv", index=False)
-    try:
-        from interpret.glassbox import ExplainableBoostingRegressor
-        m = ExplainableBoostingRegressor(feature_names=list(P.static), interactions=5, outer_bags=4,
-                                         n_jobs=-1, random_state=0).fit(stat, y)
-        export_ebm(m, out_dir / "ebm_susceptibility")
-    except Exception as e:
-        ERRORS.append(f"susceptibility EBM: {e}")
-        log(f"  !! susceptibility EBM: {type(e).__name__}: {e}")
     log("wrote susceptibility.csv")
 
 
@@ -835,35 +684,21 @@ def season_map(P, cfg, out_dir, year=2022, h=1, configs_=("M1", "M3")):
     maps["observed"] = grid(obs)
     np.savez_compressed(out, **maps, crop_pct=P.crop, lat=P.lat, lon=P.lon,
                         months=np.array([str(P.months[t + h]) for t in ts]))
-    try:
-        import matplotlib
-        matplotlib.use("Agg")
-        import matplotlib.pyplot as plt
-        crop = P.crop >= CROP_MIN_PCT
-        panels = [("observed", "observed flooded share")] + [(f"pred_{k}", f"predicted, {k} GBM") for k in res]
-        fig, axs = plt.subplots(2, len(panels), figsize=(5 * len(panels), 9))
-        ext = [P.lon.min(), P.lon.max(), P.lat.min(), P.lat.max()]
-        cmap = matplotlib.colormaps["Blues"].copy()
-        cmap.set_bad("lightgrey")                     # grey = not in this panel; white = 0
-        for j, (k, title) in enumerate(panels):
-            for i, (mask, lab_) in enumerate(((np.ones_like(crop), "seasonal squares"), (crop, "cropland only"))):
-                im = axs[i, j].imshow(np.where(mask, maps[k], np.nan), extent=ext, vmin=0, vmax=1, cmap=cmap)
-                axs[i, j].set_title(f"{title}, {lab_}", fontsize=9)
-        fig.colorbar(im, ax=axs, shrink=0.6, label="share of target months")
-        fig.suptitle(f"{year}, target months {', '.join(str(P.months[t + h]) for t in ts)}, lead {h} month(s)")
-        fig.savefig(out_dir / f"map_{year}.png", dpi=110)
-        plt.close(fig)
-    except Exception as e:
-        ERRORS.append(f"map plot: {e}")
-        log(f"  !! map plot: {e}")
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    crop = P.crop >= CROP_MIN_PCT
+    panels = [("observed", "observed flooded share")] + [(f"pred_{k}", f"predicted, {k} GBM") for k in res]
+    fig, axs = plt.subplots(2, len(panels), figsize=(5 * len(panels), 9))
+    ext = [P.lon.min(), P.lon.max(), P.lat.min(), P.lat.max()]
+    cmap = matplotlib.colormaps["Blues"].copy()
+    cmap.set_bad("lightgrey")                     # grey = not in this panel; white = 0
+    for j, (k, title) in enumerate(panels):
+        for i, (mask, lab_) in enumerate(((np.ones_like(crop), "seasonal squares"), (crop, "cropland only"))):
+            im = axs[i, j].imshow(np.where(mask, maps[k], np.nan), extent=ext, vmin=0, vmax=1, cmap=cmap)
+            axs[i, j].set_title(f"{title}, {lab_}", fontsize=9)
+    fig.colorbar(im, ax=axs, shrink=0.6, label="share of target months")
+    fig.suptitle(f"{year}, target months {', '.join(str(P.months[t + h]) for t in ts)}, lead {h} month(s)")
+    fig.savefig(out_dir / f"map_{year}.png", dpi=110)
+    plt.close(fig)
     log(f"wrote map_{year} ({len(sa):,} square-months)")
-
-
-def safe(f, *a, **k):
-    try:
-        f(*a, **k)
-        return True
-    except Exception:
-        ERRORS.append(f.__name__)
-        log(f"!! {f.__name__} FAILED\n{traceback.format_exc()}")
-        return False

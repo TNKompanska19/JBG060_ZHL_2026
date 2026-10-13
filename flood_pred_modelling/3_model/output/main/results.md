@@ -6,125 +6,125 @@
 
 ## Model ladder, pr_auc
 
-| cv | target | h | subset | n | base_rate | climatology: baseline | persistence: baseline | S: gbm | M1: logreg | M1: gbm | M1_physical: logreg | M1_physical: gbm | M2: gbm | M2_physical: gbm | M3: logreg | M3: gbm | EBM_selected: ebm | EBM_physical: ebm |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| forward | occurrence | 1 | all | 90788 | 0.122 | 0.397 | 0.168 |  |  | 0.275 |  |  |  |  |  | 0.409 |  |  |
-| forward | occurrence | 1 | cropland | 28023 | 0.116 | 0.406 | 0.166 |  |  | 0.312 |  |  |  |  |  | 0.409 |  |  |
-| forward | occurrence | 1 | cropland_harvest | 10929 | 0.154 | 0.445 | 0.191 |  |  | 0.342 |  |  |  |  |  | 0.450 |  |  |
-| forward | occurrence | 1 | harvest | 36252 | 0.177 | 0.417 | 0.212 |  |  | 0.282 |  |  |  |  |  | 0.423 |  |  |
-| forward | occurrence | 3 | all | 90309 | 0.145 | 0.458 | 0.178 |  |  | 0.325 |  |  |  |  |  | 0.458 |  |  |
-| forward | occurrence | 3 | cropland | 27918 | 0.135 | 0.471 | 0.174 |  |  | 0.360 |  |  |  |  |  | 0.457 |  |  |
-| forward | occurrence | 3 | cropland_harvest | 11659 | 0.190 | 0.536 | 0.222 |  |  | 0.391 |  |  |  |  |  | 0.521 |  |  |
-| forward | occurrence | 3 | harvest | 39358 | 0.211 | 0.493 | 0.240 |  |  | 0.340 |  |  |  |  |  | 0.489 |  |  |
-| forward | persistence | 1 | all | 29212 | 0.611 | 0.821 | 0.676 |  |  | 0.781 |  |  |  |  |  | 0.828 |  |  |
-| forward | persistence | 1 | cropland | 7617 | 0.561 | 0.835 | 0.595 |  |  | 0.818 |  |  |  |  |  | 0.832 |  |  |
-| forward | persistence | 1 | cropland_harvest | 3921 | 0.578 | 0.860 | 0.629 |  |  | 0.831 |  |  |  |  |  | 0.867 |  |  |
-| forward | persistence | 1 | harvest | 13748 | 0.617 | 0.839 | 0.681 |  |  | 0.786 |  |  |  |  |  | 0.844 |  |  |
-| forward | persistence | 3 | all | 29691 | 0.533 | 0.811 | 0.586 |  |  | 0.758 |  |  |  |  |  | 0.818 |  |  |
-| forward | persistence | 3 | cropland | 7722 | 0.484 | 0.830 | 0.500 |  |  | 0.814 |  |  |  |  |  | 0.829 |  |  |
-| forward | persistence | 3 | cropland_harvest | 3191 | 0.544 | 0.870 | 0.589 |  |  | 0.832 |  |  |  |  |  | 0.878 |  |  |
-| forward | persistence | 3 | harvest | 10642 | 0.625 | 0.849 | 0.687 |  |  | 0.791 |  |  |  |  |  | 0.856 |  |  |
-| strict | occurrence | 1 | all | 33739 | 0.128 | 0.382 | 0.177 | 0.381 | 0.156 | 0.219 | 0.172 | 0.200 | 0.395 | 0.401 | 0.339 | 0.422 | 0.178 | 0.187 |
-| strict | occurrence | 1 | cropland | 10380 | 0.127 | 0.419 | 0.169 | 0.360 | 0.129 | 0.197 | 0.163 | 0.175 | 0.380 | 0.371 | 0.311 | 0.421 | 0.149 | 0.170 |
-| strict | occurrence | 1 | cropland_harvest | 4048 | 0.177 | 0.430 | 0.206 | 0.382 | 0.178 | 0.226 | 0.201 | 0.200 | 0.400 | 0.379 | 0.324 | 0.429 | 0.195 | 0.200 |
-| strict | occurrence | 1 | harvest | 13287 | 0.191 | 0.430 | 0.229 | 0.421 | 0.208 | 0.237 | 0.208 | 0.219 | 0.404 | 0.418 | 0.373 | 0.439 | 0.232 | 0.215 |
-| strict | occurrence | 2 | all | 33714 | 0.141 | 0.431 | 0.176 | 0.396 | 0.194 | 0.248 |  |  | 0.429 |  | 0.348 | 0.436 |  |  |
-| strict | occurrence | 2 | cropland | 10417 | 0.141 | 0.467 | 0.175 | 0.405 | 0.163 | 0.215 |  |  | 0.431 |  | 0.371 | 0.458 |  |  |
-| strict | occurrence | 2 | cropland_harvest | 4139 | 0.199 | 0.479 | 0.224 | 0.437 | 0.225 | 0.246 |  |  | 0.434 |  | 0.413 | 0.465 |  |  |
-| strict | occurrence | 2 | harvest | 13841 | 0.212 | 0.481 | 0.238 | 0.429 | 0.244 | 0.271 |  |  | 0.439 |  | 0.410 | 0.482 |  |  |
-| strict | occurrence | 3 | all | 33176 | 0.150 | 0.452 | 0.179 | 0.418 | 0.173 | 0.253 |  |  | 0.448 |  | 0.346 | 0.470 |  |  |
-| strict | occurrence | 3 | cropland | 10240 | 0.146 | 0.473 | 0.177 | 0.429 | 0.153 | 0.218 |  |  | 0.442 |  | 0.305 | 0.482 |  |  |
-| strict | occurrence | 3 | cropland_harvest | 4312 | 0.203 | 0.491 | 0.228 | 0.470 | 0.196 | 0.246 |  |  | 0.462 |  | 0.320 | 0.497 |  |  |
-| strict | occurrence | 3 | harvest | 14471 | 0.222 | 0.494 | 0.249 | 0.461 | 0.230 | 0.287 |  |  | 0.478 |  | 0.388 | 0.501 |  |  |
-| strict | persistence | 1 | all | 10240 | 0.610 | 0.851 | 0.670 | 0.829 | 0.677 | 0.714 | 0.668 | 0.694 | 0.833 | 0.829 | 0.830 | 0.855 | 0.697 | 0.691 |
-| strict | persistence | 1 | cropland | 2988 | 0.602 | 0.872 | 0.643 | 0.844 | 0.629 | 0.693 | 0.646 | 0.668 | 0.851 | 0.848 | 0.828 | 0.871 | 0.662 | 0.677 |
-| strict | persistence | 1 | cropland_harvest | 1522 | 0.597 | 0.880 | 0.646 | 0.869 | 0.667 | 0.697 | 0.660 | 0.689 | 0.872 | 0.871 | 0.844 | 0.887 | 0.700 | 0.699 |
-| strict | persistence | 1 | harvest | 5021 | 0.615 | 0.855 | 0.674 | 0.848 | 0.677 | 0.709 | 0.667 | 0.696 | 0.842 | 0.843 | 0.840 | 0.856 | 0.705 | 0.699 |
-| strict | persistence | 2 | all | 10222 | 0.565 | 0.850 | 0.614 | 0.810 | 0.622 | 0.701 |  |  | 0.828 |  | 0.791 | 0.851 |  |  |
-| strict | persistence | 2 | cropland | 2951 | 0.558 | 0.868 | 0.584 | 0.835 | 0.632 | 0.687 |  |  | 0.854 |  | 0.802 | 0.877 |  |  |
-| strict | persistence | 2 | cropland_harvest | 1431 | 0.560 | 0.881 | 0.607 | 0.872 | 0.631 | 0.664 |  |  | 0.869 |  | 0.796 | 0.885 |  |  |
-| strict | persistence | 2 | harvest | 4436 | 0.601 | 0.866 | 0.663 | 0.859 | 0.633 | 0.723 |  |  | 0.865 |  | 0.800 | 0.863 |  |  |
-| strict | persistence | 3 | all | 10082 | 0.537 | 0.846 | 0.577 | 0.802 | 0.617 | 0.681 |  |  | 0.808 |  | 0.806 | 0.847 |  |  |
-| strict | persistence | 3 | cropland | 2911 | 0.542 | 0.874 | 0.553 | 0.848 | 0.603 | 0.673 |  |  | 0.851 |  | 0.828 | 0.882 |  |  |
-| strict | persistence | 3 | cropland_harvest | 1258 | 0.595 | 0.893 | 0.630 | 0.883 | 0.624 | 0.691 |  |  | 0.888 |  | 0.849 | 0.901 |  |  |
-| strict | persistence | 3 | harvest | 3774 | 0.633 | 0.870 | 0.686 | 0.858 | 0.689 | 0.742 |  |  | 0.860 |  | 0.855 | 0.871 |  |  |
-| year | occurrence | 1 | all | 127701 | 0.129 | 0.388 | 0.173 |  |  | 0.299 |  |  |  |  |  | 0.432 |  |  |
-| year | occurrence | 1 | cropland | 38727 | 0.121 | 0.417 | 0.169 |  |  | 0.339 |  |  |  |  |  | 0.428 |  |  |
-| year | occurrence | 1 | cropland_harvest | 15043 | 0.157 | 0.441 | 0.192 |  |  | 0.350 |  |  |  |  |  | 0.456 |  |  |
-| year | occurrence | 1 | harvest | 50105 | 0.189 | 0.432 | 0.223 |  |  | 0.306 |  |  |  |  |  | 0.450 |  |  |
-| year | occurrence | 3 | all | 126192 | 0.154 | 0.463 | 0.183 |  |  | 0.367 |  |  |  |  |  | 0.481 |  |  |
-| year | occurrence | 3 | cropland | 38231 | 0.140 | 0.479 | 0.176 |  |  | 0.400 |  |  |  |  |  | 0.488 |  |  |
-| year | occurrence | 3 | cropland_harvest | 16058 | 0.189 | 0.526 | 0.219 |  |  | 0.442 |  |  |  |  |  | 0.530 |  |  |
-| year | occurrence | 3 | harvest | 54959 | 0.225 | 0.512 | 0.250 |  |  | 0.390 |  |  |  |  |  | 0.520 |  |  |
-| year | persistence | 1 | all | 40299 | 0.604 | 0.847 | 0.665 |  |  | 0.785 |  |  |  |  |  | 0.854 |  |  |
-| year | persistence | 1 | cropland | 11169 | 0.576 | 0.854 | 0.612 |  |  | 0.828 |  |  |  |  |  | 0.862 |  |  |
-| year | persistence | 1 | cropland_harvest | 5747 | 0.577 | 0.867 | 0.626 |  |  | 0.829 |  |  |  |  |  | 0.871 |  |  |
-| year | persistence | 1 | harvest | 19895 | 0.608 | 0.855 | 0.668 |  |  | 0.789 |  |  |  |  |  | 0.857 |  |  |
-| year | persistence | 3 | all | 39808 | 0.526 | 0.836 | 0.571 |  |  | 0.770 |  |  |  |  |  | 0.845 |  |  |
-| year | persistence | 3 | cropland | 11071 | 0.510 | 0.853 | 0.526 |  |  | 0.837 |  |  |  |  |  | 0.862 |  |  |
-| year | persistence | 3 | cropland_harvest | 4732 | 0.557 | 0.875 | 0.597 |  |  | 0.846 |  |  |  |  |  | 0.885 |  |  |
-| year | persistence | 3 | harvest | 15041 | 0.612 | 0.862 | 0.668 |  |  | 0.804 |  |  |  |  |  | 0.867 |  |  |
+| cv | target | h | subset | n | base_rate | climatology: baseline | persistence: baseline | S: gbm | M1: logreg | M1: gbm | M1_physical: logreg | M1_physical: gbm | M2: gbm | M2_physical: gbm | M3: logreg | M3: gbm |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| forward | occurrence | 1 | all | 90788 | 0.122 | 0.397 | 0.168 |  |  | 0.275 |  |  |  |  |  | 0.409 |
+| forward | occurrence | 1 | cropland | 28023 | 0.116 | 0.406 | 0.166 |  |  | 0.312 |  |  |  |  |  | 0.409 |
+| forward | occurrence | 1 | cropland_harvest | 10929 | 0.154 | 0.445 | 0.191 |  |  | 0.342 |  |  |  |  |  | 0.450 |
+| forward | occurrence | 1 | harvest | 36252 | 0.177 | 0.417 | 0.212 |  |  | 0.282 |  |  |  |  |  | 0.423 |
+| forward | occurrence | 3 | all | 90309 | 0.145 | 0.458 | 0.178 |  |  | 0.325 |  |  |  |  |  | 0.458 |
+| forward | occurrence | 3 | cropland | 27918 | 0.135 | 0.471 | 0.174 |  |  | 0.360 |  |  |  |  |  | 0.457 |
+| forward | occurrence | 3 | cropland_harvest | 11659 | 0.190 | 0.536 | 0.222 |  |  | 0.391 |  |  |  |  |  | 0.521 |
+| forward | occurrence | 3 | harvest | 39358 | 0.211 | 0.493 | 0.240 |  |  | 0.340 |  |  |  |  |  | 0.489 |
+| forward | persistence | 1 | all | 29212 | 0.611 | 0.821 | 0.676 |  |  | 0.781 |  |  |  |  |  | 0.828 |
+| forward | persistence | 1 | cropland | 7617 | 0.561 | 0.835 | 0.595 |  |  | 0.818 |  |  |  |  |  | 0.832 |
+| forward | persistence | 1 | cropland_harvest | 3921 | 0.578 | 0.860 | 0.629 |  |  | 0.831 |  |  |  |  |  | 0.867 |
+| forward | persistence | 1 | harvest | 13748 | 0.617 | 0.839 | 0.681 |  |  | 0.786 |  |  |  |  |  | 0.844 |
+| forward | persistence | 3 | all | 29691 | 0.533 | 0.811 | 0.586 |  |  | 0.758 |  |  |  |  |  | 0.818 |
+| forward | persistence | 3 | cropland | 7722 | 0.484 | 0.830 | 0.500 |  |  | 0.814 |  |  |  |  |  | 0.829 |
+| forward | persistence | 3 | cropland_harvest | 3191 | 0.544 | 0.870 | 0.589 |  |  | 0.832 |  |  |  |  |  | 0.878 |
+| forward | persistence | 3 | harvest | 10642 | 0.625 | 0.849 | 0.687 |  |  | 0.791 |  |  |  |  |  | 0.856 |
+| strict | occurrence | 1 | all | 33739 | 0.128 | 0.382 | 0.177 | 0.381 | 0.156 | 0.219 | 0.172 | 0.200 | 0.395 | 0.401 | 0.339 | 0.422 |
+| strict | occurrence | 1 | cropland | 10380 | 0.127 | 0.419 | 0.169 | 0.360 | 0.129 | 0.197 | 0.163 | 0.175 | 0.380 | 0.371 | 0.311 | 0.421 |
+| strict | occurrence | 1 | cropland_harvest | 4048 | 0.177 | 0.430 | 0.206 | 0.382 | 0.178 | 0.226 | 0.201 | 0.200 | 0.400 | 0.379 | 0.324 | 0.429 |
+| strict | occurrence | 1 | harvest | 13287 | 0.191 | 0.430 | 0.229 | 0.421 | 0.208 | 0.237 | 0.208 | 0.219 | 0.404 | 0.418 | 0.373 | 0.439 |
+| strict | occurrence | 2 | all | 33714 | 0.141 | 0.431 | 0.176 | 0.396 | 0.194 | 0.248 |  |  | 0.429 |  | 0.348 | 0.436 |
+| strict | occurrence | 2 | cropland | 10417 | 0.141 | 0.467 | 0.175 | 0.405 | 0.163 | 0.215 |  |  | 0.431 |  | 0.371 | 0.458 |
+| strict | occurrence | 2 | cropland_harvest | 4139 | 0.199 | 0.479 | 0.224 | 0.437 | 0.225 | 0.246 |  |  | 0.434 |  | 0.413 | 0.465 |
+| strict | occurrence | 2 | harvest | 13841 | 0.212 | 0.481 | 0.238 | 0.429 | 0.244 | 0.271 |  |  | 0.439 |  | 0.410 | 0.482 |
+| strict | occurrence | 3 | all | 33176 | 0.150 | 0.452 | 0.179 | 0.418 | 0.173 | 0.253 |  |  | 0.448 |  | 0.346 | 0.470 |
+| strict | occurrence | 3 | cropland | 10240 | 0.146 | 0.473 | 0.177 | 0.429 | 0.153 | 0.218 |  |  | 0.442 |  | 0.305 | 0.482 |
+| strict | occurrence | 3 | cropland_harvest | 4312 | 0.203 | 0.491 | 0.228 | 0.470 | 0.196 | 0.246 |  |  | 0.462 |  | 0.320 | 0.497 |
+| strict | occurrence | 3 | harvest | 14471 | 0.222 | 0.494 | 0.249 | 0.461 | 0.230 | 0.287 |  |  | 0.478 |  | 0.388 | 0.501 |
+| strict | persistence | 1 | all | 10240 | 0.610 | 0.851 | 0.670 | 0.829 | 0.677 | 0.714 | 0.668 | 0.694 | 0.833 | 0.829 | 0.830 | 0.855 |
+| strict | persistence | 1 | cropland | 2988 | 0.602 | 0.872 | 0.643 | 0.844 | 0.629 | 0.693 | 0.646 | 0.668 | 0.851 | 0.848 | 0.828 | 0.871 |
+| strict | persistence | 1 | cropland_harvest | 1522 | 0.597 | 0.880 | 0.646 | 0.869 | 0.667 | 0.697 | 0.660 | 0.689 | 0.872 | 0.871 | 0.844 | 0.887 |
+| strict | persistence | 1 | harvest | 5021 | 0.615 | 0.855 | 0.674 | 0.848 | 0.677 | 0.709 | 0.667 | 0.696 | 0.842 | 0.843 | 0.840 | 0.856 |
+| strict | persistence | 2 | all | 10222 | 0.565 | 0.850 | 0.614 | 0.810 | 0.622 | 0.701 |  |  | 0.828 |  | 0.791 | 0.851 |
+| strict | persistence | 2 | cropland | 2951 | 0.558 | 0.868 | 0.584 | 0.835 | 0.632 | 0.687 |  |  | 0.854 |  | 0.802 | 0.877 |
+| strict | persistence | 2 | cropland_harvest | 1431 | 0.560 | 0.881 | 0.607 | 0.872 | 0.631 | 0.664 |  |  | 0.869 |  | 0.796 | 0.885 |
+| strict | persistence | 2 | harvest | 4436 | 0.601 | 0.866 | 0.663 | 0.859 | 0.633 | 0.723 |  |  | 0.865 |  | 0.800 | 0.863 |
+| strict | persistence | 3 | all | 10082 | 0.537 | 0.846 | 0.577 | 0.802 | 0.617 | 0.681 |  |  | 0.808 |  | 0.806 | 0.847 |
+| strict | persistence | 3 | cropland | 2911 | 0.542 | 0.874 | 0.553 | 0.848 | 0.603 | 0.673 |  |  | 0.851 |  | 0.828 | 0.882 |
+| strict | persistence | 3 | cropland_harvest | 1258 | 0.595 | 0.893 | 0.630 | 0.883 | 0.624 | 0.691 |  |  | 0.888 |  | 0.849 | 0.901 |
+| strict | persistence | 3 | harvest | 3774 | 0.633 | 0.870 | 0.686 | 0.858 | 0.689 | 0.742 |  |  | 0.860 |  | 0.855 | 0.871 |
+| year | occurrence | 1 | all | 127701 | 0.129 | 0.388 | 0.173 |  |  | 0.299 |  |  |  |  |  | 0.432 |
+| year | occurrence | 1 | cropland | 38727 | 0.121 | 0.417 | 0.169 |  |  | 0.339 |  |  |  |  |  | 0.428 |
+| year | occurrence | 1 | cropland_harvest | 15043 | 0.157 | 0.441 | 0.192 |  |  | 0.350 |  |  |  |  |  | 0.456 |
+| year | occurrence | 1 | harvest | 50105 | 0.189 | 0.432 | 0.223 |  |  | 0.306 |  |  |  |  |  | 0.450 |
+| year | occurrence | 3 | all | 126192 | 0.154 | 0.463 | 0.183 |  |  | 0.367 |  |  |  |  |  | 0.481 |
+| year | occurrence | 3 | cropland | 38231 | 0.140 | 0.479 | 0.176 |  |  | 0.400 |  |  |  |  |  | 0.488 |
+| year | occurrence | 3 | cropland_harvest | 16058 | 0.189 | 0.526 | 0.219 |  |  | 0.442 |  |  |  |  |  | 0.530 |
+| year | occurrence | 3 | harvest | 54959 | 0.225 | 0.512 | 0.250 |  |  | 0.390 |  |  |  |  |  | 0.520 |
+| year | persistence | 1 | all | 40299 | 0.604 | 0.847 | 0.665 |  |  | 0.785 |  |  |  |  |  | 0.854 |
+| year | persistence | 1 | cropland | 11169 | 0.576 | 0.854 | 0.612 |  |  | 0.828 |  |  |  |  |  | 0.862 |
+| year | persistence | 1 | cropland_harvest | 5747 | 0.577 | 0.867 | 0.626 |  |  | 0.829 |  |  |  |  |  | 0.871 |
+| year | persistence | 1 | harvest | 19895 | 0.608 | 0.855 | 0.668 |  |  | 0.789 |  |  |  |  |  | 0.857 |
+| year | persistence | 3 | all | 39808 | 0.526 | 0.836 | 0.571 |  |  | 0.770 |  |  |  |  |  | 0.845 |
+| year | persistence | 3 | cropland | 11071 | 0.510 | 0.853 | 0.526 |  |  | 0.837 |  |  |  |  |  | 0.862 |
+| year | persistence | 3 | cropland_harvest | 4732 | 0.557 | 0.875 | 0.597 |  |  | 0.846 |  |  |  |  |  | 0.885 |
+| year | persistence | 3 | harvest | 15041 | 0.612 | 0.862 | 0.668 |  |  | 0.804 |  |  |  |  |  | 0.867 |
 
 ## Model ladder, brier
 
-| cv | target | h | subset | n | base_rate | climatology: baseline | persistence: baseline | S: gbm | M1: logreg | M1: gbm | M1_physical: logreg | M1_physical: gbm | M2: gbm | M2_physical: gbm | M3: logreg | M3: gbm | EBM_selected: ebm | EBM_physical: ebm |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| forward | occurrence | 1 | all | 90788 | 0.122 | 0.093 | 0.113 |  |  | 0.099 |  |  |  |  |  | 0.098 |  |  |
-| forward | occurrence | 1 | cropland | 28023 | 0.116 | 0.087 | 0.106 |  |  | 0.092 |  |  |  |  |  | 0.092 |  |  |
-| forward | occurrence | 1 | cropland_harvest | 10929 | 0.154 | 0.109 | 0.143 |  |  | 0.118 |  |  |  |  |  | 0.115 |  |  |
-| forward | occurrence | 1 | harvest | 36252 | 0.177 | 0.132 | 0.165 |  |  | 0.140 |  |  |  |  |  | 0.139 |  |  |
-| forward | occurrence | 3 | all | 90309 | 0.145 | 0.102 | 0.137 |  |  | 0.113 |  |  |  |  |  | 0.111 |  |  |
-| forward | occurrence | 3 | cropland | 27918 | 0.135 | 0.093 | 0.126 |  |  | 0.104 |  |  |  |  |  | 0.104 |  |  |
-| forward | occurrence | 3 | cropland_harvest | 11659 | 0.190 | 0.120 | 0.177 |  |  | 0.141 |  |  |  |  |  | 0.132 |  |  |
-| forward | occurrence | 3 | harvest | 39358 | 0.211 | 0.142 | 0.199 |  |  | 0.160 |  |  |  |  |  | 0.153 |  |  |
-| forward | persistence | 1 | all | 29212 | 0.611 | 0.223 | 0.281 |  |  | 0.209 |  |  |  |  |  | 0.208 |  |  |
-| forward | persistence | 1 | cropland | 7617 | 0.561 | 0.177 | 0.304 |  |  | 0.187 |  |  |  |  |  | 0.175 |  |  |
-| forward | persistence | 1 | cropland_harvest | 3921 | 0.578 | 0.177 | 0.290 |  |  | 0.186 |  |  |  |  |  | 0.170 |  |  |
-| forward | persistence | 1 | harvest | 13748 | 0.617 | 0.210 | 0.274 |  |  | 0.214 |  |  |  |  |  | 0.200 |  |  |
-| forward | persistence | 3 | all | 29691 | 0.533 | 0.194 | 0.337 |  |  | 0.204 |  |  |  |  |  | 0.190 |  |  |
-| forward | persistence | 3 | cropland | 7722 | 0.484 | 0.153 | 0.353 |  |  | 0.168 |  |  |  |  |  | 0.156 |  |  |
-| forward | persistence | 3 | cropland_harvest | 3191 | 0.544 | 0.156 | 0.300 |  |  | 0.176 |  |  |  |  |  | 0.153 |  |  |
-| forward | persistence | 3 | harvest | 10642 | 0.625 | 0.200 | 0.268 |  |  | 0.214 |  |  |  |  |  | 0.195 |  |  |
-| strict | occurrence | 1 | all | 33739 | 0.128 | 0.096 | 0.119 | 0.096 | 0.130 | 0.109 | 0.118 | 0.111 | 0.095 | 0.095 | 0.110 | 0.096 | 0.113 | 0.128 |
-| strict | occurrence | 1 | cropland | 10380 | 0.127 | 0.091 | 0.118 | 0.097 | 0.129 | 0.111 | 0.120 | 0.114 | 0.096 | 0.097 | 0.109 | 0.095 | 0.116 | 0.129 |
-| strict | occurrence | 1 | cropland_harvest | 4048 | 0.177 | 0.125 | 0.165 | 0.131 | 0.176 | 0.150 | 0.166 | 0.154 | 0.131 | 0.133 | 0.158 | 0.132 | 0.154 | 0.176 |
-| strict | occurrence | 1 | harvest | 13287 | 0.191 | 0.136 | 0.178 | 0.139 | 0.186 | 0.159 | 0.173 | 0.161 | 0.140 | 0.138 | 0.159 | 0.141 | 0.161 | 0.191 |
-| strict | occurrence | 2 | all | 33714 | 0.141 | 0.100 | 0.133 | 0.104 | 0.129 | 0.117 |  |  | 0.100 |  | 0.150 | 0.107 |  |  |
-| strict | occurrence | 2 | cropland | 10417 | 0.141 | 0.096 | 0.132 | 0.104 | 0.132 | 0.121 |  |  | 0.101 |  | 0.147 | 0.103 |  |  |
-| strict | occurrence | 2 | cropland_harvest | 4139 | 0.199 | 0.133 | 0.187 | 0.142 | 0.173 | 0.167 |  |  | 0.142 |  | 0.195 | 0.143 |  |  |
-| strict | occurrence | 2 | harvest | 13841 | 0.212 | 0.143 | 0.200 | 0.152 | 0.184 | 0.170 |  |  | 0.147 |  | 0.207 | 0.151 |  |  |
-| strict | occurrence | 3 | all | 33176 | 0.150 | 0.104 | 0.142 | 0.108 | 0.233 | 0.124 |  |  | 0.105 |  | 0.153 | 0.106 |  |  |
-| strict | occurrence | 3 | cropland | 10240 | 0.146 | 0.099 | 0.137 | 0.105 | 0.260 | 0.125 |  |  | 0.104 |  | 0.170 | 0.102 |  |  |
-| strict | occurrence | 3 | cropland_harvest | 4312 | 0.203 | 0.134 | 0.192 | 0.141 | 0.330 | 0.170 |  |  | 0.142 |  | 0.237 | 0.139 |  |  |
-| strict | occurrence | 3 | harvest | 14471 | 0.222 | 0.147 | 0.211 | 0.153 | 0.307 | 0.178 |  |  | 0.151 |  | 0.212 | 0.151 |  |  |
-| strict | persistence | 1 | all | 10240 | 0.610 | 0.194 | 0.281 | 0.183 | 0.285 | 0.254 | 0.296 | 0.261 | 0.186 | 0.187 | 0.200 | 0.174 | 0.267 | 0.247 |
-| strict | persistence | 1 | cropland | 2988 | 0.602 | 0.184 | 0.279 | 0.174 | 0.319 | 0.279 | 0.293 | 0.271 | 0.183 | 0.179 | 0.204 | 0.164 | 0.301 | 0.250 |
-| strict | persistence | 1 | cropland_harvest | 1522 | 0.597 | 0.179 | 0.282 | 0.169 | 0.330 | 0.270 | 0.311 | 0.255 | 0.166 | 0.167 | 0.205 | 0.159 | 0.287 | 0.240 |
-| strict | persistence | 1 | harvest | 5021 | 0.615 | 0.197 | 0.277 | 0.177 | 0.306 | 0.258 | 0.323 | 0.260 | 0.179 | 0.179 | 0.204 | 0.179 | 0.265 | 0.245 |
-| strict | persistence | 2 | all | 10222 | 0.565 | 0.176 | 0.315 | 0.181 | 0.305 | 0.238 |  |  | 0.177 |  | 0.221 | 0.159 |  |  |
-| strict | persistence | 2 | cropland | 2951 | 0.558 | 0.168 | 0.309 | 0.165 | 0.312 | 0.252 |  |  | 0.161 |  | 0.221 | 0.149 |  |  |
-| strict | persistence | 2 | cropland_harvest | 1431 | 0.560 | 0.160 | 0.302 | 0.155 | 0.328 | 0.257 |  |  | 0.152 |  | 0.247 | 0.149 |  |  |
-| strict | persistence | 2 | harvest | 4436 | 0.601 | 0.179 | 0.282 | 0.166 | 0.327 | 0.241 |  |  | 0.163 |  | 0.250 | 0.165 |  |  |
-| strict | persistence | 3 | all | 10082 | 0.537 | 0.167 | 0.338 | 0.179 | 0.283 | 0.240 |  |  | 0.178 |  | 0.180 | 0.154 |  |  |
-| strict | persistence | 3 | cropland | 2911 | 0.542 | 0.160 | 0.325 | 0.157 | 0.301 | 0.257 |  |  | 0.155 |  | 0.169 | 0.139 |  |  |
-| strict | persistence | 3 | cropland_harvest | 1258 | 0.595 | 0.160 | 0.285 | 0.157 | 0.348 | 0.275 |  |  | 0.153 |  | 0.184 | 0.143 |  |  |
-| strict | persistence | 3 | harvest | 3774 | 0.633 | 0.180 | 0.267 | 0.171 | 0.309 | 0.246 |  |  | 0.168 |  | 0.189 | 0.165 |  |  |
-| year | occurrence | 1 | all | 127701 | 0.129 | 0.096 | 0.119 |  |  | 0.101 |  |  |  |  |  | 0.095 |  |  |
-| year | occurrence | 1 | cropland | 38727 | 0.121 | 0.087 | 0.112 |  |  | 0.094 |  |  |  |  |  | 0.090 |  |  |
-| year | occurrence | 1 | cropland_harvest | 15043 | 0.157 | 0.110 | 0.145 |  |  | 0.118 |  |  |  |  |  | 0.113 |  |  |
-| year | occurrence | 1 | harvest | 50105 | 0.189 | 0.134 | 0.176 |  |  | 0.146 |  |  |  |  |  | 0.138 |  |  |
-| year | occurrence | 3 | all | 126192 | 0.154 | 0.105 | 0.146 |  |  | 0.115 |  |  |  |  |  | 0.108 |  |  |
-| year | occurrence | 3 | cropland | 38231 | 0.140 | 0.094 | 0.131 |  |  | 0.104 |  |  |  |  |  | 0.098 |  |  |
-| year | occurrence | 3 | cropland_harvest | 16058 | 0.189 | 0.119 | 0.177 |  |  | 0.134 |  |  |  |  |  | 0.125 |  |  |
-| year | occurrence | 3 | harvest | 54959 | 0.225 | 0.145 | 0.213 |  |  | 0.162 |  |  |  |  |  | 0.150 |  |  |
-| year | persistence | 1 | all | 40299 | 0.604 | 0.197 | 0.285 |  |  | 0.208 |  |  |  |  |  | 0.172 |  |  |
-| year | persistence | 1 | cropland | 11169 | 0.576 | 0.182 | 0.296 |  |  | 0.188 |  |  |  |  |  | 0.162 |  |  |
-| year | persistence | 1 | cropland_harvest | 5747 | 0.577 | 0.177 | 0.292 |  |  | 0.192 |  |  |  |  |  | 0.161 |  |  |
-| year | persistence | 1 | harvest | 19895 | 0.608 | 0.196 | 0.280 |  |  | 0.214 |  |  |  |  |  | 0.176 |  |  |
-| year | persistence | 3 | all | 39808 | 0.526 | 0.171 | 0.343 |  |  | 0.194 |  |  |  |  |  | 0.155 |  |  |
-| year | persistence | 3 | cropland | 11071 | 0.510 | 0.159 | 0.340 |  |  | 0.166 |  |  |  |  |  | 0.143 |  |  |
-| year | persistence | 3 | cropland_harvest | 4732 | 0.557 | 0.159 | 0.298 |  |  | 0.173 |  |  |  |  |  | 0.145 |  |  |
-| year | persistence | 3 | harvest | 15041 | 0.612 | 0.182 | 0.278 |  |  | 0.198 |  |  |  |  |  | 0.166 |  |  |
+| cv | target | h | subset | n | base_rate | climatology: baseline | persistence: baseline | S: gbm | M1: logreg | M1: gbm | M1_physical: logreg | M1_physical: gbm | M2: gbm | M2_physical: gbm | M3: logreg | M3: gbm |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| forward | occurrence | 1 | all | 90788 | 0.122 | 0.093 | 0.113 |  |  | 0.099 |  |  |  |  |  | 0.098 |
+| forward | occurrence | 1 | cropland | 28023 | 0.116 | 0.087 | 0.106 |  |  | 0.092 |  |  |  |  |  | 0.092 |
+| forward | occurrence | 1 | cropland_harvest | 10929 | 0.154 | 0.109 | 0.143 |  |  | 0.118 |  |  |  |  |  | 0.115 |
+| forward | occurrence | 1 | harvest | 36252 | 0.177 | 0.132 | 0.165 |  |  | 0.140 |  |  |  |  |  | 0.139 |
+| forward | occurrence | 3 | all | 90309 | 0.145 | 0.102 | 0.137 |  |  | 0.113 |  |  |  |  |  | 0.111 |
+| forward | occurrence | 3 | cropland | 27918 | 0.135 | 0.093 | 0.126 |  |  | 0.104 |  |  |  |  |  | 0.104 |
+| forward | occurrence | 3 | cropland_harvest | 11659 | 0.190 | 0.120 | 0.177 |  |  | 0.141 |  |  |  |  |  | 0.132 |
+| forward | occurrence | 3 | harvest | 39358 | 0.211 | 0.142 | 0.199 |  |  | 0.160 |  |  |  |  |  | 0.153 |
+| forward | persistence | 1 | all | 29212 | 0.611 | 0.223 | 0.281 |  |  | 0.209 |  |  |  |  |  | 0.208 |
+| forward | persistence | 1 | cropland | 7617 | 0.561 | 0.177 | 0.304 |  |  | 0.187 |  |  |  |  |  | 0.175 |
+| forward | persistence | 1 | cropland_harvest | 3921 | 0.578 | 0.177 | 0.290 |  |  | 0.186 |  |  |  |  |  | 0.170 |
+| forward | persistence | 1 | harvest | 13748 | 0.617 | 0.210 | 0.274 |  |  | 0.214 |  |  |  |  |  | 0.200 |
+| forward | persistence | 3 | all | 29691 | 0.533 | 0.194 | 0.337 |  |  | 0.204 |  |  |  |  |  | 0.190 |
+| forward | persistence | 3 | cropland | 7722 | 0.484 | 0.153 | 0.353 |  |  | 0.168 |  |  |  |  |  | 0.156 |
+| forward | persistence | 3 | cropland_harvest | 3191 | 0.544 | 0.156 | 0.300 |  |  | 0.176 |  |  |  |  |  | 0.153 |
+| forward | persistence | 3 | harvest | 10642 | 0.625 | 0.200 | 0.268 |  |  | 0.214 |  |  |  |  |  | 0.195 |
+| strict | occurrence | 1 | all | 33739 | 0.128 | 0.096 | 0.119 | 0.096 | 0.130 | 0.109 | 0.118 | 0.111 | 0.095 | 0.095 | 0.110 | 0.096 |
+| strict | occurrence | 1 | cropland | 10380 | 0.127 | 0.091 | 0.118 | 0.097 | 0.129 | 0.111 | 0.120 | 0.114 | 0.096 | 0.097 | 0.109 | 0.095 |
+| strict | occurrence | 1 | cropland_harvest | 4048 | 0.177 | 0.125 | 0.165 | 0.131 | 0.176 | 0.150 | 0.166 | 0.154 | 0.131 | 0.133 | 0.158 | 0.132 |
+| strict | occurrence | 1 | harvest | 13287 | 0.191 | 0.136 | 0.178 | 0.139 | 0.186 | 0.159 | 0.173 | 0.161 | 0.140 | 0.138 | 0.159 | 0.141 |
+| strict | occurrence | 2 | all | 33714 | 0.141 | 0.100 | 0.133 | 0.104 | 0.129 | 0.117 |  |  | 0.100 |  | 0.150 | 0.107 |
+| strict | occurrence | 2 | cropland | 10417 | 0.141 | 0.096 | 0.132 | 0.104 | 0.132 | 0.121 |  |  | 0.101 |  | 0.147 | 0.103 |
+| strict | occurrence | 2 | cropland_harvest | 4139 | 0.199 | 0.133 | 0.187 | 0.142 | 0.173 | 0.167 |  |  | 0.142 |  | 0.195 | 0.143 |
+| strict | occurrence | 2 | harvest | 13841 | 0.212 | 0.143 | 0.200 | 0.152 | 0.184 | 0.170 |  |  | 0.147 |  | 0.207 | 0.151 |
+| strict | occurrence | 3 | all | 33176 | 0.150 | 0.104 | 0.142 | 0.108 | 0.233 | 0.124 |  |  | 0.105 |  | 0.153 | 0.106 |
+| strict | occurrence | 3 | cropland | 10240 | 0.146 | 0.099 | 0.137 | 0.105 | 0.260 | 0.125 |  |  | 0.104 |  | 0.170 | 0.102 |
+| strict | occurrence | 3 | cropland_harvest | 4312 | 0.203 | 0.134 | 0.192 | 0.141 | 0.330 | 0.170 |  |  | 0.142 |  | 0.237 | 0.139 |
+| strict | occurrence | 3 | harvest | 14471 | 0.222 | 0.147 | 0.211 | 0.153 | 0.307 | 0.178 |  |  | 0.151 |  | 0.212 | 0.151 |
+| strict | persistence | 1 | all | 10240 | 0.610 | 0.194 | 0.281 | 0.183 | 0.285 | 0.254 | 0.296 | 0.261 | 0.186 | 0.187 | 0.200 | 0.174 |
+| strict | persistence | 1 | cropland | 2988 | 0.602 | 0.184 | 0.279 | 0.174 | 0.319 | 0.279 | 0.293 | 0.271 | 0.183 | 0.179 | 0.204 | 0.164 |
+| strict | persistence | 1 | cropland_harvest | 1522 | 0.597 | 0.179 | 0.282 | 0.169 | 0.330 | 0.270 | 0.311 | 0.255 | 0.166 | 0.167 | 0.205 | 0.159 |
+| strict | persistence | 1 | harvest | 5021 | 0.615 | 0.197 | 0.277 | 0.177 | 0.306 | 0.258 | 0.323 | 0.260 | 0.179 | 0.179 | 0.204 | 0.179 |
+| strict | persistence | 2 | all | 10222 | 0.565 | 0.176 | 0.315 | 0.181 | 0.305 | 0.238 |  |  | 0.177 |  | 0.221 | 0.159 |
+| strict | persistence | 2 | cropland | 2951 | 0.558 | 0.168 | 0.309 | 0.165 | 0.312 | 0.252 |  |  | 0.161 |  | 0.221 | 0.149 |
+| strict | persistence | 2 | cropland_harvest | 1431 | 0.560 | 0.160 | 0.302 | 0.155 | 0.328 | 0.257 |  |  | 0.152 |  | 0.247 | 0.149 |
+| strict | persistence | 2 | harvest | 4436 | 0.601 | 0.179 | 0.282 | 0.166 | 0.327 | 0.241 |  |  | 0.163 |  | 0.250 | 0.165 |
+| strict | persistence | 3 | all | 10082 | 0.537 | 0.167 | 0.338 | 0.179 | 0.283 | 0.240 |  |  | 0.178 |  | 0.180 | 0.154 |
+| strict | persistence | 3 | cropland | 2911 | 0.542 | 0.160 | 0.325 | 0.157 | 0.301 | 0.257 |  |  | 0.155 |  | 0.169 | 0.139 |
+| strict | persistence | 3 | cropland_harvest | 1258 | 0.595 | 0.160 | 0.285 | 0.157 | 0.348 | 0.275 |  |  | 0.153 |  | 0.184 | 0.143 |
+| strict | persistence | 3 | harvest | 3774 | 0.633 | 0.180 | 0.267 | 0.171 | 0.309 | 0.246 |  |  | 0.168 |  | 0.189 | 0.165 |
+| year | occurrence | 1 | all | 127701 | 0.129 | 0.096 | 0.119 |  |  | 0.101 |  |  |  |  |  | 0.095 |
+| year | occurrence | 1 | cropland | 38727 | 0.121 | 0.087 | 0.112 |  |  | 0.094 |  |  |  |  |  | 0.090 |
+| year | occurrence | 1 | cropland_harvest | 15043 | 0.157 | 0.110 | 0.145 |  |  | 0.118 |  |  |  |  |  | 0.113 |
+| year | occurrence | 1 | harvest | 50105 | 0.189 | 0.134 | 0.176 |  |  | 0.146 |  |  |  |  |  | 0.138 |
+| year | occurrence | 3 | all | 126192 | 0.154 | 0.105 | 0.146 |  |  | 0.115 |  |  |  |  |  | 0.108 |
+| year | occurrence | 3 | cropland | 38231 | 0.140 | 0.094 | 0.131 |  |  | 0.104 |  |  |  |  |  | 0.098 |
+| year | occurrence | 3 | cropland_harvest | 16058 | 0.189 | 0.119 | 0.177 |  |  | 0.134 |  |  |  |  |  | 0.125 |
+| year | occurrence | 3 | harvest | 54959 | 0.225 | 0.145 | 0.213 |  |  | 0.162 |  |  |  |  |  | 0.150 |
+| year | persistence | 1 | all | 40299 | 0.604 | 0.197 | 0.285 |  |  | 0.208 |  |  |  |  |  | 0.172 |
+| year | persistence | 1 | cropland | 11169 | 0.576 | 0.182 | 0.296 |  |  | 0.188 |  |  |  |  |  | 0.162 |
+| year | persistence | 1 | cropland_harvest | 5747 | 0.577 | 0.177 | 0.292 |  |  | 0.192 |  |  |  |  |  | 0.161 |
+| year | persistence | 1 | harvest | 19895 | 0.608 | 0.196 | 0.280 |  |  | 0.214 |  |  |  |  |  | 0.176 |
+| year | persistence | 3 | all | 39808 | 0.526 | 0.171 | 0.343 |  |  | 0.194 |  |  |  |  |  | 0.155 |
+| year | persistence | 3 | cropland | 11071 | 0.510 | 0.159 | 0.340 |  |  | 0.166 |  |  |  |  |  | 0.143 |
+| year | persistence | 3 | cropland_harvest | 4732 | 0.557 | 0.159 | 0.298 |  |  | 0.173 |  |  |  |  |  | 0.145 |
+| year | persistence | 3 | harvest | 15041 | 0.612 | 0.182 | 0.278 |  |  | 0.198 |  |  |  |  |  | 0.166 |
 
 ## All metrics (threshold metrics use a cutoff chosen on the other test years)
 
@@ -162,8 +162,6 @@
 | forward | 3 | persistence | cropland_harvest | M3 | gbm | 3191 | 0.544 | 0.781 | 0.456 | 0.757 | 0.879 | 0.814 | 0.772 | 0.336 | 0.867 | 0.733 | 0.878 | 0.153 | 0.018 | 0.569 |
 | forward | 3 | persistence | cropland_harvest | climatology | baseline | 3191 | 0.544 | 0.795 | 0.456 | 0.777 | 0.875 | 0.823 | 0.788 | 0.299 | 0.865 | 0.730 | 0.870 | 0.156 | 0.000 | 0.627 |
 | forward | 3 | persistence | cropland_harvest | persistence | baseline | 3191 | 0.544 | 0.544 | 0.456 | 0.544 | 1.000 | 0.704 | 0.500 | 1.000 | 0.576 | 0.152 | 0.589 | 0.300 | -0.923 | 2.254 |
-| strict | 1 | occurrence | all | EBM_physical | ebm | 33739 | 0.128 | 0.606 | 0.872 | 0.176 | 0.562 | 0.268 | 0.587 | 0.388 | 0.619 | 0.238 | 0.187 | 0.128 | -0.327 | 0.463 |
-| strict | 1 | occurrence | all | EBM_selected | ebm | 33739 | 0.128 | 0.615 | 0.872 | 0.157 | 0.458 | 0.234 | 0.548 | 0.362 | 0.572 | 0.144 | 0.178 | 0.113 | -0.179 | 0.392 |
 | strict | 1 | occurrence | all | M1 | gbm | 33739 | 0.128 | 0.669 | 0.872 | 0.207 | 0.559 | 0.302 | 0.622 | 0.315 | 0.683 | 0.366 | 0.219 | 0.109 | -0.136 | 0.371 |
 | strict | 1 | occurrence | all | M1 | logreg | 33739 | 0.128 | 0.378 | 0.872 | 0.121 | 0.616 | 0.202 | 0.479 | 0.657 | 0.545 | 0.091 | 0.156 | 0.130 | -0.356 | 0.472 |
 | strict | 1 | occurrence | all | M1_physical | gbm | 33739 | 0.128 | 0.616 | 0.872 | 0.190 | 0.612 | 0.290 | 0.614 | 0.383 | 0.660 | 0.319 | 0.200 | 0.111 | -0.151 | 0.378 |
@@ -175,8 +173,6 @@
 | strict | 1 | occurrence | all | M3 | logreg | 33739 | 0.128 | 0.794 | 0.872 | 0.306 | 0.481 | 0.374 | 0.660 | 0.160 | 0.741 | 0.482 | 0.339 | 0.110 | -0.140 | 0.397 |
 | strict | 1 | occurrence | all | climatology | baseline | 33739 | 0.128 | 0.818 | 0.872 | 0.364 | 0.560 | 0.441 | 0.708 | 0.144 | 0.800 | 0.600 | 0.382 | 0.096 | 0.000 | 0.441 |
 | strict | 1 | occurrence | all | persistence | baseline | 33739 | 0.128 | 0.837 | 0.872 | 0.322 | 0.242 | 0.276 | 0.583 | 0.075 | 0.584 | 0.167 | 0.177 | 0.119 | -0.234 | 1.405 |
-| strict | 1 | occurrence | cropland_harvest | EBM_physical | ebm | 4048 | 0.177 | 0.360 | 0.823 | 0.190 | 0.802 | 0.307 | 0.534 | 0.735 | 0.550 | 0.100 | 0.200 | 0.176 | -0.409 | 0.597 |
-| strict | 1 | occurrence | cropland_harvest | EBM_selected | ebm | 4048 | 0.177 | 0.236 | 0.823 | 0.178 | 0.918 | 0.298 | 0.503 | 0.911 | 0.531 | 0.063 | 0.195 | 0.154 | -0.232 | 0.506 |
 | strict | 1 | occurrence | cropland_harvest | M1 | gbm | 4048 | 0.177 | 0.412 | 0.823 | 0.199 | 0.766 | 0.316 | 0.551 | 0.664 | 0.595 | 0.189 | 0.226 | 0.150 | -0.196 | 0.493 |
 | strict | 1 | occurrence | cropland_harvest | M1 | logreg | 4048 | 0.177 | 0.239 | 0.823 | 0.183 | 0.950 | 0.307 | 0.518 | 0.914 | 0.505 | 0.010 | 0.178 | 0.176 | -0.404 | 0.665 |
 | strict | 1 | occurrence | cropland_harvest | M1_physical | gbm | 4048 | 0.177 | 0.236 | 0.823 | 0.182 | 0.950 | 0.306 | 0.516 | 0.917 | 0.536 | 0.072 | 0.200 | 0.154 | -0.231 | 0.505 |
@@ -188,8 +184,6 @@
 | strict | 1 | occurrence | cropland_harvest | M3 | logreg | 4048 | 0.177 | 0.585 | 0.823 | 0.221 | 0.531 | 0.312 | 0.564 | 0.403 | 0.691 | 0.382 | 0.324 | 0.158 | -0.259 | 0.592 |
 | strict | 1 | occurrence | cropland_harvest | climatology | baseline | 4048 | 0.177 | 0.775 | 0.823 | 0.400 | 0.536 | 0.458 | 0.681 | 0.173 | 0.773 | 0.546 | 0.430 | 0.125 | 0.000 | 0.552 |
 | strict | 1 | occurrence | cropland_harvest | persistence | baseline | 4048 | 0.177 | 0.177 | 0.823 | 0.177 | 1.000 | 0.301 | 0.500 | 1.000 | 0.557 | 0.114 | 0.206 | 0.165 | -0.320 | 1.962 |
-| strict | 1 | persistence | all | EBM_physical | ebm | 10240 | 0.610 | 0.613 | 0.390 | 0.614 | 0.989 | 0.758 | 0.507 | 0.975 | 0.603 | 0.207 | 0.691 | 0.247 | -0.269 | 0.697 |
-| strict | 1 | persistence | all | EBM_selected | ebm | 10240 | 0.610 | 0.613 | 0.390 | 0.614 | 0.987 | 0.757 | 0.507 | 0.974 | 0.610 | 0.221 | 0.697 | 0.267 | -0.371 | 0.763 |
 | strict | 1 | persistence | all | M1 | gbm | 10240 | 0.610 | 0.608 | 0.390 | 0.612 | 0.979 | 0.753 | 0.503 | 0.972 | 0.619 | 0.239 | 0.714 | 0.254 | -0.309 | 0.713 |
 | strict | 1 | persistence | all | M1 | logreg | 10240 | 0.610 | 0.611 | 0.390 | 0.611 | 0.998 | 0.758 | 0.501 | 0.996 | 0.577 | 0.154 | 0.677 | 0.285 | -0.469 | 0.807 |
 | strict | 1 | persistence | all | M1_physical | gbm | 10240 | 0.610 | 0.610 | 0.390 | 0.611 | 0.999 | 0.758 | 0.500 | 0.998 | 0.594 | 0.187 | 0.694 | 0.261 | -0.344 | 0.726 |
@@ -201,8 +195,6 @@
 | strict | 1 | persistence | all | M3 | logreg | 10240 | 0.610 | 0.721 | 0.390 | 0.722 | 0.883 | 0.794 | 0.675 | 0.534 | 0.776 | 0.552 | 0.830 | 0.200 | -0.028 | 0.642 |
 | strict | 1 | persistence | all | climatology | baseline | 10240 | 0.610 | 0.751 | 0.390 | 0.741 | 0.911 | 0.817 | 0.706 | 0.499 | 0.815 | 0.630 | 0.851 | 0.194 | 0.000 | 0.683 |
 | strict | 1 | persistence | all | persistence | baseline | 10240 | 0.610 | 0.610 | 0.390 | 0.610 | 1.000 | 0.758 | 0.500 | 1.000 | 0.603 | 0.205 | 0.670 | 0.281 | -0.446 | 2.456 |
-| strict | 1 | persistence | cropland_harvest | EBM_physical | ebm | 1522 | 0.597 | 0.625 | 0.403 | 0.623 | 0.941 | 0.750 | 0.549 | 0.843 | 0.627 | 0.255 | 0.699 | 0.240 | -0.340 | 0.679 |
-| strict | 1 | persistence | cropland_harvest | EBM_selected | ebm | 1522 | 0.597 | 0.591 | 0.403 | 0.595 | 0.986 | 0.742 | 0.495 | 0.995 | 0.601 | 0.202 | 0.700 | 0.287 | -0.600 | 0.808 |
 | strict | 1 | persistence | cropland_harvest | M1 | gbm | 1522 | 0.597 | 0.591 | 0.403 | 0.598 | 0.964 | 0.738 | 0.501 | 0.962 | 0.596 | 0.191 | 0.697 | 0.270 | -0.508 | 0.751 |
 | strict | 1 | persistence | cropland_harvest | M1 | logreg | 1522 | 0.597 | 0.597 | 0.403 | 0.599 | 0.983 | 0.745 | 0.504 | 0.976 | 0.596 | 0.191 | 0.667 | 0.330 | -0.838 | 0.936 |
 | strict | 1 | persistence | cropland_harvest | M1_physical | gbm | 1522 | 0.597 | 0.618 | 0.403 | 0.613 | 0.977 | 0.754 | 0.532 | 0.914 | 0.584 | 0.169 | 0.689 | 0.255 | -0.423 | 0.707 |
@@ -1443,14 +1435,6 @@
 | 1 | persistence | cropland_harvest | pers | 0.000 | 0.000 |
 | 1 | persistence | cropland_harvest | M1: gbm | 0.147 | 0.204 |
 | 1 | persistence | cropland_harvest | M3: gbm | 0.422 | 0.576 |
-| 1 | occurrence | all | EBM_selected: ebm | 0.116 | 0.193 |
-| 1 | occurrence | cropland_harvest | EBM_selected: ebm | 0.059 | 0.132 |
-| 1 | persistence | all | EBM_selected: ebm | 0.100 | 0.186 |
-| 1 | persistence | cropland_harvest | EBM_selected: ebm | 0.135 | 0.220 |
-| 1 | occurrence | all | EBM_physical: ebm | 0.107 | 0.191 |
-| 1 | occurrence | cropland_harvest | EBM_physical: ebm | 0.071 | 0.117 |
-| 1 | persistence | all | EBM_physical: ebm | 0.095 | 0.176 |
-| 1 | persistence | cropland_harvest | EBM_physical: ebm | 0.113 | 0.195 |
 | 1 | occurrence | all | M1_physical: gbm | 0.104 | 0.198 |
 | 1 | occurrence | cropland_harvest | M1_physical: gbm | 0.061 | 0.116 |
 | 1 | persistence | all | M1_physical: gbm | 0.117 | 0.194 |
@@ -1488,106 +1472,6 @@
 | 3 | persistence | cropland_harvest | M1: gbm | 0.093 | 0.160 |
 | 3 | persistence | cropland_harvest | M3: gbm | 0.466 | 0.619 |
 
-## EBM occurrence, term importance
-
-| term | meaning | importance |
-|---|---|---|
-| slope_sd | slope spread within square (SD, deg) | 0.301 |
-| hnd_mean | height above nearest drainage, mean (m) | 0.267 |
-| sand | sand 0-30 cm (%) | 0.256 |
-| vertisol | Vertisol (swelling clay) probability (%) | 0.206 |
-| q_size | size of nearest large river (log flow) | 0.203 |
-| clay | clay 0-30 cm (%) | 0.169 |
-| depress | share of square in local depressions | 0.160 |
-| hnd_sd | height above drainage, spread (SD, m) | 0.157 |
-| upa_max | upstream drainage area (log km2) | 0.148 |
-| twi | topographic wetness index | 0.132 |
-| clay & hnd_sd | clay 0-30 cm (%) x height above drainage, spread (SD, m) | 0.095 |
-| slope | slope (degrees) | 0.095 |
-| upa_max & q_size | upstream drainage area (log km2) x size of nearest large river (log flow) | 0.092 |
-| vertisol & slope_sd | Vertisol (swelling clay) probability (%) x slope spread within square (SD, deg) | 0.092 |
-| twi & clay | topographic wetness index x clay 0-30 cm (%) | 0.071 |
-| q_size & slope_sd | size of nearest large river (log flow) x slope spread within square (SD, deg) | 0.070 |
-| q_dist | distance to nearest large river (km) | 0.067 |
-| hnd_mean & clay | height above nearest drainage, mean (m) x clay 0-30 cm (%) | 0.067 |
-| low_2m | share of land < 2 m above drainage | 0.062 |
-| low_2m & q_size | share of land < 2 m above drainage x size of nearest large river (log flow) | 0.056 |
-
-## EBM persistence, term importance
-
-| term | meaning | importance |
-|---|---|---|
-| q__raw3 | flow of nearest large river, GloFAS (log), mean of last 3 months | 0.445 |
-| slope_sd | slope spread within square (SD, deg) | 0.438 |
-| q_size | size of nearest large river (log flow) | 0.401 |
-| upa_max | upstream drainage area (log km2) | 0.336 |
-| hnd_sd | height above drainage, spread (SD, m) | 0.302 |
-| clay | clay 0-30 cm (%) | 0.273 |
-| qk30__raw1 | river flow within ~30 km, GloFAS (log), this month | 0.242 |
-| depress | share of square in local depressions | 0.239 |
-| q__raw1 | flow of nearest large river, GloFAS (log), this month | 0.225 |
-| qk100__raw1 | river flow within ~100 km, GloFAS (log), this month | 0.198 |
-| sand | sand 0-30 cm (%) | 0.197 |
-| vertisol | Vertisol (swelling clay) probability (%) | 0.189 |
-| qk30__anom24 | river flow within ~30 km, GloFAS (log), anomaly, last 24 months | 0.187 |
-| qk30__anom12 | river flow within ~30 km, GloFAS (log), anomaly, last 12 months | 0.178 |
-| qk100__anom12 | river flow within ~100 km, GloFAS (log), anomaly, last 12 months | 0.162 |
-| qk100__raw3 | river flow within ~100 km, GloFAS (log), mean of last 3 months | 0.162 |
-| hnd_mean | height above nearest drainage, mean (m) | 0.159 |
-| qk30__raw3 | river flow within ~30 km, GloFAS (log), mean of last 3 months | 0.138 |
-| q_nasir_sobat__raw1 | GloFAS flow at Nasir Sobat (log), this month | 0.116 |
-| slope | slope (degrees) | 0.112 |
-
-## EBM on M1-physical, occurrence, term importance
-
-| term | meaning | importance |
-|---|---|---|
-| slope_sd | slope spread within square (SD, deg) | 0.364 |
-| hnd_mean | height above nearest drainage, mean (m) | 0.354 |
-| ssrd__raw3 | solar radiation (MJ/m2/day), mean of last 3 months | 0.232 |
-| uprain__raw3 | rain over the square's upstream catchment (mm/month), mean of last 3 months | 0.225 |
-| si10__raw3 | wind speed (m/s), mean of last 3 months | 0.205 |
-| si10__z24 | wind speed (m/s), standardised anomaly, last 24 months (SDs from normal) | 0.181 |
-| upa_max | upstream drainage area (log km2) | 0.177 |
-| sand | sand 0-30 cm (%) | 0.173 |
-| d2m__raw3 | dewpoint (humidity, C), mean of last 3 months | 0.166 |
-| clay | clay 0-30 cm (%) | 0.150 |
-| hnd_sd | height above drainage, spread (SD, m) | 0.149 |
-| twi | topographic wetness index | 0.148 |
-| depress | share of square in local depressions | 0.145 |
-| vertisol | Vertisol (swelling clay) probability (%) | 0.141 |
-| ssrd__z24 | solar radiation (MJ/m2/day), standardised anomaly, last 24 months (SDs from normal) | 0.139 |
-| rain_ethiopian_highlands__raw3 | rainfall over ethiopian highlands, mean of last 3 months | 0.139 |
-| t2m__z12 | air temperature (C), standardised anomaly, last 12 months (SDs from normal) | 0.112 |
-| et__z24 | evapotranspiration (mm/day), standardised anomaly, last 24 months (SDs from normal) | 0.111 |
-| conc5__raw3 | share of month's rain in its 5 wettest days, mean of last 3 months | 0.106 |
-| t2m__z24 | air temperature (C), standardised anomaly, last 24 months (SDs from normal) | 0.103 |
-
-## EBM on M1-physical, persistence, term importance
-
-| term | meaning | importance |
-|---|---|---|
-| slope_sd | slope spread within square (SD, deg) | 0.554 |
-| hnd_sd | height above drainage, spread (SD, m) | 0.411 |
-| sand | sand 0-30 cm (%) | 0.371 |
-| clay | clay 0-30 cm (%) | 0.277 |
-| upa_max | upstream drainage area (log km2) | 0.270 |
-| hnd_mean | height above nearest drainage, mean (m) | 0.228 |
-| depress | share of square in local depressions | 0.177 |
-| clay & vertisol | clay 0-30 cm (%) x Vertisol (swelling clay) probability (%) | 0.150 |
-| vertisol | Vertisol (swelling clay) probability (%) | 0.144 |
-| clay & slope_sd | clay 0-30 cm (%) x slope spread within square (SD, deg) | 0.123 |
-| q_dist | distance to nearest large river (km) | 0.120 |
-| clay & sand | clay 0-30 cm (%) x sand 0-30 cm (%) | 0.119 |
-| sand & vertisol | sand 0-30 cm (%) x Vertisol (swelling clay) probability (%) | 0.103 |
-| twi & clay | topographic wetness index x clay 0-30 cm (%) | 0.097 |
-| low_2m | share of land < 2 m above drainage | 0.092 |
-| q_dist & sand | distance to nearest large river (km) x sand 0-30 cm (%) | 0.091 |
-| q_dist & vertisol | distance to nearest large river (km) x Vertisol (swelling clay) probability (%) | 0.089 |
-| hnd_mean & sand | height above nearest drainage, mean (m) x sand 0-30 cm (%) | 0.088 |
-| twi | topographic wetness index | 0.086 |
-| sand & hnd_sd | sand 0-30 cm (%) x height above drainage, spread (SD, m) | 0.074 |
-
 ## Susceptibility (flood frequency per square, spatial-block CV)
 
 | variant | subset | n_squares | r2 | spearman |
@@ -1618,28 +1502,3 @@
 | hnd_mean | height above nearest drainage, mean (m) | 0.330 | -0.000 |
 | hnd_q1 | height above drainage, 25th percentile (m) | 0.333 | -0.004 |
 | q_size | size of nearest large river (log flow) | 0.375 | -0.046 |
-
-## Susceptibility EBM, term importance
-
-| term | meaning | importance |
-|---|---|---|
-| slope_sd | slope spread within square (SD, deg) | 0.170 |
-| hnd_sd | height above drainage, spread (SD, m) | 0.095 |
-| q_size | size of nearest large river (log flow) | 0.051 |
-| clay | clay 0-30 cm (%) | 0.036 |
-| hnd_q1 | height above drainage, 25th percentile (m) | 0.035 |
-| twi | topographic wetness index | 0.033 |
-| hnd_mean | height above nearest drainage, mean (m) | 0.033 |
-| q_size & sand | size of nearest large river (log flow) x sand 0-30 cm (%) | 0.032 |
-| q_size & clay | size of nearest large river (log flow) x clay 0-30 cm (%) | 0.030 |
-| slope | slope (degrees) | 0.026 |
-| sand | sand 0-30 cm (%) | 0.025 |
-| upa_max | upstream drainage area (log km2) | 0.023 |
-| q_size & vertisol | size of nearest large river (log flow) x Vertisol (swelling clay) probability (%) | 0.022 |
-| vertisol | Vertisol (swelling clay) probability (%) | 0.021 |
-| low_2m | share of land < 2 m above drainage | 0.016 |
-| upa_max & q_size | upstream drainage area (log km2) x size of nearest large river (log flow) | 0.010 |
-| hnd_mean & upa_max | height above nearest drainage, mean (m) x upstream drainage area (log km2) | 0.010 |
-| q_dist | distance to nearest large river (km) | 0.007 |
-| depress | share of square in local depressions | 0.007 |
-| hnd_min | height above nearest drainage, min (m) | 0.000 |
