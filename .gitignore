@@ -6,6 +6,7 @@ cache
 flood_pred_modelling/3_model/output/*
 !flood_pred_modelling/3_model/output/main/
 !flood_pred_modelling/3_model/output/sensitivity_3years/
+!flood_pred_modelling/3_model/output/README.md
 processed_data/*
 !processed_data/panel_0.02/
 !processed_data/cygnss/
