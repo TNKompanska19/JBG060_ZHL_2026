@@ -11,7 +11,10 @@ print(os.getcwd())
 #OpenStreetMap
 from pathlib import Path
 from tqdm import tqdm
-
+print('download OSM')
+OSM = download_OSM_network(name = 'OSM')
+print(OSM)
+print(OSM)
 raster_path = '../raw_data/farmland/asap_mask_rangeland_v04.tif'
 #loading the mask data
 print('loading mask data')
