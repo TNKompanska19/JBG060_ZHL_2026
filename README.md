@@ -1,268 +1,213 @@
-# JBG060-2026: Flood Dynamics in South Sudan
+# JBG060-2026: Flood drivers in South Sudan (Group 8)
 
-## Introduction and overview
+## Overview
 
-This repository supports the 2026 JBG060 course project on flood dynamics in South Sudan. 
-Its current scope is data loading and preprocessing: it brings hydrometeorological hazard data together with 
-exposure and impact data so that they can be used in later flood-risk analyses.
+Code for the JBG060 Capstone Data Challenge (TU/e, with Zero Hunger Lab and ZOA). It studies which public weather,
+river and land data explain riverine flood **occurrence** (a dry square becomes flooded) and **persistence** (a
+flooded square stays flooded) in South Sudan, with a focus on cropland in the harvest months, to support
+anticipatory action (early harvesting, temporary flood defences).
 
-The repository currently provides utilities for:
+What the code does, in order:
 
-- river discharge, lake levels, rainfall, runoff, evapotranspiration, and flood masks;
-- administrative boundaries, population, roads, health facilities, cattle, cropland, rangeland, GDP, and
-  food-insecurity data;
-- spatial subsetting by coordinate or bounding box; and
-- converting selected raw inputs into pandas, GeoPandas, Xarray, or NetworkX objects.
+1. Downloads the data (CYGNSS flood maps, GloFAS river flow, ERA5 weather, soil, terrain, climate indices, ...).
+2. Builds the flood target: CYGNSS water maps with permanent water removed, averaged to 0.02 degree squares, monthly.
+3. Builds the model inputs on the same grid and monthly clock.
+4. Trains gradient-boosted trees (and logistic regression for some models) under three validation schemes and three
+   lead times, compares them with two simple rules (climatology, persistence) and runs add/remove tests per input
+   group.
+5. Summarises every model with all metrics and bootstrap intervals over test years.
 
-This is not yet an end-to-end flood model or a complete reproducible analysis pipeline. The two Python files contain 
-loader functions and executable demonstrations.
+The `2_eda/` folder also holds the data exploration, including the analyses that led to rejecting the
+MODIS/VIIRS flood masks as a target.
 
 ## Repository structure
 
 ```text
-JBG060-2026/
-|-- processing_data/
-|   |-- loading.py                 # Hydrometeorological data loaders
-|   `-- loading_impact_data.py     # Exposure and impact data loaders
-|-- literature/                    # Supporting papers and data documentation
-|-- raw_data/                      # External download; ignored by Git
-|-- requirements.txt               # Pinned Python dependencies
-|-- .gitignore
+JBG060_ZHL_2026/
+|-- 1_data_processing/
+|   |-- 1_download/          get_cygnss.py, get_glofas.py, get_covariates.py (all other sources)
+|   |-- 2_loaders/           loading.py, loading_impact_data.py (course loaders, used by build_inputs.py and the EDA)
+|   `-- 3_build_dataset/     build_target.py (flood target), build_inputs.py (model inputs)
+|-- 2_eda/
+|   |-- 1_data_overview/     first look at every course dataset
+|   |-- 2_modis_rejection/   checks showing why the MODIS/VIIRS flood masks were not used as target
+|   |-- 3_exposure/          flood exposure of cropland, rangeland and food insecurity (IPC), per county
+|   `-- 4_target_scope/      cropland under CYGNSS flood water; checks of the flood-frequency thresholds
+|-- 3_model/
+|   |-- 1_run/               run_all.py (runs everything), explain_models.py (data, features, models, validation)
+|   `-- 2_analysis/          summarise.py (tables), shap_gbm.py (SHAP), county_performance.py (skill per county)
+|-- processed_data/          panel_0.02/ and cygnss/ are committed; everything else is rebuilt from raw_data/
+|-- raw_data/                downloaded data, not in Git
+|-- results/                 one subfolder per script, named after the script (see "Results")
+|-- requirements.txt
 `-- README.md
 ```
 
-Running the evapotranspiration processor creates `processing_data/evapotranspiration/`. 
-Both that generated directory and `raw_data/` are excluded from Git.
+## Installation
 
-## Requirements and installation
-
-- Git
-- Python 3.12 or newer
-
-All Python dependencies and their versions are listed in [`requirements.txt`](requirements.txt).
-
-### 1. Fork and clone the repository
-
-First, open the [course repository](https://github.com/eerandi/JBG060_ZHL_2026) on GitHub. Select **Fork** in the
-top-right corner, choose your GitHub account as the owner, and create the fork. This gives you your own copy of the
-course repository where you can commit and push your work.
-
-Then clone **your fork** (replace `YOUR_GITHUB_USERNAME` with your GitHub username):
-
-```bash
-git clone https://github.com/YOUR_GITHUB_USERNAME/JBG060_ZHL_2026.git
-cd JBG060_ZHL_2026
-```
-
-### 2. Create and activate a virtual environment
-
-Windows PowerShell:
+Tested with Python 3.14.0 on Windows. All packages and versions are pinned in `requirements.txt`.
 
 ```powershell
+git clone https://github.com/<your-user>/JBG060_ZHL_2026.git
+cd JBG060_ZHL_2026
 py -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
 
-macOS or Linux:
+macOS / Linux: `python3 -m venv .venv`, `source .venv/bin/activate`, then the same `pip` commands.
 
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
+Run every script **from the repository root**: several scripts use paths relative to it (`./raw_data/...`).
+
+## Usage
+
+### Option A: rerun the models without the raw data
+
+`processed_data/panel_0.02/` (target and all inputs) is committed, so the models and tables can be rerun without
+downloading anything:
+
+```powershell
+python 3_model/1_run/run_all.py --no-build
 ```
 
-Conda can be used instead:
+Finished stages are skipped (an existing `preds_*.parquet` is not recomputed). To redo a stage, delete its file.
 
-```bash
-conda create -n jbg060 "python>=3.12"
-conda activate jbg060
-python -m pip install -r requirements.txt
+### Option B: full pipeline from the raw data
+
+1. **Course data.** Download it from SURFdrive (link and password on Canvas) into `raw_data/`.
+2. **Accounts.** Downloads need a NASA Earthdata account (CYGNSS, GRACE), a Copernicus CDS key and an EWDS key in
+   `~/.cdsapirc` (ERA5, GloFAS; accept each dataset licence once on the website). Hydroweb needs
+   `HYDROWEB_API_KEY`, but Hydroweb is switched off in the model (`USE_HYDROWEB = False` in `explain_models.py`).
+3. **Manual downloads.** MERIT Hydro (`hnd`, `upa`, `elv`, tiles n00e000 and n00e030) into `raw_data/MERITHydro/`;
+   HydroBASINS Africa (standard) into `raw_data/hydrobasins/`. See the docstring of `get_covariates.py`.
+4. **Run in this order:**
+
+```powershell
+python 1_data_processing/1_download/get_cygnss.py
+python 1_data_processing/1_download/get_glofas.py
+python 1_data_processing/1_download/get_covariates.py
+python 1_data_processing/3_build_dataset/build_target.py
+python 1_data_processing/3_build_dataset/build_inputs.py --res 0.02
+python 3_model/1_run/run_all.py
+python 3_model/2_analysis/shap_gbm.py
+python 3_model/2_analysis/county_performance.py
 ```
 
-## External data setup
+`run_all.py` also builds any input missing from the panel unless `--no-build` is given.
 
-The data is deliberately **not stored in this Git repository**. Download it separately from SURFdrive. The SURFdrive link and Password is shared in the description of the assignment on Canvas.
+### `run_all.py` options
 
-Put the downloaded data in the `raw_data` folder.
+| Option | Meaning |
+|---|---|
+| `--no-build` | do not build missing inputs; use the committed panel |
+| `--stages ...` | run only these stages (default: all) |
+| `--min-years N` | scope: a square is in scope if flooded in at least N different years (default 2) |
+| `--out NAME` | output folder `results/NAME` (default `run_all`) |
+| `--res` | grid resolution in degrees (default 0.02) |
 
-The administrative-boundary loader expects the level 1 and level 2 GeoJSON files at:
+Stage keys: `s`, `y`, `f` (strict, year-only, forward validation) + `1`, `2`, `3` (months ahead), e.g. `s1`, `f3`.
+An `a` in front (`as1`, `ay2`, `af3`) runs the anomaly-input models. `susc` = susceptibility, `map` = 2022 harvest map.
 
-```text
-raw_data/
-`-- Administrative boundaries/
-    |-- ssd_admin1.geojson
-    `-- ssd_admin2.geojson
+Scope check with squares flooded in at least 3 years:
+
+```powershell
+python 3_model/1_run/run_all.py --no-build --min-years 3 --out sensitivity_3years --stages s1 as1
 ```
 
-These files must be present whenever `processing_data.loading_impact_data` is imported because the module loads the
-administrative boundaries at import time.
+The EDA scripts take no arguments: `python 2_eda/<folder>/<script>.py`.
 
-An overview of the supplied datasets and files is available in `Data_overview.xlsx`.
+## Models and validation
 
-## Usage and examples
+| Name in code | What it is |
+|---|---|
+| `climatology` (`p_clim`) | rule: share of training years in which the square was flooded in that calendar month |
+| `persistence` (`p_pers`) | rule: the square's flood share last month |
+| `H` | trained model on flood history (last 3 months, neighbourhood, last 12 months) + place (climatology, lat, lon, month); no drivers |
+| `M1`, `M2`, `M3` | raw driver inputs; M1 = drivers only, M2 = drivers + flood history, M3 = drivers + flood history + place |
+| `M1_anomaly`, `M2_anomaly`, `M3_anomaly` | same ladder with anomaly drivers (value minus its calendar-month normal over training years, divided by its usual variation); M1_anomaly is the explanation model |
+| `adrop_<group>` | M1_anomaly without one input group |
+| `fdrop_<family>` | M1_anomaly without one family (weather, rivers_storage, land, climate_indices) |
+| `hadd_<family>` | H plus one family |
+| `M1a_s1..4`, `H_s1..4` | M1_anomaly and H refit on a random 80% of the training rows (run-to-run noise) |
+| `M1_anomaly_additive`, `_small_trees`, `_large_trees` | M1_anomaly without interactions / with smaller / larger trees |
 
-Run Python from the repository root. The code uses relative paths such as `./raw_data/...`; running from 
-another directory will cause file-not-found errors.
+Model type is the second part of each prediction column: `gbm` (HistGradientBoostingClassifier) or `logreg`.
 
-### Recommended: call only the functions needed
+Validation schemes: **strict** (test = one year and one group of spatial blocks, with a buffer ring removed from
+training), **year** (leave one year out), **forward** (train only on years before the test year, test years
+2021-2025). Ablations, noise runs and tree settings run only under strict validation. All design choices and their
+constants are documented at the top of `3_model/1_run/explain_models.py`.
 
-This example loads one year of flood masks for a bounding box and estimates the population within the same area:
+## Results
 
-```python
-import numpy as np
+Each script writes to `results/<script name>/`.
 
-from processing_data.loading import load_flood_masks
-from processing_data.loading_impact_data import load_worldpop_area
-
-bbox = {
-    "lat_min": 8.5,
-    "lat_max": 10.0,
-    "lon_min": 29.5,
-    "lon_max": 32.5,
-}
-
-flood_events = load_flood_masks(np.array([2024]), bbox=bbox)
-population_by_year = load_worldpop_area(bbox)
-
-print(flood_events.head())
-print(population_by_year[2024])
-```
-
-To process reference evapotranspiration for one year and grid location:
-
-```python
-from processing_data.loading import process_ET
-
-process_ET(
-    year=2024,
-    target_longitude=30.725,
-    target_latitude=9.475,
-)
-```
-
-This writes:
-
-```text
-processing_data/evapotranspiration/ET_2024_9.475N_30.725E_processed.csv
-```
-
-Most other functions return their results in memory and do not write files.
-
-To load South Sudan's administrative polygons and identify the state and county containing a coordinate:
-
-```python
-from processing_data.loading_impact_data import (
-    load_admin_boundaries,
-    locate_coordinate,
-)
-
-admin1, admin2 = load_admin_boundaries()
-admin1_name, admin2_name = locate_coordinate(long=27.386, lat=8.771)
-
-print(f"Loaded {len(admin1)} admin-level 1 and {len(admin2)} admin-level 2 areas")
-print(admin1_name, admin2_name)
-```
-
-Coordinates must be supplied as longitude followed by latitude. If a coordinate is not contained in a South Sudan
-polygon, the corresponding administrative name is returned as the string `"None"` and a warning is printed.
-
-### Full demonstration scripts
-
-The modules also contain hard-coded examples and do not accept command-line options:
-
-```bash
-python processing_data/loading.py
-python processing_data/loading_impact_data.py
-```
-
-These commands run the full demonstrations:
-
-- `loading.py` works across 2000-2025, loads large NetCDF and Parquet datasets, and may process approximately 
-9,500 daily evapotranspiration files into annual CSV files.
-- `loading_impact_data.py` loads the administrative boundaries, demonstrates two coordinate lookups, runs every
-impact-data example, requests a road network from OpenStreetMap, and opens interactive plots.
-- The OpenStreetMap step needs an internet connection. Prefer the individual functions when working headlessly 
-or with limited time or memory.
-
-## Function and data reference
-
-### Hydrometeorological data: `processing_data/loading.py`
-
-| Function | Main input | Return value or generated output |
+| Folder | Made by | Contents |
 |---|---|---|
-| `load_dartmouth_data()` | Station metadata and discharge CSV files | Dictionary of discharge DataFrames keyed by area ID |
-| `load_lake_stations()` | Albert NetCDF and Kyoga/Victoria text files | Dictionary of lake-level DataFrames |
-| `load_rainfall_runoff(years)` | Annual ERA5 NetCDF files | Daily Xarray Dataset containing precipitation (`tp`) and runoff (`ro`) |
-| `process_ET(year, target_longitude, target_latitude)` | Daily AgERA5 NetCDF files | One processed annual CSV for the nearest grid cell |
-| `load_processed_ET(years, ...)` | Processed annual ET CSV files | Dictionary of DataFrames keyed by year |
-| `load_flood_masks(years, bbox=None)` | Recurring and unusual flood Parquet files | DataFrame with `date`, `lat`, `lon`, `tile`, and `flood_type` |
-| `flood_mask_bbox(df, bbox)` | Flood DataFrame and coordinate limits | Spatially filtered DataFrame |
+| `run_all/` | `run_all.py`, `summarise.py` | see below |
+| `shap_gbm/` | `shap_gbm.py` | SHAP of the M1_anomaly GBM (strict, 1 month ahead): `shap_features.csv`, `shap_families.csv`, `shap_families.png`, `shap_occurrence.png`, `shap_persistence.png`, `shap_values_<target>.npz` |
+| `county_performance/` | `county_performance.py` | skill and input coverage per county: `county_performance.md` |
+| `build_target/` | `build_target.py` | `cygnss_national.png`, `cygnss_2022_anomaly.png` (target checks) |
+| `get_cygnss/` | `get_cygnss.py` | `cygnss_sudd_monthly.csv` (the two CYGNSS plausibility tests) |
+| `cropland_flood_overlap/` | `cropland_flood_overlap.py` | cropland under flood water per year (`.csv`, `.md`), map `cropland_flood_2022.png` |
+| `flood_freq_check/` | `flood_freq_check.py` | `flood_freq_check.txt` (flood-frequency and permanent-water thresholds) |
+| `run_eda/`, `2021_shift_investigation/`, `data_quality_2021_shift/`, `discharge_*`, `negative_correlation_south_sudan_station/`, `rainfall_*`, `recurring_vs_unusual_drivers/`, `exposure_analysis/`, `exposure_ipc_analysis/` | the EDA script of the same name | plots and tables of that script |
 
-In flood-mask results, `flood_type == 0` denotes recurring flooding and `flood_type == 1` denotes unusual flooding. 
-If both classes occur for the same date and pixel, the unusual class takes priority.
+### `results/run_all/`
 
-### Exposure and impact data: `processing_data/loading_impact_data.py`
+| File | Contents |
+|---|---|
+| `preds_<cv>_h<h>.parquet` | held-out predictions of the raw-input models and H; one row per sample: `cv`, `h`, `target`, `test_year`, `block_group`, `issue` (month the forecast is made), `tmonth` (target calendar month), `row`, `col` (square), `y` (flooded or not), `p_clim`, `p_pers`, `crop` (% cropland), and one `p|<model>|<gbm or logreg>` column per model |
+| `preds_<cv>_h<h>_anomaly.parquet` | same for the anomaly-input models and the ablations; rows match the raw file one to one |
+| `scores.csv` | every model x subset: PR-AUC, ROC-AUC, Gini, Brier, log loss; for the main models also accuracy, precision, recall, F1, balanced accuracy, false-alarm rate (cutoff chosen on the other test years) |
+| `year_scores.csv` | PR-AUC per test year |
+| `ablation.csv` | per group / family: PR-AUC and Brier change, noise SD, years with a positive effect, `informative` flag (rule in the `summarise.py` docstring) |
+| `intervals.csv` | PR-AUC and PR-AUC differences with 95% bootstrap intervals over test years (strict) |
+| `cutoff_sweep.csv` | precision / recall / F1 / false-alarm rate at fixed alarm budgets and probability cutoffs (strict) |
+| `susceptibility.csv`, `susceptibility_drop_one.csv` | per-square flood frequency predicted from static terrain/soil inputs vs lat/lon, and the loss when one input is removed |
+| `map_2022.npz`, `map_2022.png` | predicted vs observed flooding in the 2022 harvest months |
+| `blocks.json` | measured correlation distance and the spatial block and buffer sizes |
+| `columns_h<h>[_anomaly].json` | input names and their groups |
+| `results.md` | all tables above in one file |
+| `run_log.txt` | log of every run |
 
-| Function | Main input | Return value or generated output |
-|---|---|---|
-| `load_admin_boundaries()` | Admin-level 1 and 2 GeoJSON files | Two GeoDataFrames containing states and counties |
-| `locate_coordinate(long, lat)` | Longitude and latitude in decimal degrees | Admin-level 1 and 2 names containing the coordinate |
-| `load_worldpop_coordinate(longitude, latitude)` | WorldPop rasters for 2015-2025 | Population value by year at the selected pixel |
-| `load_worldpop_area(bbox)` | WorldPop rasters for 2015-2025 | Total population by year inside the bounding box |
-| `download_OSM_network(name)` | OpenStreetMap place name and live internet connection | NetworkX road graph; also attempts to save and plot nodes and edges |
-| `plot_network(name)` | Existing OSM node and edge shapefiles | NetworkX graph and two GeoDataFrames; also plots the graph |
-| `load_health_facilities()` | Sub-Saharan health-facility GeoJSON | South Sudan facilities as a GeoDataFrame |
-| `load_cattle()` | Cattle raster | DataFrame plus longitude and latitude arrays |
-| `load_farmland_mask(bbox, mask_type)` | Crop or rangeland raster | Spatially subset Xarray DataArray |
-| `load_GDP()` | World Bank indicator CSV | GDP values for 2008-2015 keyed by year |
-| `load_ipc_data()` | IPC Excel workbooks | County-level IPC Phase 3+ population table |
+Subsets in the tables: `all`, `cropland` (square >= 10% cropland), `harvest` (target month Aug-Dec),
+`cropland_harvest`.
 
-`mask_type` must be either `"crop"` or `"rangeland"`. Bounding boxes use decimal degrees and require the keys 
-`lat_min`, `lat_max`, `lon_min`, and `lon_max`.
+## Troubleshooting
 
-## Generated outputs
+- **FileNotFoundError on `raw_data/...`**: run from the repository root.
+- **`ssd_admin*.geojson` missing**: `loading_impact_data.py` loads the admin boundaries when it is imported, so
+  `raw_data/Administrative boundaries/` must exist even for unrelated functions.
+- **cfgrib / ecCodes on Windows**: only `2_eda/1_data_overview/eda_rainfall_evo_health.py` imports `cfgrib`. GloFAS
+  is downloaded as NetCDF, so the pipeline itself does not need ecCodes.
+- **`.cdsapirc` not found on Windows**: Notepad may save it as `.cdsapirc.txt`; check the exact file name.
+- **Tables in `results/run_all/` look outdated**: `summarise.py` reuses `scores.csv`, `year_scores.csv` and
+  `intervals.csv` when they are newer than all prediction files. Delete them and rerun
+  `python 3_model/2_analysis/summarise.py`. A `run_all.py` process uses the code as it was when it started, so
+  rerun the summary after editing `summarise.py` during a run.
+- **Running stages in parallel windows**: start one window first so it writes `blocks.json` before the others read it.
 
-- `process_ET()` creates annual CSV files in `processing_data/evapotranspiration/`.
-- `download_OSM_network()` is intended to create node and edge shapefiles in `raw_data/OSM/<place>/`.
-- Plotting functions display figures but do not save image files.
-- All other loader functions return Python objects in memory.
+## Credits
 
-Generated ET files, downloaded data, cached files, virtual environments, and Python bytecode should not be committed.
+- Course repository and loaders (`1_data_processing/2_loaders/`): https://github.com/eerandi/JBG060_ZHL_2026
+- Flood target: UC Berkeley CYGNSS L3 monthly RWAWC watermask (NASA PO.DAAC; Pu et al., 2024).
+- Permanent water: JRC Global Surface Water (Pekel et al., 2016).
+- Inputs: ERA5 and ERA5 monthly (Copernicus CDS), AgERA5 evapotranspiration, GloFAS-ERA5 river discharge (Copernicus
+  EWDS), GRACE/GRACE-FO JPL mascons, SoilGrids, MERIT Hydro, HydroBASINS, NOAA CPC climate indices (Nino3.4, DMI),
+  Dartmouth Flood Observatory discharge and satellite lake levels (course data), ASAP cropland mask (scoring only).
+- Libraries: scikit-learn, SHAP, NumPy, pandas, xarray, rasterio, GeoPandas, SciPy, Matplotlib, earthaccess, cdsapi.
 
-## Credits and acknowledgements
-
-Dataset descriptions, file overviews, provenance, and original provider information are documented in `Data_overview.xlsx`. 
-Consult the original providers for licenses, citation instructions, and usage restrictions.
-
-### Literature
-
-- Alfieri, L., Libertino, A., Campo, L., Dottori, F., Gabellani, S., Ghizzoni, T., Masoero, A., Rossi, L., Rudari, R.,
-  Testa, N., Trasforini, E., Amdihun, A., Ouma, J., Rossi, L., Tramblay, Y., Wu, H., & Massabò, M. (2024).
-  Impact-based flood forecasting in the Greater Horn of Africa. *Natural Hazards and Earth System Sciences, 24*,
-  199–224. [PDF](<literature/Impact-based flood forecasting in the Greater Horn of Africa.pdf>)
-- Slayback, D. (2025). *MODIS/VIIRS NRT global flood products: User guide* (Rev. F). NASA Goddard Space Flight
-  Center. [PDF](literature/MCDWD_VCDWD_UserGuide_RevF.pdf) | [NASA Earthdata](https://www.earthdata.nasa.gov/data/instruments/viirs/near-real-time-data/nrt-global-flood-products)
-- Petricola, S., Reinmuth, M., Lautenbach, S., Hatfield, C., & Zipf, A. (2022). Assessing road criticality and loss
-  of healthcare accessibility during floods: The case of Cyclone Idai, Mozambique 2019. *International Journal of
-  Health Geographics, 21*, Article 14. [PDF](<literature/Assessing road crticality and loss of healthcare acessibility during floods.pdf>) |
-  [DOI](https://doi.org/10.1186/s12942-022-00315-2)
-- Pacetti, T., Caporali, E., & Rulli, M. C. (2017). Floods and food security: A method to estimate the effect of
-  inundation on crops availability. *Advances in Water Resources, 110*, 494–504.
-  [PDF](<literature/Floods and food insecurity - A method to estimate the effect of inundation on crops availability.pdf>) |
-  [DOI](https://doi.org/10.1016/j.advwatres.2017.06.019)
-
-Supporting papers and data manuals are retained in [`literature/`](literature/). The project relies on pandas, NumPy, Xarray,
-Dask, GeoPandas, Shapely, Rasterio, rioxarray, NetworkX, OSMnx, and Matplotlib; see [`requirements.txt`](requirements.txt)
-for the complete version-pinned environment.
+Full references are in the report.
 
 ## Legal and ethical considerations
 
-- The repository is intended for educational and research use. It has not been validated for emergency response, 
-resource allocation, or other operational humanitarian decisions.
-- Flood detections and the `flood_type` label are data-product classifications, not direct measures of damage, 
-severity, or individual exposure.
-- Respect each data provider's license, attribution, access, and redistribution conditions. Access through SURFdrive 
-does not replace the original provider's terms.
+- Educational and research use only. The models are not validated for operational humanitarian decisions.
+- The target is a satellite estimate. CYGNSS monthly maps are partly inferred where satellite tracks are sparse,
+  and a square counts as flooded at >= 50% water. It is not a measure of damage or of who is affected.
+- Only flood-prone squares are modelled (flooded in at least 2 different years). Areas outside that scope get no
+  prediction. A missing prediction must not be read as "safe".
+- Some ERA5 cells show isolated, implausibly high rainfall, consistent with a known ERA5 artefact. They were not
+  masked and are reported as a limitation.
+- Respect each data provider's licence and citation terms. Access through SURFdrive does not replace them.

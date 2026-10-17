@@ -1,11 +1,11 @@
 raw_data
 cache
 .idea
-.git
-processed_data/*
-!processed_data/panel_0.02/
-!processed_data/cygnss/
 .venv
 __pycache__/
 *.pyc
+.ipynb_checkpoints/
+processed_data/*
+!processed_data/panel_0.02/
+!processed_data/cygnss/
 /Data_overview.xlsx
