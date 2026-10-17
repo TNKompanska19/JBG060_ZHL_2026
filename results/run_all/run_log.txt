@@ -1,0 +1,312 @@
+scope: 57,561 squares flooded in >= 2 different years (>= 3 years: 49,512; old 5-90% rule: 42,677)
+blocks: correlation distance 40 km, block 80 km, buffer 20 km, 4 groups
+=== s1
+172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+  h=1 strict test 2019 occurrence: train 42,015 test 6,325, 4 configs
+  h=1 strict test 2019 persistence: train 11,908 test 1,947, 4 configs
+  h=1 strict test 2020 occurrence: train 45,658 test 5,533, 4 configs
+  h=1 strict test 2020 persistence: train 13,038 test 1,710, 4 configs
+  h=1 strict test 2021 occurrence: train 59,698 test 3,262, 4 configs
+  h=1 strict test 2021 persistence: train 19,132 test 978, 4 configs
+  h=1 strict test 2022 occurrence: train 59,695 test 3,192, 4 configs
+  h=1 strict test 2022 persistence: train 18,756 test 1,191, 4 configs
+  h=1 strict test 2023 occurrence: train 41,998 test 6,227, 4 configs
+  h=1 strict test 2023 persistence: train 11,926 test 2,113, 4 configs
+  h=1 strict test 2024 occurrence: train 44,186 test 5,709, 4 configs
+  h=1 strict test 2024 persistence: train 14,378 test 1,668, 4 configs
+scope: 57,561 squares flooded in >= 2 different years (>= 3 years: 49,512; old 5-90% rule: 42,677)
+blocks: correlation distance 40 km, block 80 km, buffer 20 km, 4 groups
+=== s1
+172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+scope: 57,561 squares flooded in >= 2 different years (>= 3 years: 49,512; old 5-90% rule: 42,677)
+blocks: correlation distance 40 km, block 80 km, buffer 20 km, 4 groups
+=== s2
+172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+scope: 57,561 squares flooded in >= 2 different years (>= 3 years: 49,512; old 5-90% rule: 42,677)
+blocks: correlation distance 40 km, block 80 km, buffer 20 km, 4 groups
+=== s3
+172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+  h=1 strict test 2019 occurrence: train 42,015 test 6,325, 4 configs
+  h=1 strict test 2019 persistence: train 11,908 test 1,947, 4 configs
+  h=2 strict test 2019 occurrence: train 41,304 test 6,441, 4 configs
+  h=3 strict test 2019 occurrence: train 41,304 test 5,995, 4 configs
+  h=2 strict test 2019 persistence: train 11,729 test 1,852, 4 configs
+  h=3 strict test 2019 persistence: train 11,729 test 1,587, 4 configs
+  h=1 strict test 2020 occurrence: train 45,658 test 5,533, 4 configs
+  h=1 strict test 2020 persistence: train 13,038 test 1,710, 4 configs
+  h=2 strict test 2020 occurrence: train 45,075 test 5,529, 4 configs
+  h=3 strict test 2020 occurrence: train 44,451 test 5,461, 4 configs
+  h=2 strict test 2020 persistence: train 12,675 test 1,743, 4 configs
+  h=3 strict test 2020 persistence: train 12,332 test 1,837, 4 configs
+  h=1 strict test 2021 occurrence: train 59,698 test 3,262, 4 configs
+  h=2 strict test 2021 occurrence: train 58,924 test 3,277, 4 configs
+  h=1 strict test 2021 persistence: train 19,132 test 978, 4 configs
+  h=3 strict test 2021 occurrence: train 58,082 test 3,264, 4 configs
+  h=2 strict test 2021 persistence: train 18,639 test 979, 4 configs
+  h=3 strict test 2021 persistence: train 18,206 test 980, 4 configs
+  h=1 strict test 2022 occurrence: train 59,695 test 3,192, 4 configs
+  h=2 strict test 2022 occurrence: train 58,916 test 3,201, 4 configs
+  h=1 strict test 2022 persistence: train 18,756 test 1,191, 4 configs
+  h=3 strict test 2022 occurrence: train 58,114 test 3,207, 4 configs
+  h=2 strict test 2022 persistence: train 18,251 test 1,151, 4 configs
+  h=3 strict test 2022 persistence: train 17,719 test 1,106, 4 configs
+  h=1 strict test 2023 occurrence: train 41,998 test 6,227, 4 configs
+  h=1 strict test 2023 persistence: train 11,926 test 2,113, 4 configs
+  h=2 strict test 2023 occurrence: train 41,514 test 6,134, 4 configs
+  h=2 strict test 2023 persistence: train 11,528 test 2,198, 4 configs
+  h=3 strict test 2023 occurrence: train 41,037 test 6,025, 4 configs
+  h=3 strict test 2023 persistence: train 11,121 test 2,302, 4 configs
+  h=1 strict test 2024 occurrence: train 44,186 test 5,709, 4 configs
+  h=2 strict test 2024 occurrence: train 43,471 test 5,700, 4 configs
+  h=1 strict test 2024 persistence: train 14,378 test 1,668, 4 configs
+  h=3 strict test 2024 occurrence: train 42,770 test 5,744, 4 configs
+  h=2 strict test 2024 persistence: train 14,134 test 1,631, 4 configs
+  h=3 strict test 2024 persistence: train 13,894 test 1,618, 4 configs
+  h=1 strict test 2025 occurrence: train 69,320 test 3,491, 4 configs
+  h=2 strict test 2025 occurrence: train 68,421 test 3,432, 4 configs
+  h=1 strict test 2025 persistence: train 25,018 test 633, 4 configs
+wrote preds_strict_h1.parquet
+=== as1
+172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+  h=3 strict test 2025 occurrence: train 67,574 test 3,480, 4 configs
+  h=2 strict test 2025 persistence: train 24,607 test 668, 4 configs
+wrote preds_strict_h2.parquet
+=== as2
+172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+  h=3 strict test 2025 persistence: train 24,178 test 652, 4 configs
+wrote preds_strict_h3.parquet
+=== as3
+172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+  h=1 strict test 2019 occurrence: train 42,015 test 6,325, 38 configs
+  h=2 strict test 2019 occurrence: train 41,304 test 6,441, 35 configs
+  h=3 strict test 2019 occurrence: train 41,304 test 5,995, 35 configs
+  h=2 strict test 2019 persistence: train 11,729 test 1,852, 35 configs
+  h=1 strict test 2019 persistence: train 11,908 test 1,947, 38 configs
+  h=3 strict test 2019 persistence: train 11,729 test 1,587, 35 configs
+  h=2 strict test 2020 occurrence: train 45,075 test 5,529, 35 configs
+  h=1 strict test 2020 occurrence: train 45,658 test 5,533, 38 configs
+  h=3 strict test 2020 occurrence: train 44,451 test 5,461, 35 configs
+  h=2 strict test 2020 persistence: train 12,675 test 1,743, 35 configs
+  h=1 strict test 2020 persistence: train 13,038 test 1,710, 38 configs
+  h=3 strict test 2020 persistence: train 12,332 test 1,837, 35 configs
+  h=2 strict test 2021 occurrence: train 58,924 test 3,277, 35 configs
+  h=1 strict test 2021 occurrence: train 59,698 test 3,262, 38 configs
+  h=3 strict test 2021 occurrence: train 58,082 test 3,264, 35 configs
+  h=2 strict test 2021 persistence: train 18,639 test 979, 35 configs
+  h=1 strict test 2021 persistence: train 19,132 test 978, 38 configs
+  h=3 strict test 2021 persistence: train 18,206 test 980, 35 configs
+  h=2 strict test 2022 occurrence: train 58,916 test 3,201, 35 configs
+  h=1 strict test 2022 occurrence: train 59,695 test 3,192, 38 configs
+  h=3 strict test 2022 occurrence: train 58,114 test 3,207, 35 configs
+  h=2 strict test 2022 persistence: train 18,251 test 1,151, 35 configs
+  h=3 strict test 2022 persistence: train 17,719 test 1,106, 35 configs
+  h=1 strict test 2022 persistence: train 18,756 test 1,191, 38 configs
+  h=2 strict test 2023 occurrence: train 41,514 test 6,134, 35 configs
+  h=3 strict test 2023 occurrence: train 41,037 test 6,025, 35 configs
+  h=1 strict test 2023 occurrence: train 41,998 test 6,227, 38 configs
+  h=2 strict test 2023 persistence: train 11,528 test 2,198, 35 configs
+  h=3 strict test 2023 persistence: train 11,121 test 2,302, 35 configs
+  h=1 strict test 2023 persistence: train 11,926 test 2,113, 38 configs
+  h=2 strict test 2024 occurrence: train 43,471 test 5,700, 35 configs
+  h=3 strict test 2024 occurrence: train 42,770 test 5,744, 35 configs
+  h=1 strict test 2024 occurrence: train 44,186 test 5,709, 38 configs
+  h=2 strict test 2024 persistence: train 14,134 test 1,631, 35 configs
+  h=3 strict test 2024 persistence: train 13,894 test 1,618, 35 configs
+  h=1 strict test 2024 persistence: train 14,378 test 1,668, 38 configs
+  h=2 strict test 2025 occurrence: train 68,421 test 3,432, 35 configs
+  h=3 strict test 2025 occurrence: train 67,574 test 3,480, 35 configs
+  h=1 strict test 2025 occurrence: train 69,320 test 3,491, 38 configs
+  h=3 strict test 2025 persistence: train 24,178 test 652, 35 configs
+wrote preds_strict_h3_anomaly.parquet
+=== y1
+172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+  h=2 strict test 2025 persistence: train 24,607 test 668, 35 configs
+wrote preds_strict_h2_anomaly.parquet
+=== susc
+  h=1 strict test 2025 persistence: train 25,018 test 633, 38 configs
+wrote preds_strict_h1_anomaly.parquet
+  h=1 year test 2019 occurrence: train 92,567 test 18,784, 4 configs
+  h=1 year test 2019 persistence: train 29,433 test 5,216, 4 configs
+wrote susceptibility.csv
+=== map
+172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+  h=1 year test 2020 occurrence: train 93,863 test 18,129, 4 configs
+wrote D:\TUe\Y3_Q1_Capstone_Datachallenge\JBG060_ZHL_2026\results\run_all\results.md
+  h=1 year test 2020 persistence: train 28,137 test 5,871, 4 configs
+wrote map_2022 (287,805 square-months)
+wrote D:\TUe\Y3_Q1_Capstone_Datachallenge\JBG060_ZHL_2026\results\run_all\results.md
+  h=1 year test 2021 occurrence: train 94,938 test 17,444, 4 configs
+  h=1 year test 2021 persistence: train 27,062 test 6,556, 4 configs
+  h=1 year test 2022 occurrence: train 93,989 test 17,244, 4 configs
+  h=1 year test 2022 persistence: train 28,011 test 6,756, 4 configs
+  h=1 year test 2023 occurrence: train 92,482 test 18,173, 4 configs
+  h=1 year test 2023 persistence: train 29,518 test 5,827, 4 configs
+  h=1 year test 2024 occurrence: train 91,333 test 18,757, 4 configs
+  h=1 year test 2024 persistence: train 30,667 test 5,243, 4 configs
+  h=1 year test 2025 occurrence: train 110,090 test 19,170, 4 configs
+  h=1 year test 2025 persistence: train 35,910 test 4,830, 4 configs
+wrote preds_year_h1.parquet
+=== ay1
+172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+  h=1 year test 2019 occurrence: train 92,567 test 18,784, 3 configs
+  h=1 year test 2019 persistence: train 29,433 test 5,216, 3 configs
+  h=1 year test 2020 occurrence: train 93,863 test 18,129, 3 configs
+  h=1 year test 2020 persistence: train 28,137 test 5,871, 3 configs
+  h=1 year test 2021 occurrence: train 94,938 test 17,444, 3 configs
+  h=1 year test 2021 persistence: train 27,062 test 6,556, 3 configs
+  h=1 year test 2022 occurrence: train 93,989 test 17,244, 3 configs
+  h=1 year test 2022 persistence: train 28,011 test 6,756, 3 configs
+  h=1 year test 2023 occurrence: train 92,482 test 18,173, 3 configs
+  h=1 year test 2023 persistence: train 29,518 test 5,827, 3 configs
+  h=1 year test 2024 occurrence: train 91,333 test 18,757, 3 configs
+  h=1 year test 2024 persistence: train 30,667 test 5,243, 3 configs
+  h=1 year test 2025 occurrence: train 110,090 test 19,170, 3 configs
+  h=1 year test 2025 persistence: train 35,910 test 4,830, 3 configs
+wrote preds_year_h1_anomaly.parquet
+=== y2
+172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+  h=2 year test 2019 occurrence: train 91,008 test 19,121, 4 configs
+  h=2 year test 2019 persistence: train 28,992 test 4,879, 4 configs
+  h=2 year test 2020 occurrence: train 92,641 test 18,096, 4 configs
+  h=2 year test 2020 persistence: train 27,359 test 5,904, 4 configs
+  h=2 year test 2021 occurrence: train 93,683 test 17,450, 4 configs
+  h=2 year test 2021 persistence: train 26,317 test 6,550, 4 configs
+  h=2 year test 2022 occurrence: train 92,740 test 17,402, 4 configs
+  h=2 year test 2022 persistence: train 27,260 test 6,598, 4 configs
+  h=2 year test 2023 occurrence: train 91,391 test 17,807, 4 configs
+  h=2 year test 2023 persistence: train 28,609 test 6,193, 4 configs
+  h=2 year test 2024 occurrence: train 89,876 test 18,802, 4 configs
+  h=2 year test 2024 persistence: train 30,124 test 5,198, 4 configs
+  h=2 year test 2025 occurrence: train 108,678 test 19,028, 4 configs
+  h=2 year test 2025 persistence: train 35,322 test 4,972, 4 configs
+wrote preds_year_h2.parquet
+=== ay2
+172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+  h=2 year test 2019 occurrence: train 91,008 test 19,121, 3 configs
+  h=2 year test 2019 persistence: train 28,992 test 4,879, 3 configs
+  h=2 year test 2020 occurrence: train 92,641 test 18,096, 3 configs
+  h=2 year test 2020 persistence: train 27,359 test 5,904, 3 configs
+  h=2 year test 2021 occurrence: train 93,683 test 17,450, 3 configs
+  h=2 year test 2021 persistence: train 26,317 test 6,550, 3 configs
+  h=2 year test 2022 occurrence: train 92,740 test 17,402, 3 configs
+  h=2 year test 2022 persistence: train 27,260 test 6,598, 3 configs
+  h=2 year test 2023 occurrence: train 91,391 test 17,807, 3 configs
+  h=2 year test 2023 persistence: train 28,609 test 6,193, 3 configs
+  h=2 year test 2024 occurrence: train 89,876 test 18,802, 3 configs
+  h=2 year test 2024 persistence: train 30,124 test 5,198, 3 configs
+  h=2 year test 2025 occurrence: train 108,678 test 19,028, 3 configs
+  h=2 year test 2025 persistence: train 35,322 test 4,972, 3 configs
+wrote preds_year_h2_anomaly.parquet
+=== y3
+172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+  h=3 year test 2019 occurrence: train 91,008 test 17,882, 4 configs
+  h=3 year test 2019 persistence: train 28,992 test 4,118, 4 configs
+  h=3 year test 2020 occurrence: train 91,402 test 18,001, 4 configs
+  h=3 year test 2020 persistence: train 26,598 test 5,999, 4 configs
+  h=3 year test 2021 occurrence: train 92,349 test 17,569, 4 configs
+  h=3 year test 2021 persistence: train 25,651 test 6,431, 4 configs
+  h=3 year test 2022 occurrence: train 91,525 test 17,515, 4 configs
+  h=3 year test 2022 persistence: train 26,475 test 6,485, 4 configs
+  h=3 year test 2023 occurrence: train 90,289 test 17,440, 4 configs
+  h=3 year test 2023 persistence: train 27,711 test 6,560, 4 configs
+  h=3 year test 2024 occurrence: train 88,407 test 18,855, 4 configs
+  h=3 year test 2024 persistence: train 29,593 test 5,145, 4 configs
+  h=3 year test 2025 occurrence: train 107,262 test 18,930, 4 configs
+  h=3 year test 2025 persistence: train 34,738 test 5,070, 4 configs
+wrote preds_year_h3.parquet
+=== ay3
+172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+  h=3 year test 2019 occurrence: train 91,008 test 17,882, 3 configs
+  h=3 year test 2019 persistence: train 28,992 test 4,118, 3 configs
+  h=3 year test 2020 occurrence: train 91,402 test 18,001, 3 configs
+  h=3 year test 2020 persistence: train 26,598 test 5,999, 3 configs
+  h=3 year test 2021 occurrence: train 92,349 test 17,569, 3 configs
+  h=3 year test 2021 persistence: train 25,651 test 6,431, 3 configs
+  h=3 year test 2022 occurrence: train 91,525 test 17,515, 3 configs
+  h=3 year test 2022 persistence: train 26,475 test 6,485, 3 configs
+  h=3 year test 2023 occurrence: train 90,289 test 17,440, 3 configs
+  h=3 year test 2023 persistence: train 27,711 test 6,560, 3 configs
+  h=3 year test 2024 occurrence: train 88,407 test 18,855, 3 configs
+  h=3 year test 2024 persistence: train 29,593 test 5,145, 3 configs
+  h=3 year test 2025 occurrence: train 107,262 test 18,930, 3 configs
+  h=3 year test 2025 persistence: train 34,738 test 5,070, 3 configs
+wrote preds_year_h3_anomaly.parquet
+=== f1
+172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+  h=1 forward test 2021 occurrence: train 38,472 test 17,444, 4 configs
+  h=1 forward test 2021 persistence: train 11,528 test 6,556, 4 configs
+  h=1 forward test 2022 occurrence: train 55,916 test 17,244, 4 configs
+  h=1 forward test 2022 persistence: train 18,084 test 6,756, 4 configs
+  h=1 forward test 2023 occurrence: train 73,160 test 18,173, 4 configs
+  h=1 forward test 2023 persistence: train 24,840 test 5,827, 4 configs
+  h=1 forward test 2024 occurrence: train 91,333 test 18,757, 4 configs
+  h=1 forward test 2024 persistence: train 30,667 test 5,243, 4 configs
+  h=1 forward test 2025 occurrence: train 110,090 test 19,170, 4 configs
+  h=1 forward test 2025 persistence: train 35,910 test 4,830, 4 configs
+wrote preds_forward_h1.parquet
+=== af1
+172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+  h=1 forward test 2021 occurrence: train 38,472 test 17,444, 3 configs
+  h=1 forward test 2021 persistence: train 11,528 test 6,556, 3 configs
+  h=1 forward test 2022 occurrence: train 55,916 test 17,244, 3 configs
+  h=1 forward test 2022 persistence: train 18,084 test 6,756, 3 configs
+  h=1 forward test 2023 occurrence: train 73,160 test 18,173, 3 configs
+  h=1 forward test 2023 persistence: train 24,840 test 5,827, 3 configs
+  h=1 forward test 2024 occurrence: train 91,333 test 18,757, 3 configs
+  h=1 forward test 2024 persistence: train 30,667 test 5,243, 3 configs
+  h=1 forward test 2025 occurrence: train 110,090 test 19,170, 3 configs
+  h=1 forward test 2025 persistence: train 35,910 test 4,830, 3 configs
+wrote preds_forward_h1_anomaly.parquet
+=== f2
+172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+  h=2 forward test 2021 occurrence: train 37,217 test 17,450, 4 configs
+  h=2 forward test 2021 persistence: train 10,783 test 6,550, 4 configs
+  h=2 forward test 2022 occurrence: train 54,667 test 17,402, 4 configs
+  h=2 forward test 2022 persistence: train 17,333 test 6,598, 4 configs
+  h=2 forward test 2023 occurrence: train 72,069 test 17,807, 4 configs
+  h=2 forward test 2023 persistence: train 23,931 test 6,193, 4 configs
+  h=2 forward test 2024 occurrence: train 89,876 test 18,802, 4 configs
+  h=2 forward test 2024 persistence: train 30,124 test 5,198, 4 configs
+  h=2 forward test 2025 occurrence: train 108,678 test 19,028, 4 configs
+  h=2 forward test 2025 persistence: train 35,322 test 4,972, 4 configs
+wrote preds_forward_h2.parquet
+=== af2
+172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+  h=2 forward test 2021 occurrence: train 37,217 test 17,450, 3 configs
+  h=2 forward test 2021 persistence: train 10,783 test 6,550, 3 configs
+  h=2 forward test 2022 occurrence: train 54,667 test 17,402, 3 configs
+  h=2 forward test 2022 persistence: train 17,333 test 6,598, 3 configs
+  h=2 forward test 2023 occurrence: train 72,069 test 17,807, 3 configs
+  h=2 forward test 2023 persistence: train 23,931 test 6,193, 3 configs
+  h=2 forward test 2024 occurrence: train 89,876 test 18,802, 3 configs
+  h=2 forward test 2024 persistence: train 30,124 test 5,198, 3 configs
+  h=2 forward test 2025 occurrence: train 108,678 test 19,028, 3 configs
+  h=2 forward test 2025 persistence: train 35,322 test 4,972, 3 configs
+wrote preds_forward_h2_anomaly.parquet
+=== f3
+172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+  h=3 forward test 2021 occurrence: train 35,883 test 17,569, 4 configs
+  h=3 forward test 2021 persistence: train 10,117 test 6,431, 4 configs
+  h=3 forward test 2022 occurrence: train 53,452 test 17,515, 4 configs
+  h=3 forward test 2022 persistence: train 16,548 test 6,485, 4 configs
+  h=3 forward test 2023 occurrence: train 70,967 test 17,440, 4 configs
+  h=3 forward test 2023 persistence: train 23,033 test 6,560, 4 configs
+  h=3 forward test 2024 occurrence: train 88,407 test 18,855, 4 configs
+  h=3 forward test 2024 persistence: train 29,593 test 5,145, 4 configs
+  h=3 forward test 2025 occurrence: train 107,262 test 18,930, 4 configs
+  h=3 forward test 2025 persistence: train 34,738 test 5,070, 4 configs
+wrote preds_forward_h3.parquet
+=== af3
+172,000 samples, issue months 2018-11 to 2025-12, cropland share 30%
+  h=3 forward test 2021 occurrence: train 35,883 test 17,569, 3 configs
+  h=3 forward test 2021 persistence: train 10,117 test 6,431, 3 configs
+  h=3 forward test 2022 occurrence: train 53,452 test 17,515, 3 configs
+  h=3 forward test 2022 persistence: train 16,548 test 6,485, 3 configs
+  h=3 forward test 2023 occurrence: train 70,967 test 17,440, 3 configs
+  h=3 forward test 2023 persistence: train 23,033 test 6,560, 3 configs
+  h=3 forward test 2024 occurrence: train 88,407 test 18,855, 3 configs
+  h=3 forward test 2024 persistence: train 29,593 test 5,145, 3 configs
+  h=3 forward test 2025 occurrence: train 107,262 test 18,930, 3 configs
+  h=3 forward test 2025 persistence: train 34,738 test 5,070, 3 configs
+wrote preds_forward_h3_anomaly.parquet
+wrote D:\TUe\Y3_Q1_Capstone_Datachallenge\JBG060_ZHL_2026\results\run_all\results.md

@@ -1,9 +1,0 @@
-target,family,inputs,mean_abs_shap,rows
-occurrence,weather,76,0.5920972,33739
-occurrence,land,13,0.3672763,33739
-occurrence,rivers_storage,78,0.23896098,33739
-occurrence,climate_indices,6,0.02462762,33739
-persistence,land,13,0.6214989,10240
-persistence,weather,76,0.3880699,10240
-persistence,rivers_storage,78,0.25921112,10240
-persistence,climate_indices,6,0.022026075,10240
