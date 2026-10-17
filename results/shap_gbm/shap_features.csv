@@ -1,0 +1,349 @@
+target,feature,label,group,family,mean_abs_shap,mean_shap,direction_spearman,rows
+occurrence,uprain__raw3,"rain over the square's upstream catchment (mm/month), mean of last 3 months",upstream_catchment_rain,weather,0.25884676,0.0060524517,0.9313364097646374,33739
+occurrence,rain_ethiopian_highlands__raw3,"rainfall over ethiopian highlands, mean of last 3 months",upstream_rain,weather,0.20217638,0.022679087,0.8239609974344962,33739
+occurrence,upa_max,upstream drainage area (log km2),terrain,land,0.19185685,0.004641466,0.8061187727656818,33739
+occurrence,slope_sd,"slope spread within square (SD, deg)",heterogeneity,land,0.17844942,-0.015059477,0.9277385037476956,33739
+occurrence,vertisol,Vertisol (swelling clay) probability (%),soil,land,0.12433934,0.02820663,-0.646008583758042,33739
+occurrence,sand,sand 0-30 cm (%),soil,land,0.114835866,-0.00079507113,0.6856164032406025,33739
+occurrence,clay,clay 0-30 cm (%),soil,land,0.07976165,0.00808384,0.5420370776560133,33739
+occurrence,qk30__z24,"river flow within ~30 km, GloFAS (log), standardised anomaly, last 24 months (SDs from normal)",glofas,rivers_storage,0.07646883,-0.01658201,0.7466071457650968,33739
+occurrence,hnd_mean,"height above nearest drainage, mean (m)",terrain,land,0.069240026,0.018051522,-0.8459870745503826,33739
+occurrence,q_dist,distance to nearest large river (km),terrain,land,0.054579306,0.009264255,-0.6371722134520276,33739
+occurrence,qk10__z24,"river flow within ~10 km, GloFAS (log), standardised anomaly, last 24 months (SDs from normal)",glofas,rivers_storage,0.051960137,0.013724022,0.40998755578465007,33739
+occurrence,hnd_sd,"height above drainage, spread (SD, m)",heterogeneity,land,0.05157131,0.005312887,-0.8229772031899871,33739
+occurrence,ssrd__z24,"solar radiation (MJ/m2/day), standardised anomaly, last 24 months (SDs from normal)",atmosphere,weather,0.051489383,-0.0067058047,0.5630739548638046,33739
+occurrence,si10__raw3,"wind speed (m/s), mean of last 3 months",atmosphere,weather,0.050877906,-0.012539225,-0.48841625177479553,33739
+occurrence,hnd_q1,"height above drainage, 25th percentile (m)",heterogeneity,land,0.048162095,0.0032483109,-0.7677261709916533,33739
+occurrence,si10__z24,"wind speed (m/s), standardised anomaly, last 24 months (SDs from normal)",atmosphere,weather,0.04725872,-0.017100014,0.18723122539680723,33739
+occurrence,ssrd__raw3,"solar radiation (MJ/m2/day), mean of last 3 months",atmosphere,weather,0.047034457,-0.0054329694,-0.06672091933315766,33739
+occurrence,t2m__z3,"air temperature (C), standardised anomaly, last 3 months (SDs from normal)",atmosphere,weather,0.046428185,-0.024909973,-0.4609708138407045,33739
+occurrence,slope,slope (degrees),terrain,land,0.043544523,0.005194081,0.5242779159831814,33739
+occurrence,grace__z12,"water storage anomaly, GRACE (cm), standardised anomaly, last 12 months (SDs from normal)",water_storage,rivers_storage,0.04263076,0.017681686,-0.609341206927247,33739
+occurrence,depress,share of square in local depressions,heterogeneity,land,0.03949677,-0.0053240885,0.576874265267546,33739
+occurrence,grace__z24,"water storage anomaly, GRACE (cm), standardised anomaly, last 24 months (SDs from normal)",water_storage,rivers_storage,0.039317496,-0.011103532,-0.5893868472465363,33739
+occurrence,qk10__z12,"river flow within ~10 km, GloFAS (log), standardised anomaly, last 12 months (SDs from normal)",glofas,rivers_storage,0.037493825,0.007103932,-0.259565526315422,33739
+occurrence,conc5__z24,"share of month's rain in its 5 wettest days, standardised anomaly, last 24 months (SDs from normal)",rain_shape,weather,0.03659717,0.0062914626,-0.2088180027493136,33739
+occurrence,ro__z12,"local runoff (mm/month), standardised anomaly, last 12 months (SDs from normal)",local_rain,weather,0.035326373,-0.017323976,-0.4425349650709368,33739
+occurrence,uprain__z12,"rain over the square's upstream catchment (mm/month), standardised anomaly, last 12 months (SDs from normal)",upstream_catchment_rain,weather,0.03441254,0.00081663893,0.22033963900985387,33739
+occurrence,conc5__raw3,"share of month's rain in its 5 wettest days, mean of last 3 months",rain_shape,weather,0.033494912,-0.0029121507,-0.6238213146437328,33739
+occurrence,rx1__z24,"wettest day (mm), standardised anomaly, last 24 months (SDs from normal)",local_rain,weather,0.03336607,0.0053566415,0.6709628333351174,33739
+occurrence,twi,topographic wetness index,terrain,land,0.03257623,0.0042465683,-0.08068466337617786,33739
+occurrence,low_2m,share of land < 2 m above drainage,terrain,land,0.03247676,-0.003526939,0.3998838117533883,33739
+occurrence,t2m__raw3,"air temperature (C), mean of last 3 months",atmosphere,weather,0.032171268,0.00026398237,0.5838920440551086,33739
+occurrence,r20__z12,"heavy-rain days (>=20 mm), standardised anomaly, last 12 months (SDs from normal)",local_rain,weather,0.030872041,-0.0059321932,0.3837476115785303,33739
+occurrence,conc5__z12,"share of month's rain in its 5 wettest days, standardised anomaly, last 12 months (SDs from normal)",rain_shape,weather,0.029960083,-0.008840266,-0.46663921001696956,33739
+occurrence,uprain__z24,"rain over the square's upstream catchment (mm/month), standardised anomaly, last 24 months (SDs from normal)",upstream_catchment_rain,weather,0.02978343,-0.014899476,-0.35755140718501743,33739
+occurrence,q__z12,"flow of nearest large river, GloFAS (log), standardised anomaly, last 12 months (SDs from normal)",glofas,rivers_storage,0.029185185,-0.018034987,-0.13936890435177265,33739
+occurrence,et__z24,"evapotranspiration (mm/day), standardised anomaly, last 24 months (SDs from normal)",evapotranspiration,weather,0.029079659,-0.01275828,0.22416702325833698,33739
+occurrence,sm3__raw3,"subsoil moisture 28-100 cm, mean of last 3 months",soil_moisture,weather,0.02876077,-0.0007264921,-0.14248452649469193,33739
+occurrence,sm1__z12,"topsoil moisture 0-7 cm, standardised anomaly, last 12 months (SDs from normal)",soil_moisture,weather,0.027680032,0.0102963485,-0.2590607424142823,33739
+occurrence,dfo_1544__z12,"Dartmouth station 1544 discharge, standardised anomaly, last 12 months (SDs from normal)",dartmouth,rivers_storage,0.027115552,-0.02459034,0.026156528107081047,33739
+occurrence,rx1__raw3,"wettest day (mm), mean of last 3 months",local_rain,weather,0.027076429,-0.001834379,0.32798567121152894,33739
+occurrence,r20__z24,"heavy-rain days (>=20 mm), standardised anomaly, last 24 months (SDs from normal)",local_rain,weather,0.026689364,-0.0025240313,0.36604117120400287,33739
+occurrence,wspell__z12,"longest wet spell (days), standardised anomaly, last 12 months (SDs from normal)",rain_shape,weather,0.026001202,0.00629031,0.12655033797089388,33739
+occurrence,conc5__z3,"share of month's rain in its 5 wettest days, standardised anomaly, last 3 months (SDs from normal)",rain_shape,weather,0.025751216,-0.0070775608,-0.5068459554846341,33739
+occurrence,sm3__z24,"subsoil moisture 28-100 cm, standardised anomaly, last 24 months (SDs from normal)",soil_moisture,weather,0.025715854,0.001510548,0.19942401024160464,33739
+occurrence,sm1__raw3,"topsoil moisture 0-7 cm, mean of last 3 months",soil_moisture,weather,0.02567488,0.0031466582,0.01731439588678164,33739
+occurrence,wetd__z12,"rain days (>= 1 mm), standardised anomaly, last 12 months (SDs from normal)",rain_shape,weather,0.025298549,-0.010903533,-0.4299730204822592,33739
+occurrence,rx1__z12,"wettest day (mm), standardised anomaly, last 12 months (SDs from normal)",local_rain,weather,0.02498469,0.00463714,0.5772188514671,33739
+occurrence,ro__z3,"local runoff (mm/month), standardised anomaly, last 3 months (SDs from normal)",local_rain,weather,0.024959417,-0.0034314042,-0.4537308322466355,33739
+occurrence,qk30__z12,"river flow within ~30 km, GloFAS (log), standardised anomaly, last 12 months (SDs from normal)",glofas,rivers_storage,0.024229694,0.010411908,0.39841316952680955,33739
+occurrence,grace__z3,"water storage anomaly, GRACE (cm), standardised anomaly, last 3 months (SDs from normal)",water_storage,rivers_storage,0.023904843,0.009708921,0.24900996503980624,33739
+occurrence,r20__z3,"heavy-rain days (>=20 mm), standardised anomaly, last 3 months (SDs from normal)",local_rain,weather,0.023754936,0.0100358445,-0.2963217007885956,33739
+occurrence,d2m__raw3,"dewpoint (humidity, C), mean of last 3 months",atmosphere,weather,0.02319324,-0.002218127,0.29975023015182267,33739
+occurrence,overbank_q,overbank: nearest-river anomaly / (1 + HAND),overbank,rivers_storage,0.023172481,0.00973012,0.33617648836071196,33739
+occurrence,t2m__z24,"air temperature (C), standardised anomaly, last 24 months (SDs from normal)",atmosphere,weather,0.022745011,-0.0023149282,0.1419251126994184,33739
+occurrence,q__z24,"flow of nearest large river, GloFAS (log), standardised anomaly, last 24 months (SDs from normal)",glofas,rivers_storage,0.022703763,0.0023909756,0.16327563852499047,33739
+occurrence,dsd__z24,"day-to-day rain variability (SD, mm), standardised anomaly, last 24 months (SDs from normal)",rain_shape,weather,0.022599638,-0.0047255964,0.26023729958104586,33739
+occurrence,d2m__z3,"dewpoint (humidity, C), standardised anomaly, last 3 months (SDs from normal)",atmosphere,weather,0.022254704,0.0018271491,0.29280702803379016,33739
+occurrence,dsd__z12,"day-to-day rain variability (SD, mm), standardised anomaly, last 12 months (SDs from normal)",rain_shape,weather,0.021670718,-0.0014997084,0.18134001688370555,33739
+occurrence,overbank_qk30,overbank: 30-km river anomaly / (1 + HAND),overbank,rivers_storage,0.021377038,0.008774316,0.1755357002387292,33739
+occurrence,qk10__z3,"river flow within ~10 km, GloFAS (log), standardised anomaly, last 3 months (SDs from normal)",glofas,rivers_storage,0.021316348,-0.002450333,0.14820170712345113,33739
+occurrence,d2m__z12,"dewpoint (humidity, C), standardised anomaly, last 12 months (SDs from normal)",atmosphere,weather,0.021220624,-0.0011259047,-0.17279626236946516,33739
+occurrence,wspell__z24,"longest wet spell (days), standardised anomaly, last 24 months (SDs from normal)",rain_shape,weather,0.021120843,0.007965544,-0.12429428563666928,33739
+occurrence,qk100__z12,"river flow within ~100 km, GloFAS (log), standardised anomaly, last 12 months (SDs from normal)",glofas,rivers_storage,0.02110227,0.0121574225,-0.011747523688350364,33739
+occurrence,wetd__z3,"rain days (>= 1 mm), standardised anomaly, last 3 months (SDs from normal)",rain_shape,weather,0.020119106,0.007549631,0.4323394794807377,33739
+occurrence,uprain__z3,"rain over the square's upstream catchment (mm/month), standardised anomaly, last 3 months (SDs from normal)",upstream_catchment_rain,weather,0.019992106,0.0030255774,-0.07170994990311516,33739
+occurrence,ro__z24,"local runoff (mm/month), standardised anomaly, last 24 months (SDs from normal)",local_rain,weather,0.019600818,0.007635994,-0.28503791812790563,33739
+occurrence,tp__raw3,"local rainfall (mm/month), mean of last 3 months",local_rain,weather,0.019362248,-8.808096e-05,0.5287794274825335,33739
+occurrence,ssrd__z3,"solar radiation (MJ/m2/day), standardised anomaly, last 3 months (SDs from normal)",atmosphere,weather,0.019357288,-0.002023598,-0.33166042839068954,33739
+occurrence,sm1__z24,"topsoil moisture 0-7 cm, standardised anomaly, last 24 months (SDs from normal)",soil_moisture,weather,0.019252332,-0.0026816376,-0.0072464555365191535,33739
+occurrence,rain_victoria_basin__raw3,"rainfall over victoria basin, mean of last 3 months",upstream_rain,weather,0.019189544,-0.0020221432,-0.731008661047984,33739
+occurrence,qk100__z24,"river flow within ~100 km, GloFAS (log), standardised anomaly, last 24 months (SDs from normal)",glofas,rivers_storage,0.019177558,0.0046566175,-0.0019221703446542838,33739
+occurrence,nino34__z12,"El Nino index (Nino3.4), standardised anomaly, last 12 months (SDs from normal)",climate_indices,climate_indices,0.018550718,0.011458212,-0.34239391040147366,33739
+occurrence,sm3__z3,"subsoil moisture 28-100 cm, standardised anomaly, last 3 months (SDs from normal)",soil_moisture,weather,0.018042317,-0.0031864946,0.3427308741831747,33739
+occurrence,si10__z3,"wind speed (m/s), standardised anomaly, last 3 months (SDs from normal)",atmosphere,weather,0.017884696,-0.000120435114,0.27369078185219753,33739
+occurrence,wetd__z24,"rain days (>= 1 mm), standardised anomaly, last 24 months (SDs from normal)",rain_shape,weather,0.017828684,0.0109715955,-0.45842641998595623,33739
+occurrence,tp__z12,"local rainfall (mm/month), standardised anomaly, last 12 months (SDs from normal)",local_rain,weather,0.017763242,-0.0075811283,0.05444661978244824,33739
+occurrence,et__z3,"evapotranspiration (mm/day), standardised anomaly, last 3 months (SDs from normal)",evapotranspiration,weather,0.017755307,-0.0007979132,-0.1442452948009097,33739
+occurrence,lowland_x_q,low-lying share x nearest-river anomaly,overbank,rivers_storage,0.017640486,0.008945786,0.1274030221939102,33739
+occurrence,wetd__raw3,"rain days (>= 1 mm), mean of last 3 months",rain_shape,weather,0.017493226,0.0031494522,0.6167532441918855,33739
+occurrence,t2m__z12,"air temperature (C), standardised anomaly, last 12 months (SDs from normal)",atmosphere,weather,0.017287698,0.013819959,0.21822017662026455,33739
+occurrence,et__raw3,"evapotranspiration (mm/day), mean of last 3 months",evapotranspiration,weather,0.01711072,0.0032824392,0.3028583273199332,33739
+occurrence,q__z3,"flow of nearest large river, GloFAS (log), standardised anomaly, last 3 months (SDs from normal)",glofas,rivers_storage,0.01706012,-0.00021059958,0.17789621628658797,33739
+occurrence,wspell__z3,"longest wet spell (days), standardised anomaly, last 3 months (SDs from normal)",rain_shape,weather,0.0165903,-0.0027760372,-0.013493743794169486,33739
+occurrence,dfo_1541__z24,"Dartmouth station 1541 discharge, standardised anomaly, last 24 months (SDs from normal)",dartmouth,rivers_storage,0.016473286,-0.010325317,-0.4439454686280571,33739
+occurrence,si10__z12,"wind speed (m/s), standardised anomaly, last 12 months (SDs from normal)",atmosphere,weather,0.01645878,-0.0031622483,-0.16623362594271093,33739
+occurrence,ssrd__z12,"solar radiation (MJ/m2/day), standardised anomaly, last 12 months (SDs from normal)",atmosphere,weather,0.015295968,0.0037674701,-0.01255414266601008,33739
+occurrence,sm3__z12,"subsoil moisture 28-100 cm, standardised anomaly, last 12 months (SDs from normal)",soil_moisture,weather,0.015292974,0.0008905723,0.3739921710125663,33739
+occurrence,d2m__z24,"dewpoint (humidity, C), standardised anomaly, last 24 months (SDs from normal)",atmosphere,weather,0.015135717,-0.003680415,-0.361151981947185,33739
+occurrence,tp__z24,"local rainfall (mm/month), standardised anomaly, last 24 months (SDs from normal)",local_rain,weather,0.014774693,0.0051055695,0.19255562794999392,33739
+occurrence,et__z12,"evapotranspiration (mm/day), standardised anomaly, last 12 months (SDs from normal)",evapotranspiration,weather,0.0139242,-0.0005074128,-0.2943350740252712,33739
+occurrence,rx1__z3,"wettest day (mm), standardised anomaly, last 3 months (SDs from normal)",local_rain,weather,0.01353897,0.0011864848,0.3516562723108033,33739
+occurrence,dsd__z3,"day-to-day rain variability (SD, mm), standardised anomaly, last 3 months (SDs from normal)",rain_shape,weather,0.013120055,-0.002804002,0.3347765060699523,33739
+occurrence,ro__raw3,"local runoff (mm/month), mean of last 3 months",local_rain,weather,0.012753184,0.0047609988,0.034402870095523626,33739
+occurrence,sm1__z3,"topsoil moisture 0-7 cm, standardised anomaly, last 3 months (SDs from normal)",soil_moisture,weather,0.012597767,0.0022132096,-0.04281057228819661,33739
+occurrence,dsd__raw3,"day-to-day rain variability (SD, mm), mean of last 3 months",rain_shape,weather,0.012302887,0.0027467199,0.0018248491757973618,33739
+occurrence,dfo_1547__z12,"Dartmouth station 1547 discharge, standardised anomaly, last 12 months (SDs from normal)",dartmouth,rivers_storage,0.012064971,-0.0070431773,-0.575457032975185,33739
+occurrence,qk30__z3,"river flow within ~30 km, GloFAS (log), standardised anomaly, last 3 months (SDs from normal)",glofas,rivers_storage,0.011477341,-0.00045427776,0.015823996049081652,33739
+occurrence,rain_uganda_lakes__raw3,"rainfall over uganda lakes, mean of last 3 months",upstream_rain,weather,0.011117648,-0.00418592,-0.1855521378205328,33739
+occurrence,dfo_11842__z12,"Dartmouth station 11842 discharge, standardised anomaly, last 12 months (SDs from normal)",dartmouth,rivers_storage,0.010209585,0.004681894,-0.7316476014084595,33739
+occurrence,tp__z3,"local rainfall (mm/month), standardised anomaly, last 3 months (SDs from normal)",local_rain,weather,0.010025513,0.0019779508,-0.0691228217466118,33739
+occurrence,dfo_100205__z3,"Dartmouth station 100205 discharge, standardised anomaly, last 3 months (SDs from normal)",dartmouth,rivers_storage,0.009651492,0.008511205,0.5850869130671388,33739
+occurrence,q_malakal__z3,"GloFAS flow at Malakal (log), standardised anomaly, last 3 months (SDs from normal)",glofas,rivers_storage,0.009409855,-0.005712441,-0.5549790923176695,33739
+occurrence,q_nasir_sobat__z3,"GloFAS flow at Nasir Sobat (log), standardised anomaly, last 3 months (SDs from normal)",glofas,rivers_storage,0.009208882,0.0047283983,0.2095346004139038,33739
+occurrence,qk100__z3,"river flow within ~100 km, GloFAS (log), standardised anomaly, last 3 months (SDs from normal)",glofas,rivers_storage,0.008918511,-0.0014700884,0.3109202503003015,33739
+occurrence,dfo_1542__z24,"Dartmouth station 1542 discharge, standardised anomaly, last 24 months (SDs from normal)",dartmouth,rivers_storage,0.008824965,-0.007001059,0.17567781287811327,33739
+occurrence,dfo_1542__z3,"Dartmouth station 1542 discharge, standardised anomaly, last 3 months (SDs from normal)",dartmouth,rivers_storage,0.008702055,0.00021826074,0.5653460718072851,33739
+occurrence,dfo_1544__z3,"Dartmouth station 1544 discharge, standardised anomaly, last 3 months (SDs from normal)",dartmouth,rivers_storage,0.008253245,0.001828243,0.21741034402472031,33739
+occurrence,dmi__z24,"Indian Ocean Dipole index, standardised anomaly, last 24 months (SDs from normal)",climate_indices,climate_indices,0.007844865,0.0005195307,0.5354860161275863,33739
+occurrence,dfo_1545__z3,"Dartmouth station 1545 discharge, standardised anomaly, last 3 months (SDs from normal)",dartmouth,rivers_storage,0.00783339,0.0026557737,-0.3300699579104855,33739
+occurrence,q_nimule__z3,"GloFAS flow at Nimule (log), standardised anomaly, last 3 months (SDs from normal)",glofas,rivers_storage,0.0074080788,-9.7944976e-05,-0.734656086653212,33739
+occurrence,dfo_100205__z12,"Dartmouth station 100205 discharge, standardised anomaly, last 12 months (SDs from normal)",dartmouth,rivers_storage,0.0069930814,-0.0050996644,0.08465853228617908,33739
+occurrence,dfo_1505__z3,"Dartmouth station 1505 discharge, standardised anomaly, last 3 months (SDs from normal)",dartmouth,rivers_storage,0.006749644,-0.00061216316,-0.16511920762383772,33739
+occurrence,dfo_1543__z12,"Dartmouth station 1543 discharge, standardised anomaly, last 12 months (SDs from normal)",dartmouth,rivers_storage,0.006428399,-0.00015054413,-0.5876148605559185,33739
+occurrence,dfo_11842__z3,"Dartmouth station 11842 discharge, standardised anomaly, last 3 months (SDs from normal)",dartmouth,rivers_storage,0.006417235,-0.0018260648,-0.640072516276112,33739
+occurrence,dfo_11808__z12,"Dartmouth station 11808 discharge, standardised anomaly, last 12 months (SDs from normal)",dartmouth,rivers_storage,0.0059866733,-0.004337989,0.4383539544452952,33739
+occurrence,lake_victoria__z12,"Lake Victoria level, standardised anomaly, last 12 months (SDs from normal)",lakes,rivers_storage,0.0058283843,-0.004794601,0.4751188951661426,33739
+occurrence,dfo_1545__z24,"Dartmouth station 1545 discharge, standardised anomaly, last 24 months (SDs from normal)",dartmouth,rivers_storage,0.0055759945,-0.0017565482,0.2456091256666006,33739
+occurrence,dfo_1548__z3,"Dartmouth station 1548 discharge, standardised anomaly, last 3 months (SDs from normal)",dartmouth,rivers_storage,0.005324651,0.00045566773,-0.688266264190827,33739
+occurrence,dfo_1543__z24,"Dartmouth station 1543 discharge, standardised anomaly, last 24 months (SDs from normal)",dartmouth,rivers_storage,0.0052039735,0.003913192,-0.60246047369575,33739
+occurrence,dfo_11808__z3,"Dartmouth station 11808 discharge, standardised anomaly, last 3 months (SDs from normal)",dartmouth,rivers_storage,0.004890001,-7.186644e-05,-0.5063135371733665,33739
+occurrence,rain_ethiopian_highlands__z12,"rainfall over ethiopian highlands, standardised anomaly, last 12 months (SDs from normal)",upstream_rain,weather,0.0048367702,-0.00032704877,-0.6544612316302154,33739
+occurrence,wspell__raw3,"longest wet spell (days), mean of last 3 months",rain_shape,weather,0.0047746743,-4.878946e-05,0.2572132858136983,33739
+occurrence,dfo_1548__z12,"Dartmouth station 1548 discharge, standardised anomaly, last 12 months (SDs from normal)",dartmouth,rivers_storage,0.004706637,0.0010985386,-0.5321167105718063,33739
+occurrence,dfo_1547__z3,"Dartmouth station 1547 discharge, standardised anomaly, last 3 months (SDs from normal)",dartmouth,rivers_storage,0.004387413,-0.0011831119,0.1896684829271473,33739
+occurrence,dmi__z12,"Indian Ocean Dipole index, standardised anomaly, last 12 months (SDs from normal)",climate_indices,climate_indices,0.0043591587,2.900573e-05,0.47372669157107167,33739
+occurrence,lake_victoria__z3,"Lake Victoria level, standardised anomaly, last 3 months (SDs from normal)",lakes,rivers_storage,0.0041928436,-0.0037017923,-0.2798200642476646,33739
+occurrence,dfo_28546__z3,"Dartmouth station 28546 discharge, standardised anomaly, last 3 months (SDs from normal)",dartmouth,rivers_storage,0.004136444,0.00063610973,-0.043046724202295675,33739
+occurrence,dfo_1543__z3,"Dartmouth station 1543 discharge, standardised anomaly, last 3 months (SDs from normal)",dartmouth,rivers_storage,0.003890146,0.0017246399,-0.04617168624239547,33739
+occurrence,dmi__z3,"Indian Ocean Dipole index, standardised anomaly, last 3 months (SDs from normal)",climate_indices,climate_indices,0.0038527902,0.00050929136,-0.04402917399880841,33739
+occurrence,dfo_1545__z12,"Dartmouth station 1545 discharge, standardised anomaly, last 12 months (SDs from normal)",dartmouth,rivers_storage,0.003729836,0.0023238736,-0.6495850845131457,33739
+occurrence,lake_victoria__z24,"Lake Victoria level, standardised anomaly, last 24 months (SDs from normal)",lakes,rivers_storage,0.0035236795,-0.00032253214,0.11933082433330822,33739
+occurrence,nino34__z3,"El Nino index (Nino3.4), standardised anomaly, last 3 months (SDs from normal)",climate_indices,climate_indices,0.0033917343,-0.0014758183,-0.4397679808055779,33739
+occurrence,lake_albert__z12,"Lake Albert level, standardised anomaly, last 12 months (SDs from normal)",lakes,rivers_storage,0.0033827005,-0.0021263892,0.48139300982185834,33739
+occurrence,lake_albert__z3,"Lake Albert level, standardised anomaly, last 3 months (SDs from normal)",lakes,rivers_storage,0.0030270843,-0.0019967617,0.318927026652968,33739
+occurrence,dfo_11842__z24,"Dartmouth station 11842 discharge, standardised anomaly, last 24 months (SDs from normal)",dartmouth,rivers_storage,0.002957284,0.0029505847,-0.2609355262317272,33739
+occurrence,dfo_1548__z24,"Dartmouth station 1548 discharge, standardised anomaly, last 24 months (SDs from normal)",dartmouth,rivers_storage,0.002901638,-0.0012606215,-0.059990848573234425,33739
+occurrence,rain_victoria_basin__z12,"rainfall over victoria basin, standardised anomaly, last 12 months (SDs from normal)",upstream_rain,weather,0.0027540126,-0.00035629762,0.17619056611232803,33739
+occurrence,lake_albert__z24,"Lake Albert level, standardised anomaly, last 24 months (SDs from normal)",lakes,rivers_storage,0.0027003307,-0.0025027196,0.2596855456893745,33739
+occurrence,dfo_1544__z24,"Dartmouth station 1544 discharge, standardised anomaly, last 24 months (SDs from normal)",dartmouth,rivers_storage,0.0026536023,-0.00018292818,-0.05331611396881758,33739
+occurrence,dfo_1505__z12,"Dartmouth station 1505 discharge, standardised anomaly, last 12 months (SDs from normal)",dartmouth,rivers_storage,0.0026375155,-0.0013076634,-0.018460403942424777,33739
+occurrence,dfo_100205__z24,"Dartmouth station 100205 discharge, standardised anomaly, last 24 months (SDs from normal)",dartmouth,rivers_storage,0.0026001066,-0.000437991,-0.3844205897868256,33739
+occurrence,lake_kyoga__z3,"Lake Kyoga level, standardised anomaly, last 3 months (SDs from normal)",lakes,rivers_storage,0.0025284283,0.0002273398,-0.16903346932559127,33739
+occurrence,q_nasir_sobat__z12,"GloFAS flow at Nasir Sobat (log), standardised anomaly, last 12 months (SDs from normal)",glofas,rivers_storage,0.0024784014,-0.001660656,-0.44117008827408294,33739
+occurrence,rain_uganda_lakes__z12,"rainfall over uganda lakes, standardised anomaly, last 12 months (SDs from normal)",upstream_rain,weather,0.0024090074,6.641365e-05,-0.22892736095391647,33739
+occurrence,dfo_28546__z12,"Dartmouth station 28546 discharge, standardised anomaly, last 12 months (SDs from normal)",dartmouth,rivers_storage,0.0023378958,0.00078952155,0.18419599828185557,33739
+occurrence,q_malakal__z12,"GloFAS flow at Malakal (log), standardised anomaly, last 12 months (SDs from normal)",glofas,rivers_storage,0.0023173264,-0.0015185041,0.5189365608388308,33739
+occurrence,q_nimule__z24,"GloFAS flow at Nimule (log), standardised anomaly, last 24 months (SDs from normal)",glofas,rivers_storage,0.0022987048,0.00075183593,-0.5016196936663057,33739
+occurrence,rain_victoria_basin__z3,"rainfall over victoria basin, standardised anomaly, last 3 months (SDs from normal)",upstream_rain,weather,0.0022697614,0.00049003784,0.13241540976464192,33739
+occurrence,dfo_1541__z3,"Dartmouth station 1541 discharge, standardised anomaly, last 3 months (SDs from normal)",dartmouth,rivers_storage,0.0021993595,-0.0011479076,-0.03214940842173487,33739
+occurrence,rain_ethiopian_highlands__z24,"rainfall over ethiopian highlands, standardised anomaly, last 24 months (SDs from normal)",upstream_rain,weather,0.0021574772,0.0004815575,-0.4543079420713518,33739
+occurrence,rain_ethiopian_highlands__z3,"rainfall over ethiopian highlands, standardised anomaly, last 3 months (SDs from normal)",upstream_rain,weather,0.0020909167,0.00019466203,-0.5341580974655363,33739
+occurrence,rain_victoria_basin__z24,"rainfall over victoria basin, standardised anomaly, last 24 months (SDs from normal)",upstream_rain,weather,0.0020732344,-0.0015896125,-0.12327352913822227,33739
+occurrence,dfo_1542__z12,"Dartmouth station 1542 discharge, standardised anomaly, last 12 months (SDs from normal)",dartmouth,rivers_storage,0.0020501656,-0.0010813394,-0.5313595096296663,33739
+occurrence,q_nasir_sobat__z24,"GloFAS flow at Nasir Sobat (log), standardised anomaly, last 24 months (SDs from normal)",glofas,rivers_storage,0.0019308926,0.00032769635,0.08452886320946905,33739
+occurrence,dfo_1541__z12,"Dartmouth station 1541 discharge, standardised anomaly, last 12 months (SDs from normal)",dartmouth,rivers_storage,0.0018914657,-0.00024292842,-0.27672148413749403,33739
+occurrence,lake_kyoga__z12,"Lake Kyoga level, standardised anomaly, last 12 months (SDs from normal)",lakes,rivers_storage,0.0018686174,-0.0005085952,0.21424673485423162,33739
+occurrence,r20__raw3,"heavy-rain days (>=20 mm), mean of last 3 months",local_rain,weather,0.001821725,0.00027184276,-0.10500726431400766,33739
+occurrence,q_nimule__z12,"GloFAS flow at Nimule (log), standardised anomaly, last 12 months (SDs from normal)",glofas,rivers_storage,0.0018033436,0.00059942814,-0.5100235040800829,33739
+occurrence,rain_uganda_lakes__z3,"rainfall over uganda lakes, standardised anomaly, last 3 months (SDs from normal)",upstream_rain,weather,0.0017222457,-0.0004663451,-0.36407435498777757,33739
+occurrence,lake_kyoga__z24,"Lake Kyoga level, standardised anomaly, last 24 months (SDs from normal)",lakes,rivers_storage,0.0016539727,-0.00017712482,-0.4627759942061333,33739
+occurrence,rain_uganda_lakes__z24,"rainfall over uganda lakes, standardised anomaly, last 24 months (SDs from normal)",upstream_rain,weather,0.0016213158,0.0011342634,-0.1998848033761969,33739
+occurrence,dfo_1547__z24,"Dartmouth station 1547 discharge, standardised anomaly, last 24 months (SDs from normal)",dartmouth,rivers_storage,0.0016182283,-0.00061969494,-0.568326017257096,33739
+occurrence,dfo_1505__z24,"Dartmouth station 1505 discharge, standardised anomaly, last 24 months (SDs from normal)",dartmouth,rivers_storage,0.0013506925,-4.1385715e-06,0.2393335692126806,33739
+occurrence,dfo_28546__z24,"Dartmouth station 28546 discharge, standardised anomaly, last 24 months (SDs from normal)",dartmouth,rivers_storage,0.0012428708,8.5690845e-05,-0.14615434635839333,33739
+occurrence,nino34__z24,"El Nino index (Nino3.4), standardised anomaly, last 24 months (SDs from normal)",climate_indices,climate_indices,0.0010376133,-0.00049328274,0.0428541429960334,33739
+occurrence,dfo_11808__z24,"Dartmouth station 11808 discharge, standardised anomaly, last 24 months (SDs from normal)",dartmouth,rivers_storage,0.00094911916,-0.00061955967,0.4277721703049483,33739
+occurrence,q_malakal__z24,"GloFAS flow at Malakal (log), standardised anomaly, last 24 months (SDs from normal)",glofas,rivers_storage,0.0008571193,-0.00021202545,-0.10507352643201079,33739
+occurrence,q_mongalla__z3,"GloFAS flow at Mongalla (log), standardised anomaly, last 3 months (SDs from normal)",glofas,rivers_storage,0.0002186747,0.00015822118,0.07741594536592167,33739
+occurrence,q_bor__z12,"GloFAS flow at Bor (log), standardised anomaly, last 12 months (SDs from normal)",glofas,rivers_storage,5.8916088e-05,-5.653937e-05,0.11781987439492993,33739
+occurrence,q_bor__z3,"GloFAS flow at Bor (log), standardised anomaly, last 3 months (SDs from normal)",glofas,rivers_storage,1.6169333e-05,-1.6169333e-05,-0.6367797230963443,33739
+occurrence,q_mongalla__z12,"GloFAS flow at Mongalla (log), standardised anomaly, last 12 months (SDs from normal)",glofas,rivers_storage,0.0,0.0,,33739
+occurrence,q_mongalla__z24,"GloFAS flow at Mongalla (log), standardised anomaly, last 24 months (SDs from normal)",glofas,rivers_storage,0.0,0.0,,33739
+occurrence,q_bor__z24,"GloFAS flow at Bor (log), standardised anomaly, last 24 months (SDs from normal)",glofas,rivers_storage,0.0,0.0,,33739
+occurrence,hnd_min,"height above nearest drainage, min (m)",terrain,land,0.0,0.0,,33739
+persistence,upa_max,upstream drainage area (log km2),terrain,land,0.31951275,-0.0289479,0.7102612855296655,10240
+persistence,vertisol,Vertisol (swelling clay) probability (%),soil,land,0.1986533,-0.0061333776,-0.8466007572351825,10240
+persistence,slope_sd,"slope spread within square (SD, deg)",heterogeneity,land,0.19467506,0.0046962043,0.926522228277739,10240
+persistence,sand,sand 0-30 cm (%),soil,land,0.13434795,-0.036435477,0.6620625529388486,10240
+persistence,clay,clay 0-30 cm (%),soil,land,0.115976356,-0.042542376,0.6079794321770406,10240
+persistence,q_dist,distance to nearest large river (km),terrain,land,0.10001321,-0.02616981,-0.7494673273565129,10240
+persistence,depress,share of square in local depressions,heterogeneity,land,0.07958929,-0.0008042965,0.7284011664615627,10240
+persistence,hnd_mean,"height above nearest drainage, mean (m)",terrain,land,0.07520396,-0.023407826,-0.7242205650329345,10240
+persistence,hnd_q1,"height above drainage, 25th percentile (m)",heterogeneity,land,0.06603754,0.010232669,-0.7022023868425568,10240
+persistence,grace__z24,"water storage anomaly, GRACE (cm), standardised anomaly, last 24 months (SDs from normal)",water_storage,rivers_storage,0.06548549,0.00067414937,0.2999384216700576,10240
+persistence,uprain__raw3,"rain over the square's upstream catchment (mm/month), mean of last 3 months",upstream_catchment_rain,weather,0.064165644,0.004611437,0.8598430411600005,10240
+persistence,hnd_sd,"height above drainage, spread (SD, m)",heterogeneity,land,0.06171583,-0.012047096,-0.7179123411196321,10240
+persistence,ssrd__z24,"solar radiation (MJ/m2/day), standardised anomaly, last 24 months (SDs from normal)",atmosphere,weather,0.054078363,-0.00667926,0.6746776703047384,10240
+persistence,qk30__z12,"river flow within ~30 km, GloFAS (log), standardised anomaly, last 12 months (SDs from normal)",glofas,rivers_storage,0.047728512,0.0006265681,0.21136472598389328,10240
+persistence,sm3__raw3,"subsoil moisture 28-100 cm, mean of last 3 months",soil_moisture,weather,0.04439106,0.0074208938,-0.5623914320957207,10240
+persistence,qk10__z24,"river flow within ~10 km, GloFAS (log), standardised anomaly, last 24 months (SDs from normal)",glofas,rivers_storage,0.04436625,-0.022192743,0.13599699101191187,10240
+persistence,r20__z24,"heavy-rain days (>=20 mm), standardised anomaly, last 24 months (SDs from normal)",local_rain,weather,0.044015806,-0.0047942596,0.22092485475893633,10240
+persistence,ro__z24,"local runoff (mm/month), standardised anomaly, last 24 months (SDs from normal)",local_rain,weather,0.043456703,0.0020490638,-0.11149751297763065,10240
+persistence,qk10__z3,"river flow within ~10 km, GloFAS (log), standardised anomaly, last 3 months (SDs from normal)",glofas,rivers_storage,0.04140926,-0.021965418,-0.2716438555395833,10240
+persistence,conc5__z12,"share of month's rain in its 5 wettest days, standardised anomaly, last 12 months (SDs from normal)",rain_shape,weather,0.04108367,-0.007827684,-0.416133317401149,10240
+persistence,d2m__raw3,"dewpoint (humidity, C), mean of last 3 months",atmosphere,weather,0.040208373,0.013196585,0.41078093563866774,10240
+persistence,slope,slope (degrees),terrain,land,0.039899122,-0.0032231521,0.1857750255519302,10240
+persistence,rx1__z24,"wettest day (mm), standardised anomaly, last 24 months (SDs from normal)",local_rain,weather,0.03879915,-0.006348513,0.41590774421039517,10240
+persistence,qk100__z3,"river flow within ~100 km, GloFAS (log), standardised anomaly, last 3 months (SDs from normal)",glofas,rivers_storage,0.03815679,-0.029963305,-0.3024190886861951,10240
+persistence,qk30__z24,"river flow within ~30 km, GloFAS (log), standardised anomaly, last 24 months (SDs from normal)",glofas,rivers_storage,0.03815388,-0.028042132,0.6448179392609764,10240
+persistence,si10__z24,"wind speed (m/s), standardised anomaly, last 24 months (SDs from normal)",atmosphere,weather,0.037605215,-0.021898529,0.47409675231264065,10240
+persistence,low_2m,share of land < 2 m above drainage,terrain,land,0.03752712,-0.0076837586,0.4084097916867099,10240
+persistence,twi,topographic wetness index,terrain,land,0.035533223,-0.004744766,0.1431843739263779,10240
+persistence,wetd__z3,"rain days (>= 1 mm), standardised anomaly, last 3 months (SDs from normal)",rain_shape,weather,0.03549289,-0.008918105,-0.5823859359458621,10240
+persistence,wetd__z12,"rain days (>= 1 mm), standardised anomaly, last 12 months (SDs from normal)",rain_shape,weather,0.035376456,-0.018169641,-0.6961836824301627,10240
+persistence,qk10__z12,"river flow within ~10 km, GloFAS (log), standardised anomaly, last 12 months (SDs from normal)",glofas,rivers_storage,0.034671213,-0.0077121095,-0.4335229291697308,10240
+persistence,d2m__z12,"dewpoint (humidity, C), standardised anomaly, last 12 months (SDs from normal)",atmosphere,weather,0.03440494,-0.018977765,0.21821710269399242,10240
+persistence,dfo_1545__z24,"Dartmouth station 1545 discharge, standardised anomaly, last 24 months (SDs from normal)",dartmouth,rivers_storage,0.034278475,-0.013521773,0.2512972490516219,10240
+persistence,tp__z24,"local rainfall (mm/month), standardised anomaly, last 24 months (SDs from normal)",local_rain,weather,0.03300947,-0.00021496676,0.014250207602435946,10240
+persistence,sm3__z12,"subsoil moisture 28-100 cm, standardised anomaly, last 12 months (SDs from normal)",soil_moisture,weather,0.032996308,-0.011806078,0.6366839436434849,10240
+persistence,ssrd__raw3,"solar radiation (MJ/m2/day), mean of last 3 months",atmosphere,weather,0.03204795,-0.0012209548,-0.5977160665405173,10240
+persistence,qk100__z12,"river flow within ~100 km, GloFAS (log), standardised anomaly, last 12 months (SDs from normal)",glofas,rivers_storage,0.031444274,0.02443548,-0.019462704007063687,10240
+persistence,et__z12,"evapotranspiration (mm/day), standardised anomaly, last 12 months (SDs from normal)",evapotranspiration,weather,0.030947912,0.0059318827,-0.7495840028950872,10240
+persistence,r20__z3,"heavy-rain days (>=20 mm), standardised anomaly, last 3 months (SDs from normal)",local_rain,weather,0.030928522,0.0019503578,-0.388831056953952,10240
+persistence,ro__z12,"local runoff (mm/month), standardised anomaly, last 12 months (SDs from normal)",local_rain,weather,0.030651212,-0.01377829,-0.10875555810697944,10240
+persistence,r20__z12,"heavy-rain days (>=20 mm), standardised anomaly, last 12 months (SDs from normal)",local_rain,weather,0.02975756,-0.003565196,0.3391778236915388,10240
+persistence,si10__z12,"wind speed (m/s), standardised anomaly, last 12 months (SDs from normal)",atmosphere,weather,0.029633839,-0.0027725447,0.10613796176378443,10240
+persistence,conc5__raw3,"share of month's rain in its 5 wettest days, mean of last 3 months",rain_shape,weather,0.029343884,0.00060568453,-0.6086289465694844,10240
+persistence,sm1__z12,"topsoil moisture 0-7 cm, standardised anomaly, last 12 months (SDs from normal)",soil_moisture,weather,0.028943771,-0.016588941,-0.37495740820173573,10240
+persistence,wspell__z12,"longest wet spell (days), standardised anomaly, last 12 months (SDs from normal)",rain_shape,weather,0.02818723,-0.0038683433,0.3078463617076533,10240
+persistence,t2m__z12,"air temperature (C), standardised anomaly, last 12 months (SDs from normal)",atmosphere,weather,0.027813667,0.013309786,0.07867489377786949,10240
+persistence,conc5__z24,"share of month's rain in its 5 wettest days, standardised anomaly, last 24 months (SDs from normal)",rain_shape,weather,0.02752066,0.0029425647,0.17875647749263918,10240
+persistence,uprain__z3,"rain over the square's upstream catchment (mm/month), standardised anomaly, last 3 months (SDs from normal)",upstream_catchment_rain,weather,0.02724648,0.010062443,0.39531821677369416,10240
+persistence,dsd__z24,"day-to-day rain variability (SD, mm), standardised anomaly, last 24 months (SDs from normal)",rain_shape,weather,0.026772927,0.007933748,0.4517507818118957,10240
+persistence,sm3__z24,"subsoil moisture 28-100 cm, standardised anomaly, last 24 months (SDs from normal)",soil_moisture,weather,0.026725542,0.0018260407,-0.23874915344619685,10240
+persistence,sm1__raw3,"topsoil moisture 0-7 cm, mean of last 3 months",soil_moisture,weather,0.02656591,0.0009683181,-0.5245732052501803,10240
+persistence,sm1__z3,"topsoil moisture 0-7 cm, standardised anomaly, last 3 months (SDs from normal)",soil_moisture,weather,0.026403818,-0.013685192,-0.2987253991939432,10240
+persistence,conc5__z3,"share of month's rain in its 5 wettest days, standardised anomaly, last 3 months (SDs from normal)",rain_shape,weather,0.026357794,-0.0014259461,-0.3276511037614899,10240
+persistence,rx1__z12,"wettest day (mm), standardised anomaly, last 12 months (SDs from normal)",local_rain,weather,0.02612185,0.009987282,0.17312553732755462,10240
+persistence,wspell__z24,"longest wet spell (days), standardised anomaly, last 24 months (SDs from normal)",rain_shape,weather,0.025834525,-0.0077592456,0.4364054921981048,10240
+persistence,t2m__z3,"air temperature (C), standardised anomaly, last 3 months (SDs from normal)",atmosphere,weather,0.025380397,-0.010718092,0.15054536606614044,10240
+persistence,rain_ethiopian_highlands__raw3,"rainfall over ethiopian highlands, mean of last 3 months",upstream_rain,weather,0.024431944,-0.00036281144,0.6893296013687881,10240
+persistence,et__z3,"evapotranspiration (mm/day), standardised anomaly, last 3 months (SDs from normal)",evapotranspiration,weather,0.024071286,-0.0058941324,-0.2879627953478927,10240
+persistence,et__z24,"evapotranspiration (mm/day), standardised anomaly, last 24 months (SDs from normal)",evapotranspiration,weather,0.023757502,-0.008039616,-0.13543339223391282,10240
+persistence,ssrd__z12,"solar radiation (MJ/m2/day), standardised anomaly, last 12 months (SDs from normal)",atmosphere,weather,0.023219546,-0.0045558126,0.22441097593111287,10240
+persistence,si10__raw3,"wind speed (m/s), mean of last 3 months",atmosphere,weather,0.023106733,-0.0053403387,0.03837921748510839,10240
+persistence,ro__z3,"local runoff (mm/month), standardised anomaly, last 3 months (SDs from normal)",local_rain,weather,0.022234645,-0.0023060662,0.3669500588359482,10240
+persistence,ssrd__z3,"solar radiation (MJ/m2/day), standardised anomaly, last 3 months (SDs from normal)",atmosphere,weather,0.022147445,0.00053720083,0.17082504078241006,10240
+persistence,q__z12,"flow of nearest large river, GloFAS (log), standardised anomaly, last 12 months (SDs from normal)",glofas,rivers_storage,0.022067342,0.0004339659,-0.08828828896873406,10240
+persistence,wspell__z3,"longest wet spell (days), standardised anomaly, last 3 months (SDs from normal)",rain_shape,weather,0.021821866,0.00017787013,0.3457713324455327,10240
+persistence,si10__z3,"wind speed (m/s), standardised anomaly, last 3 months (SDs from normal)",atmosphere,weather,0.021396492,-0.0017837603,-0.187161702907457,10240
+persistence,dfo_1541__z24,"Dartmouth station 1541 discharge, standardised anomaly, last 24 months (SDs from normal)",dartmouth,rivers_storage,0.021171236,-0.015769217,-0.26065720322556657,10240
+persistence,t2m__z24,"air temperature (C), standardised anomaly, last 24 months (SDs from normal)",atmosphere,weather,0.021092897,-0.0066069164,0.3077961466172427,10240
+persistence,dsd__z12,"day-to-day rain variability (SD, mm), standardised anomaly, last 12 months (SDs from normal)",rain_shape,weather,0.021020288,-0.008012856,0.2216340444442825,10240
+persistence,qk100__z24,"river flow within ~100 km, GloFAS (log), standardised anomaly, last 24 months (SDs from normal)",glofas,rivers_storage,0.020928655,-0.00967858,0.045808494735842295,10240
+persistence,sm3__z3,"subsoil moisture 28-100 cm, standardised anomaly, last 3 months (SDs from normal)",soil_moisture,weather,0.019262675,0.006109704,0.10279445638953014,10240
+persistence,dsd__z3,"day-to-day rain variability (SD, mm), standardised anomaly, last 3 months (SDs from normal)",rain_shape,weather,0.019169863,-0.0033248314,0.29424834261583155,10240
+persistence,uprain__z24,"rain over the square's upstream catchment (mm/month), standardised anomaly, last 24 months (SDs from normal)",upstream_catchment_rain,weather,0.019075936,-0.006988696,-0.36445595372935324,10240
+persistence,q__z3,"flow of nearest large river, GloFAS (log), standardised anomaly, last 3 months (SDs from normal)",glofas,rivers_storage,0.01852959,0.001690048,-0.22633522891755398,10240
+persistence,rx1__z3,"wettest day (mm), standardised anomaly, last 3 months (SDs from normal)",local_rain,weather,0.018489316,-0.0008171067,0.1741208879030774,10240
+persistence,ro__raw3,"local runoff (mm/month), mean of last 3 months",local_rain,weather,0.018158536,-0.001992409,-0.14503964035762168,10240
+persistence,q__z24,"flow of nearest large river, GloFAS (log), standardised anomaly, last 24 months (SDs from normal)",glofas,rivers_storage,0.017803174,0.00781632,0.2457615284953101,10240
+persistence,d2m__z3,"dewpoint (humidity, C), standardised anomaly, last 3 months (SDs from normal)",atmosphere,weather,0.0176127,-0.007960225,-0.1710835642367007,10240
+persistence,t2m__raw3,"air temperature (C), mean of last 3 months",atmosphere,weather,0.017329125,0.0011191381,0.5049909780338896,10240
+persistence,tp__z12,"local rainfall (mm/month), standardised anomaly, last 12 months (SDs from normal)",local_rain,weather,0.017321298,-0.006634844,0.020909958970896293,10240
+persistence,grace__z3,"water storage anomaly, GRACE (cm), standardised anomaly, last 3 months (SDs from normal)",water_storage,rivers_storage,0.016947806,-0.0073132077,0.04836410877961605,10240
+persistence,uprain__z12,"rain over the square's upstream catchment (mm/month), standardised anomaly, last 12 months (SDs from normal)",upstream_catchment_rain,weather,0.016845409,-0.008694604,0.13690294944248474,10240
+persistence,rain_victoria_basin__raw3,"rainfall over victoria basin, mean of last 3 months",upstream_rain,weather,0.016799403,0.0028626048,-0.5270945258312527,10240
+persistence,overbank_qk30,overbank: 30-km river anomaly / (1 + HAND),overbank,rivers_storage,0.016519865,-8.095587e-05,0.1689614235130466,10240
+persistence,wspell__raw3,"longest wet spell (days), mean of last 3 months",rain_shape,weather,0.015918279,-0.0020399666,0.42159552803074407,10240
+persistence,tp__raw3,"local rainfall (mm/month), mean of last 3 months",local_rain,weather,0.015464353,0.00066590233,0.48627816567019816,10240
+persistence,et__raw3,"evapotranspiration (mm/day), mean of last 3 months",evapotranspiration,weather,0.015267369,-0.002738499,0.5865024623478755,10240
+persistence,d2m__z24,"dewpoint (humidity, C), standardised anomaly, last 24 months (SDs from normal)",atmosphere,weather,0.014846632,-0.0028137374,-0.34139237981099807,10240
+persistence,grace__z12,"water storage anomaly, GRACE (cm), standardised anomaly, last 12 months (SDs from normal)",water_storage,rivers_storage,0.0147689115,-0.0059751184,0.18878687884203446,10240
+persistence,wetd__z24,"rain days (>= 1 mm), standardised anomaly, last 24 months (SDs from normal)",rain_shape,weather,0.014598349,0.0008714596,-0.13116201715743997,10240
+persistence,sm1__z24,"topsoil moisture 0-7 cm, standardised anomaly, last 24 months (SDs from normal)",soil_moisture,weather,0.014436034,-0.0057098577,0.019542419554473476,10240
+persistence,qk30__z3,"river flow within ~30 km, GloFAS (log), standardised anomaly, last 3 months (SDs from normal)",glofas,rivers_storage,0.014335799,0.0020744987,-0.267510566560625,10240
+persistence,wetd__raw3,"rain days (>= 1 mm), mean of last 3 months",rain_shape,weather,0.014321579,0.004944447,0.5837008567861848,10240
+persistence,tp__z3,"local rainfall (mm/month), standardised anomaly, last 3 months (SDs from normal)",local_rain,weather,0.013145776,0.0025699425,0.2728242876439854,10240
+persistence,dfo_1548__z3,"Dartmouth station 1548 discharge, standardised anomaly, last 3 months (SDs from normal)",dartmouth,rivers_storage,0.012098821,-0.00327585,-0.7339721885606851,10240
+persistence,dsd__raw3,"day-to-day rain variability (SD, mm), mean of last 3 months",rain_shape,weather,0.010810113,-0.0012512197,0.3024488480909401,10240
+persistence,dfo_1544__z24,"Dartmouth station 1544 discharge, standardised anomaly, last 24 months (SDs from normal)",dartmouth,rivers_storage,0.010170795,0.0074865734,0.46921995356275603,10240
+persistence,overbank_q,overbank: nearest-river anomaly / (1 + HAND),overbank,rivers_storage,0.009698769,0.00051976717,0.25680018917154945,10240
+persistence,lake_albert__z24,"Lake Albert level, standardised anomaly, last 24 months (SDs from normal)",lakes,rivers_storage,0.009558594,-0.0072197756,0.12296340466712964,10240
+persistence,lowland_x_q,low-lying share x nearest-river anomaly,overbank,rivers_storage,0.009490373,0.0028759488,0.23585005664800043,10240
+persistence,dfo_1544__z3,"Dartmouth station 1544 discharge, standardised anomaly, last 3 months (SDs from normal)",dartmouth,rivers_storage,0.009146355,0.0044581564,-0.33702023876669734,10240
+persistence,nino34__z24,"El Nino index (Nino3.4), standardised anomaly, last 24 months (SDs from normal)",climate_indices,climate_indices,0.008631157,-0.0048215864,-0.29027946642603797,10240
+persistence,q_nasir_sobat__z3,"GloFAS flow at Nasir Sobat (log), standardised anomaly, last 3 months (SDs from normal)",glofas,rivers_storage,0.00836063,-0.0075345626,-0.6475532963664253,10240
+persistence,rx1__raw3,"wettest day (mm), mean of last 3 months",local_rain,weather,0.008106948,-0.0007851863,0.07305192738118058,10240
+persistence,dmi__z12,"Indian Ocean Dipole index, standardised anomaly, last 12 months (SDs from normal)",climate_indices,climate_indices,0.007775458,-0.0038015074,0.17691531634117846,10240
+persistence,dfo_1543__z3,"Dartmouth station 1543 discharge, standardised anomaly, last 3 months (SDs from normal)",dartmouth,rivers_storage,0.0077745244,-0.0054434305,0.2734451391028682,10240
+persistence,dfo_28546__z3,"Dartmouth station 28546 discharge, standardised anomaly, last 3 months (SDs from normal)",dartmouth,rivers_storage,0.007243693,-0.001748614,-0.30526618135912736,10240
+persistence,dfo_1542__z3,"Dartmouth station 1542 discharge, standardised anomaly, last 3 months (SDs from normal)",dartmouth,rivers_storage,0.0070133,-0.0018344965,0.4026307879999274,10240
+persistence,dfo_1547__z3,"Dartmouth station 1547 discharge, standardised anomaly, last 3 months (SDs from normal)",dartmouth,rivers_storage,0.0066741975,0.000184194,0.3964739630934185,10240
+persistence,dfo_1505__z12,"Dartmouth station 1505 discharge, standardised anomaly, last 12 months (SDs from normal)",dartmouth,rivers_storage,0.0058525386,0.0012368548,-0.505770749690056,10240
+persistence,dfo_1545__z3,"Dartmouth station 1545 discharge, standardised anomaly, last 3 months (SDs from normal)",dartmouth,rivers_storage,0.0058480995,0.0038914315,-0.16317608715850287,10240
+persistence,dfo_1548__z12,"Dartmouth station 1548 discharge, standardised anomaly, last 12 months (SDs from normal)",dartmouth,rivers_storage,0.005750219,-0.0019555087,-0.14350108468713565,10240
+persistence,dfo_1542__z24,"Dartmouth station 1542 discharge, standardised anomaly, last 24 months (SDs from normal)",dartmouth,rivers_storage,0.005647544,0.0005700713,-0.29962358558018065,10240
+persistence,dfo_1547__z12,"Dartmouth station 1547 discharge, standardised anomaly, last 12 months (SDs from normal)",dartmouth,rivers_storage,0.0055466564,-0.00031932016,-0.6040516977018552,10240
+persistence,q_malakal__z3,"GloFAS flow at Malakal (log), standardised anomaly, last 3 months (SDs from normal)",glofas,rivers_storage,0.0051397686,-0.0016123565,-0.6512482361642524,10240
+persistence,dfo_1544__z12,"Dartmouth station 1544 discharge, standardised anomaly, last 12 months (SDs from normal)",dartmouth,rivers_storage,0.004954825,8.1200524e-05,0.676809790551782,10240
+persistence,dfo_11842__z3,"Dartmouth station 11842 discharge, standardised anomaly, last 3 months (SDs from normal)",dartmouth,rivers_storage,0.004906377,-0.00024579166,-0.33348818395013546,10240
+persistence,dfo_1548__z24,"Dartmouth station 1548 discharge, standardised anomaly, last 24 months (SDs from normal)",dartmouth,rivers_storage,0.004814513,-0.00025147555,-0.21488617061677096,10240
+persistence,dfo_100205__z3,"Dartmouth station 100205 discharge, standardised anomaly, last 3 months (SDs from normal)",dartmouth,rivers_storage,0.0046719154,-0.0027379324,-0.02370050624273268,10240
+persistence,dfo_1541__z3,"Dartmouth station 1541 discharge, standardised anomaly, last 3 months (SDs from normal)",dartmouth,rivers_storage,0.004483278,-0.00012075053,0.2267464856858224,10240
+persistence,rain_uganda_lakes__z24,"rainfall over uganda lakes, standardised anomaly, last 24 months (SDs from normal)",upstream_rain,weather,0.004324936,-0.00021145963,0.1907665171500832,10240
+persistence,dfo_1542__z12,"Dartmouth station 1542 discharge, standardised anomaly, last 12 months (SDs from normal)",dartmouth,rivers_storage,0.0042998116,-0.0016202067,-0.46932698876228296,10240
+persistence,dfo_1541__z12,"Dartmouth station 1541 discharge, standardised anomaly, last 12 months (SDs from normal)",dartmouth,rivers_storage,0.0041300114,-0.0029925492,-0.4416594990909101,10240
+persistence,rain_ethiopian_highlands__z3,"rainfall over ethiopian highlands, standardised anomaly, last 3 months (SDs from normal)",upstream_rain,weather,0.0040062023,0.000991672,0.4457677806933046,10240
+persistence,q_nimule__z12,"GloFAS flow at Nimule (log), standardised anomaly, last 12 months (SDs from normal)",glofas,rivers_storage,0.003960274,0.0024921808,-0.3894944759155747,10240
+persistence,rain_uganda_lakes__raw3,"rainfall over uganda lakes, mean of last 3 months",upstream_rain,weather,0.003880725,0.0003438908,0.05566961881624525,10240
+persistence,nino34__z12,"El Nino index (Nino3.4), standardised anomaly, last 12 months (SDs from normal)",climate_indices,climate_indices,0.0037619006,-0.0013565158,0.2483618132696371,10240
+persistence,rain_ethiopian_highlands__z12,"rainfall over ethiopian highlands, standardised anomaly, last 12 months (SDs from normal)",upstream_rain,weather,0.0036937925,0.0011070508,0.46600683886385985,10240
+persistence,dfo_1505__z3,"Dartmouth station 1505 discharge, standardised anomaly, last 3 months (SDs from normal)",dartmouth,rivers_storage,0.0036401462,0.0019925137,-0.3468660894745339,10240
+persistence,dmi__z24,"Indian Ocean Dipole index, standardised anomaly, last 24 months (SDs from normal)",climate_indices,climate_indices,0.0034987729,-0.0020762053,0.38626431516189774,10240
+persistence,dfo_11808__z12,"Dartmouth station 11808 discharge, standardised anomaly, last 12 months (SDs from normal)",dartmouth,rivers_storage,0.0034785972,-0.0009801848,0.05743508742520564,10240
+persistence,lake_victoria__z3,"Lake Victoria level, standardised anomaly, last 3 months (SDs from normal)",lakes,rivers_storage,0.0032620952,-0.0005103664,-0.3128251472523358,10240
+persistence,rain_victoria_basin__z24,"rainfall over victoria basin, standardised anomaly, last 24 months (SDs from normal)",upstream_rain,weather,0.0032280744,-0.002449135,-0.33777015633508395,10240
+persistence,dfo_1545__z12,"Dartmouth station 1545 discharge, standardised anomaly, last 12 months (SDs from normal)",dartmouth,rivers_storage,0.0032268234,-0.002564025,0.5913189874967977,10240
+persistence,q_nasir_sobat__z12,"GloFAS flow at Nasir Sobat (log), standardised anomaly, last 12 months (SDs from normal)",glofas,rivers_storage,0.0032053129,0.0014503922,-0.2127014362117071,10240
+persistence,lake_victoria__z24,"Lake Victoria level, standardised anomaly, last 24 months (SDs from normal)",lakes,rivers_storage,0.003026589,-0.00049153314,0.04994072010771728,10240
+persistence,rain_victoria_basin__z12,"rainfall over victoria basin, standardised anomaly, last 12 months (SDs from normal)",upstream_rain,weather,0.0030218414,0.0019591984,0.1497008315573261,10240
+persistence,dfo_100205__z24,"Dartmouth station 100205 discharge, standardised anomaly, last 24 months (SDs from normal)",dartmouth,rivers_storage,0.0030035554,-0.0027017894,0.4232118668219921,10240
+persistence,lake_albert__z3,"Lake Albert level, standardised anomaly, last 3 months (SDs from normal)",lakes,rivers_storage,0.0029313664,0.00031805647,-0.3340138446157201,10240
+persistence,dfo_11808__z3,"Dartmouth station 11808 discharge, standardised anomaly, last 3 months (SDs from normal)",dartmouth,rivers_storage,0.002902065,-0.0011882766,-0.3637113828016888,10240
+persistence,dfo_1543__z24,"Dartmouth station 1543 discharge, standardised anomaly, last 24 months (SDs from normal)",dartmouth,rivers_storage,0.0028018435,0.0001406271,-0.5458125691404649,10240
+persistence,rain_uganda_lakes__z3,"rainfall over uganda lakes, standardised anomaly, last 3 months (SDs from normal)",upstream_rain,weather,0.0026785925,0.000641095,0.12255065112144722,10240
+persistence,dfo_28546__z12,"Dartmouth station 28546 discharge, standardised anomaly, last 12 months (SDs from normal)",dartmouth,rivers_storage,0.0026131484,-0.0014016235,-0.48146821247725274,10240
+persistence,r20__raw3,"heavy-rain days (>=20 mm), mean of last 3 months",local_rain,weather,0.0025167484,-0.0008471402,0.25885062533444786,10240
+persistence,q_malakal__z24,"GloFAS flow at Malakal (log), standardised anomaly, last 24 months (SDs from normal)",glofas,rivers_storage,0.0025111586,-0.0009505929,0.31615000138212945,10240
+persistence,dfo_11842__z24,"Dartmouth station 11842 discharge, standardised anomaly, last 24 months (SDs from normal)",dartmouth,rivers_storage,0.0025089798,0.0014001433,-0.3117066831580557,10240
+persistence,lake_kyoga__z3,"Lake Kyoga level, standardised anomaly, last 3 months (SDs from normal)",lakes,rivers_storage,0.0024638604,0.001226737,-0.3053596801185532,10240
+persistence,dfo_1505__z24,"Dartmouth station 1505 discharge, standardised anomaly, last 24 months (SDs from normal)",dartmouth,rivers_storage,0.0024629643,-0.00055021245,-0.12867052319363825,10240
+persistence,dmi__z3,"Indian Ocean Dipole index, standardised anomaly, last 3 months (SDs from normal)",climate_indices,climate_indices,0.0024092873,-0.00089528656,0.14003146972775463,10240
+persistence,q_nimule__z24,"GloFAS flow at Nimule (log), standardised anomaly, last 24 months (SDs from normal)",glofas,rivers_storage,0.002368485,-0.0016776857,-0.15898917181415134,10240
+persistence,dfo_11842__z12,"Dartmouth station 11842 discharge, standardised anomaly, last 12 months (SDs from normal)",dartmouth,rivers_storage,0.0023220691,0.0019919523,-0.5836231509873402,10240
+persistence,rain_ethiopian_highlands__z24,"rainfall over ethiopian highlands, standardised anomaly, last 24 months (SDs from normal)",upstream_rain,weather,0.0021666547,-0.00092232495,-0.1830039821699717,10240
+persistence,rain_uganda_lakes__z12,"rainfall over uganda lakes, standardised anomaly, last 12 months (SDs from normal)",upstream_rain,weather,0.0021345357,-0.0004601692,-0.21790807393994116,10240
+persistence,rain_victoria_basin__z3,"rainfall over victoria basin, standardised anomaly, last 3 months (SDs from normal)",upstream_rain,weather,0.002123342,0.00018399376,-0.24069765354561984,10240
+persistence,dfo_100205__z12,"Dartmouth station 100205 discharge, standardised anomaly, last 12 months (SDs from normal)",dartmouth,rivers_storage,0.0021066356,-0.00062921195,0.3930961629497142,10240
+persistence,q_nasir_sobat__z24,"GloFAS flow at Nasir Sobat (log), standardised anomaly, last 24 months (SDs from normal)",glofas,rivers_storage,0.0018177982,-0.00039071022,-0.48340170521400794,10240
+persistence,nino34__z3,"El Nino index (Nino3.4), standardised anomaly, last 3 months (SDs from normal)",climate_indices,climate_indices,0.001806284,-0.0003684416,-0.23356369549087402,10240
+persistence,dfo_1547__z24,"Dartmouth station 1547 discharge, standardised anomaly, last 24 months (SDs from normal)",dartmouth,rivers_storage,0.0017833144,5.133609e-05,-0.25745419119585383,10240
+persistence,q_nimule__z3,"GloFAS flow at Nimule (log), standardised anomaly, last 3 months (SDs from normal)",glofas,rivers_storage,0.0015093775,-0.00076834596,-0.47424814302849544,10240
+persistence,lake_kyoga__z12,"Lake Kyoga level, standardised anomaly, last 12 months (SDs from normal)",lakes,rivers_storage,0.0014898533,-0.0010366353,-0.02155422690310299,10240
+persistence,dfo_1543__z12,"Dartmouth station 1543 discharge, standardised anomaly, last 12 months (SDs from normal)",dartmouth,rivers_storage,0.0014752045,0.00028383528,-0.19361813364874084,10240
+persistence,q_malakal__z12,"GloFAS flow at Malakal (log), standardised anomaly, last 12 months (SDs from normal)",glofas,rivers_storage,0.0013546863,0.00027993091,-0.39860421554100556,10240
+persistence,dfo_28546__z24,"Dartmouth station 28546 discharge, standardised anomaly, last 24 months (SDs from normal)",dartmouth,rivers_storage,0.0012871901,7.033842e-05,0.1163211583072079,10240
+persistence,q_mongalla__z12,"GloFAS flow at Mongalla (log), standardised anomaly, last 12 months (SDs from normal)",glofas,rivers_storage,0.0012470083,-0.0007123446,-0.2945507533906256,10240
+persistence,lake_victoria__z12,"Lake Victoria level, standardised anomaly, last 12 months (SDs from normal)",lakes,rivers_storage,0.0011991166,3.1405954e-05,-0.11606108341974328,10240
+persistence,lake_kyoga__z24,"Lake Kyoga level, standardised anomaly, last 24 months (SDs from normal)",lakes,rivers_storage,0.0010604452,-0.00046142127,-0.7553397061959948,10240
+persistence,lake_albert__z12,"Lake Albert level, standardised anomaly, last 12 months (SDs from normal)",lakes,rivers_storage,0.0010119061,0.0005281698,-0.3898792065692865,10240
+persistence,q_mongalla__z24,"GloFAS flow at Mongalla (log), standardised anomaly, last 24 months (SDs from normal)",glofas,rivers_storage,0.0007120787,-0.00062150194,0.08480246248226483,10240
+persistence,dfo_11808__z24,"Dartmouth station 11808 discharge, standardised anomaly, last 24 months (SDs from normal)",dartmouth,rivers_storage,0.00036006956,0.00025203385,0.1537885989786437,10240
+persistence,q_bor__z3,"GloFAS flow at Bor (log), standardised anomaly, last 3 months (SDs from normal)",glofas,rivers_storage,0.0001608528,0.0001608528,0.6611071097070738,10240
+persistence,q_bor__z12,"GloFAS flow at Bor (log), standardised anomaly, last 12 months (SDs from normal)",glofas,rivers_storage,6.232295e-05,6.232295e-05,0.5728242338571179,10240
+persistence,q_mongalla__z3,"GloFAS flow at Mongalla (log), standardised anomaly, last 3 months (SDs from normal)",glofas,rivers_storage,0.0,0.0,,10240
+persistence,q_bor__z24,"GloFAS flow at Bor (log), standardised anomaly, last 24 months (SDs from normal)",glofas,rivers_storage,0.0,0.0,,10240
+persistence,hnd_min,"height above nearest drainage, min (m)",terrain,land,0.0,0.0,,10240
