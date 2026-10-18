@@ -1,4 +1,5 @@
-import seaborn as sns
+import matplotlib as plb
+import numpy as np
 import pandas as pd
 #For directory selection
 import os
@@ -15,5 +16,18 @@ target = 'h'
 data.groupby(by=sort)
 #create sort dictionary
 unique=data.subset.unique()
+#separate on occurence/persistence
 dataDict = {elem: data.loc[data[sort] == elem] for elem in unique}
-print(dataDict)
+means = {}
+for i in dataDict.keys():
+    dataset = dataDict[i]
+    u = dataset.target.unique()
+    for j in u:
+        d = list(dataset.loc[dataset['target'] == j][delta])
+        d_clean = []
+        for l in d:
+            d_clean.append(int(l[0])/int(l[2]))
+        means[(i,j)] = np.mean(d_clean)
+
+print(means)
+n = len(means.keys()) / 2
