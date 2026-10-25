@@ -15,18 +15,21 @@ FEATURES
   static: terrain (HAND, slope, wetness index, upstream area, river distance and size), soil (clay, sand, Vertisol)
   state:  y at t-1, t-2, t-3, neighbourhood at t-1, mean y over t-12..t-1
   place:  climatology (training years, target calendar month), lat, lon, target month (sin, cos)
-MODEL LADDER: M1 = drivers + static (the explanation model); S = state only; H = state + place (flood history
-  only, no drivers); M2 = M1 + state; M3 = M2 + place. M3 - H = what drivers add beyond flood history.
-ABLATION: drop each group from M1; add each group to S. Noise band: 4 runs of M1 and of S, each on a random
-  80% of the training rows. Sensitivity: GBM with smaller / larger trees; GBM without interactions.
+MODEL LADDER (raw inputs): H = state + place (flood history only, no drivers); M1 = drivers + static; M2 = M1 + state;
+  M3 = M2 + place. M3 - H = what drivers add beyond flood history.
+ANOMALY-INPUT MODELS (variant 'anomaly', physical_sets): M1_anomaly, M2_anomaly, M3_anomaly, same ladder on
+  standardised anomalies (raw 3-month means only for rain-type series), river size dropped, overbank inputs added.
+ABLATION (anomaly inputs, strict only): adrop_<group> = M1_anomaly without one group; fdrop_<family> = M1_anomaly
+  without one family; hadd_<family> = H plus one family. Noise band: 4 runs of M1_anomaly (M1a_s*) and of H (H_s*),
+  each on a random 80% of the training rows. Sensitivity (h=1): GBM with smaller / larger trees, without interactions.
 VALIDATION
   strict: test = one year AND one group of spatial blocks; training drops that year, that block group and a
     buffer ring around it. Block size from the measured correlation distance of flood anomalies.
-  year:   leave one year out only (for comparison with the earlier results).
+  year:   leave one year out (LOYO), no spatial blocks.
   forward: train only on target years before the test year (from FORWARD_START); climatology and anomaly
     normals from those years only. Nothing from the future is used.
   Training also drops samples whose flood-state window (t-12..t-1) touches the test year.
-BASELINES: climatology, persistence (share at t-1).
+BASELINES: climatology, latest state (share at t-1; p_pers in the predictions).
 """
 import json
 import warnings
@@ -375,7 +378,7 @@ PHYS_DROP_STATIC = ("q_size",)           # river size is constant per river, so 
 
 
 def physical_sets(names, P):
-    """M1-physical: standardised anomalies for every series, raw 3-month means only for rain-type series,
+    """M1_anomaly inputs: standardised anomalies for every series, raw 3-month means only for rain-type series,
     static inputs without river size, plus the overbank inputs. Returns groups, columns."""
     idx = {n: i for i, n in enumerate(names)}
     groups = {}

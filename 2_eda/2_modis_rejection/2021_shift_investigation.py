@@ -1,3 +1,11 @@
+"""MODIS/VIIRS flood masks: is the rise in detections from 2021 more locations or more flood-days per location?
+Compares pixel-days, unique flooded locations and flood-days per location before and after 2021, also split into
+recurring and unusual floods.
+
+    python 2_eda/2_modis_rejection/2021_shift_investigation.py
+
+Writes results/2021_shift_investigation/23_2021_shift_decomposition.png.
+"""
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt

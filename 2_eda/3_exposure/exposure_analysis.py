@@ -1,6 +1,13 @@
+"""Flood exposure per county: MODIS/VIIRS flood locations (2000-2025) matched to the ASAP crop and rangeland masks
+and the admin-2 counties.
 
+    python 2_eda/3_exposure/exposure_analysis.py
+
+Writes results/exposure_analysis/: 10_flood_exposure_by_county.csv, 10_flood_volume_vs_crop_share.png,
+10_flood_volume_vs_rangeland_share.png, 10_top10_cropland_exposed_counties.csv,
+10_top10_rangeland_exposed_counties.csv.
+"""
 import numpy as np
-import pandas as pd
 import geopandas as gpd
 import matplotlib.pyplot as plt
 from pathlib import Path
@@ -149,7 +156,7 @@ def main():
     county_summary.to_csv(OUT_DIR / "10_flood_exposure_by_county.csv")
     print(f"\nSaved full table: {OUT_DIR / '10_flood_exposure_by_county.csv'}")
 
-    section("STEP 5b: Flood volume vs. cropland share")
+    section("Flood volume vs. cropland share")
     # Plain scatter: does flooding more often relate to more cropland exposure?
     plot_data = county_summary[county_summary["n_flooded_locations"] >= 50].copy()
 
@@ -169,7 +176,7 @@ def main():
     plt.close()
     print(f"Saved plot: {OUT_DIR / '10_flood_volume_vs_crop_share.png'}")
 
-    section("STEP 5c: Flood volume vs. rangeland share")
+    section("Flood volume vs. rangeland share")
     fig, ax = plt.subplots(figsize=(10, 7))
     ax.scatter(
         plot_data["n_flooded_locations"],
@@ -186,7 +193,7 @@ def main():
     plt.close()
     print(f"Saved plot: {OUT_DIR / '10_flood_volume_vs_rangeland_share.png'}")
 
-    section("STEP 5d: Top 10 counties by cropland exposure and by rangeland exposure")
+    section("Top 10 counties by cropland exposure and by rangeland exposure")
     reliable = county_summary[county_summary["n_flooded_locations"] >= 50].copy()
 
     top10_crop = reliable.sort_values("pct_crop_exposed", ascending=False).head(10)[
@@ -206,7 +213,7 @@ def main():
     print(f"\nSaved: {OUT_DIR / '10_top10_cropland_exposed_counties.csv'}")
     print(f"Saved: {OUT_DIR / '10_top10_rangeland_exposed_counties.csv'}")
 
-    section("STEP 6: Overall national picture")
+    section("National totals")
     total = len(flood_points)
     crop_exposed_total = (flood_points["crop_pct"] > 0).sum()
     range_exposed_total = (flood_points["rangeland_pct"] > 0).sum()

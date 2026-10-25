@@ -1,4 +1,9 @@
+"""MODIS/VIIRS flood activity per county in each IPC analysis window, against the population in IPC Phase 3+.
 
+    python 2_eda/3_exposure/exposure_ipc_analysis.py
+
+Writes results/exposure_ipc_analysis/: 12_flood_ipc_window_changes.csv, 12_flood_ipc_timeline.png.
+"""
 import numpy as np
 import pandas as pd
 import geopandas as gpd
@@ -10,11 +15,8 @@ _required = ["raw_data", "1_data_processing"]
 _missing = [d for d in _required if not Path(d).is_dir()]
 if _missing:
     raise SystemExit(
-        f"\nERROR: run this script from your project root, not from '{Path.cwd()}'.\n"
+        f"\nERROR: run this script from the project root, not from '{Path.cwd()}'.\n"
         f"Missing expected folder(s): {_missing}\n"
-        f"Example:\n"
-        f"  cd D:\\TUE\\Y3\\JBG060_ZHL_2026\n"
-        f"  python 2_eda/3_exposure/exposure_ipc_analysis.py\n"
     )
 
 import sys
@@ -137,14 +139,14 @@ def main():
     change_data.to_csv(OUT_DIR / "12_flood_ipc_window_changes.csv", index=False)
     print(f"Saved: {OUT_DIR / '12_flood_ipc_window_changes.csv'}")
 
-    section("STEP 6: National totals per IPC window (for the timeline chart)")
+    section("National totals per IPC window")
     national = merged.groupby(["window_idx", "start_date"]).agg(
         total_ipc=("ipc_phase3plus", "sum"),
         total_flood_pixeldays=("n_flood_pixeldays", "sum"),
     ).reset_index().sort_values("start_date")
     print(national[["start_date", "total_ipc", "total_flood_pixeldays"]].to_string(index=False))
 
-    section("STEP 7: Timeline chart - IPC over time, with flood activity marked")
+    section("Timeline chart: IPC over time, with flood activity marked")
     fig, ax1 = plt.subplots(figsize=(11, 6))
 
     ax1.plot(national["start_date"], national["total_ipc"],

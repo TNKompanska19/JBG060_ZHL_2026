@@ -1,4 +1,11 @@
+"""Discharge at Dartmouth station 100205 (the only one in South Sudan) against the daily MODIS/VIIRS flood extent:
+time series, correlation with and without 2022-2023, and the mean per calendar month.
 
+    python 2_eda/2_modis_rejection/negative_correlation_south_sudan_station.py
+
+Writes results/negative_correlation_south_sudan_station/: 20_discharge_vs_flood_timeseries.png,
+20_seasonal_discharge_vs_flood.png, 20_discharge_flood_daily_aligned.csv.
+"""
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -22,7 +29,7 @@ OUT_DIR.mkdir(parents=True, exist_ok=True)
 STATION_ID = 100205
 SSD_BBOX = {"lon_min": 23.5, "lat_min": 3.5, "lon_max": 36.0, "lat_max": 12.5}
 YEARS = np.arange(2015, 2026)
-ANOMALY_START = "2022-01-01"   # the discharge dip period you spotted earlier
+ANOMALY_START = "2022-01-01"   # discharge dip, left out of one correlation
 ANOMALY_END = "2023-12-31"
 
 

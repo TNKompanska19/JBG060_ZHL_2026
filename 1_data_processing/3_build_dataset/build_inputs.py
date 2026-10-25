@@ -35,7 +35,6 @@ import xarray as xr
 from rasterio.features import rasterize
 from rasterio.transform import from_origin
 from rasterio.warp import Resampling, reproject
-from scipy.ndimage import uniform_filter  # noqa: F401  (kept for the neighbourhood helpers' history)
 from scipy.signal import fftconvolve
 
 from build_target import MONTHS, target  # noqa: E402  (same folder)

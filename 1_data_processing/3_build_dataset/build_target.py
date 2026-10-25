@@ -14,7 +14,7 @@ Output: processed_data/cygnss/ssd_watermask.npz   South Sudan part of every map 
         processed_data/cygnss/county_month.csv     one row per county and month
         results/build_target/cygnss_national.png, cygnss_2022_anomaly.png
 
-Definitions. These are our choices; state them in the report:
+Definitions (our choices):
 - Permanent water, removed per 1 km cell before averaging: at least JRC_CELL_SHARE of the cell is JRC water with
   occurrence >= JRC_OCC (the layer and threshold the CYGNSS product pastes in; Pekel et al. 2016, Pu et al. 2024),
   or CYGNSS marks the cell water in >= CYG_PERMANENT of its months (swamp missing from JRC).

@@ -1,3 +1,11 @@
+"""Course data before vs after 2021 (flood extent, rainfall, runoff, discharge at station 100205), and MODIS/VIIRS
+detection volume per year and per calendar month against rainfall at flood points.
+
+    python 2_eda/2_modis_rejection/data_quality_2021_shift.py
+
+Writes results/data_quality_2021_shift/: 21_before_after_2021_boxplots.png, 21_detection_volume_by_year_month.png,
+21_detection_vs_rainfall_by_month.csv.
+"""
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -22,7 +30,7 @@ OUT_DIR.mkdir(parents=True, exist_ok=True)
 SSD_BBOX = {"lon_min": 23.5, "lat_min": 3.5, "lon_max": 36.0, "lat_max": 12.5}
 YEARS = np.arange(2015, 2026)
 SHIFT_DATE = "2021-01-01"
-WET_SEASON_MONTHS = [6, 7, 8, 9]  # Jun-Sep, per the group's own claim
+WET_SEASON_MONTHS = [6, 7, 8, 9]  # Jun-Sep
 
 
 def section(title):
@@ -88,7 +96,7 @@ def main():
     plt.close()
     print(f"Saved plot: {OUT_DIR / '21_before_after_2021_boxplots.png'}")
 
-    section("Flood detection volume by YEAR (reproduce the '50x variation' claim)")
+    section("Flood detection volume by year")
     yearly_detection = flood_df.groupby(flood_df["date"].dt.year).size()
     print(yearly_detection.to_string())
     max_year, min_year = yearly_detection.idxmax(), yearly_detection.idxmin()
@@ -97,7 +105,7 @@ def main():
     print(f"Min year: {min_year} ({yearly_detection.min():,} pixel-days)")
     print(f"Ratio (max/min): {ratio:.1f}x")
 
-    section("Flood detection volume by MONTH (reproduce 'wet season bias' claim)")
+    section("Flood detection volume by month")
     monthly_detection = flood_df.groupby(flood_df["date"].dt.month).size()
     print(monthly_detection.to_string())
     wet_season_total = monthly_detection.loc[WET_SEASON_MONTHS].sum()
@@ -140,14 +148,14 @@ def main():
     comparison.to_csv(OUT_DIR / "21_detection_vs_rainfall_by_month.csv")
     print(f"\nSaved: {OUT_DIR / '21_detection_vs_rainfall_by_month.csv'}")
 
-    section("SUMMARY - bring this to your meeting")
+    section("SUMMARY")
     print("2021 SHIFT:")
     for key, r in results.items():
         if r is not None:
             flag = "SIGNIFICANT" if r["p_value"] < 0.01 else "not significant"
             print(f"  {r['label']}: {r['pct_change']:+.1f}% change, {flag}")
-    print(f"\nDETECTION BIAS:")
-    print(f"  Year-to-year ratio: {ratio:.1f}x (group's claim: ~50x)")
+    print("\nDETECTION BIAS:")
+    print(f"  Year-to-year ratio: {ratio:.1f}x")
     print(f"  Wet season vs. other months: {'LOWER' if wet_season_avg < other_avg else 'NOT lower'} "
           f"detection in wet season")
     print(f"  Detection volume vs. rainfall-at-flood-points correlation: {corr:.3f}")

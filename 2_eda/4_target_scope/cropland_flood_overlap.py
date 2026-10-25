@@ -8,7 +8,7 @@ Input:  processed_data/cygnss/ssd_watermask.npz   (made by 1_data_processing/3_b
 Output: results/cropland_flood_overlap/cropland_flood_overlap.csv / .md   one row per year + average
         results/cropland_flood_overlap/cropland_flood_<YEAR>.png         map + monthly curve
 
-Definitions (our choices, state them in the report):
+Definitions (our choices):
 - Crop mask averaged onto the CYGNSS ~1 km squares: crop_km2 = crop % x square area.
 - Permanent water is dropped with the same rule as the model target (build_target.py: JRC occurrence >= 95%
   or CYGNSS water in >= 95% of months), so "flooded" means water on normally dry land.

@@ -7,6 +7,7 @@ the model's output (checked). Family SHAP = sum of a family's inputs per row, so
 don't split its credit.
 
     python 3_model/2_analysis/shap_gbm.py [run folder under results/, default run_all]
+    python 3_model/2_analysis/shap_gbm.py --plot-only    redraw the figures from the saved outputs (no refit)
 Outputs in results/shap_gbm/: shap_features.csv, shap_families.csv, shap_families.png,
 shap_occurrence.png, shap_persistence.png, shap_values_<target>.npz
 """
@@ -24,7 +25,9 @@ sys.path[:0] = [str(HERE.parent / "1_run"), str(HERE)]
 import explain_models as em  # noqa: E402
 from run_all import FULL as CFG  # noqa: E402   same sample and seeds as the main run
 
-RUN = em.ROOT / "results" / (sys.argv[1] if len(sys.argv) > 1 else "run_all")   # run whose predictions are explained
+ARGS = [a for a in sys.argv[1:] if a != "--plot-only"]
+PLOT_ONLY = "--plot-only" in sys.argv
+RUN = em.ROOT / "results" / (ARGS[0] if ARGS else "run_all")   # run whose predictions are explained
 OUT = em.ROOT / "results" / "shap_gbm"
 H, CV, COL = 1, "strict", "p|M1_anomaly|gbm"
 KEYS = ["test_year", "target", "issue", "row", "col"]
@@ -107,6 +110,7 @@ def plots(acc, feat, f, fam):
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
+    from textwrap import fill
     fn = feat[0]
     fig, ax = plt.subplots(1, 2, figsize=(11, 3.5))
     for a, (target, title) in zip(ax, TARGETS.items()):
@@ -128,6 +132,9 @@ def plots(acc, feat, f, fam):
             j = fn.index(n)
             ok = np.isfinite(X[:, j])
             x, y = X[ok, j], S[ok, j]
+            lo, hi = np.quantile(x, [0.005, 0.995])                 # show the central 99% of values
+            pad = 0.02 * (hi - lo) if hi > lo else 1
+            a.set_xlim(lo - pad, hi + pad)
             a.scatter(x, y, s=2, alpha=0.15)
             q = np.unique(np.quantile(x, np.linspace(0, 1, 11)))
             if q.size > 2:
@@ -136,18 +143,24 @@ def plots(acc, feat, f, fam):
                 avg = [y[b == k].mean() for k in range(q.size - 1) if (b == k).any()]
                 a.plot(mid, avg, color="k", lw=2, label="mean per decile")
             a.axhline(0, color="grey", lw=0.8)
-            a.set_xlabel(em.pretty(n), fontsize=8)
+            a.set_xlabel(fill(em.pretty(n), 45), fontsize=8)
             a.set_ylabel("Effect on log-odds of flooding (SHAP)", fontsize=8)
         ax[0, 0].legend(fontsize=7)
-        fig.suptitle(f"{title}: GBM (M1_anomaly), 8 inputs with the largest mean |SHAP|, held-out rows "
-                     f"(dots = rows, 0 = no effect)")
         fig.tight_layout()
-        fig.savefig(OUT / f"shap_{target}.png", dpi=150)
+        fig.savefig(OUT / f"shap_{target}.png", dpi=300)
         plt.close(fig)
 
 
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
+    if PLOT_ONLY:                                                  # redraw from the saved outputs, no refit
+        acc, fn = {}, None
+        for t in TARGETS:
+            z = np.load(OUT / f"shap_values_{t}.npz")
+            acc[t], fn = [(z["X"], z["shap"])], z["names"].tolist()
+        f, fam = pd.read_csv(OUT / "shap_features.csv"), pd.read_csv(OUT / "shap_families.csv")
+        plots(acc, (fn, None), f, fam)
+        return
     P = em.Panel(0.02)
     acc, feat = collect(P)
     f, fam = tables(acc, feat)

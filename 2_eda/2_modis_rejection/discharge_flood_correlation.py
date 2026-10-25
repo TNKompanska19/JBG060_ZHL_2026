@@ -1,3 +1,11 @@
+"""Correlation between daily discharge at each Dartmouth station and the daily South Sudan flood extent
+(MODIS/VIIRS flood masks) at lags of 0-30 days.
+
+    python 2_eda/2_modis_rejection/discharge_flood_correlation.py
+
+Writes results/discharge_flood_correlation/: 18_discharge_flood_correlation_by_lag.png,
+18_discharge_flood_correlation_summary.csv.
+"""
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -99,7 +107,7 @@ def main():
     print(f"Saved plot: {OUT_DIR / '18_discharge_flood_correlation_by_lag.png'}")
 
 
-    section("STEP 5: Ranked summary - which stations show the strongest relationship")
+    section("Ranked summary: which stations show the strongest relationship")
     summary = pd.DataFrame([
         {"station_id": sid, "country": d["country"],
          "best_lag_days": d["corrs"].idxmax(), "best_correlation": round(d["corrs"].max(), 3)}

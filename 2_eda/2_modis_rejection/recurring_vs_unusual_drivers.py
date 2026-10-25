@@ -1,4 +1,11 @@
+"""The rainfall and runoff lead-time profile of rainfall_flood_lead_time.py, split into recurring and unusual floods
+(the flood type in the course flood masks).
 
+    python 2_eda/2_modis_rejection/recurring_vs_unusual_drivers.py
+
+Writes results/recurring_vs_unusual_drivers/: 15_recurring_flood_lead_time.csv, 15_unusual_flood_lead_time.csv,
+15_recurring_vs_unusual_lead_time.png, 15_event_counts_by_type.csv.
+"""
 import numpy as np
 import pandas as pd
 import geopandas as gpd

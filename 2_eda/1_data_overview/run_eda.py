@@ -1,5 +1,10 @@
+"""First look at the course datasets: Dartmouth discharge, lake levels, ERA5 rainfall and runoff, evapotranspiration,
+MODIS/VIIRS flood masks, admin boundaries and population, health facilities, cattle and crop/rangeland masks, IPC.
 
+    python 2_eda/1_data_overview/run_eda.py
 
+Writes plots and tables to results/run_eda/.
+"""
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -21,7 +26,6 @@ from loading_impact_data import (
     load_cattle,
     load_farmland_mask,
     load_ipc_data,
-    load_GDP,
 )
 
 OUT_DIR = Path("./results/run_eda")

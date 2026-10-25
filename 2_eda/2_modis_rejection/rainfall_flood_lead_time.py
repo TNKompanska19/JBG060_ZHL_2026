@@ -1,5 +1,10 @@
+"""Mean ERA5 rainfall and runoff in the 14 days before MODIS/VIIRS flood events in 11 high-flood counties, against
+random non-flood days.
 
+    python 2_eda/2_modis_rejection/rainfall_flood_lead_time.py
 
+Writes results/rainfall_flood_lead_time/: 14_rainfall_lead_time_allcounties.csv, 14_rainfall_lead_time_allcounties.png.
+"""
 import numpy as np
 import pandas as pd
 import geopandas as gpd

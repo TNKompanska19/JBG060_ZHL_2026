@@ -1,4 +1,4 @@
-"""Per-county skill of the strict h=1 predictions, and per-county / per-year input coverage (SLE essay).
+"""Per-county skill of the strict h=1 M3_anomaly predictions, and per-county / per-year input coverage (SLE essay).
 
     python 3_model/2_analysis/county_performance.py      (from the repo root)
 
@@ -14,12 +14,12 @@ from rasterio.transform import from_origin
 from sklearn.metrics import average_precision_score, brier_score_loss, roc_auc_score
 
 ROOT = Path(__file__).resolve().parents[2]
-PRED = ROOT / "results" / "run_all" / "preds_strict_h1.parquet"
+PRED = ROOT / "results" / "run_all" / "preds_strict_h1_anomaly.parquet"
 PANEL = ROOT / "processed_data" / "panel_0.02"
 ADMIN = ROOT / "raw_data" / "Administrative boundaries" / "ssd_admin2.geojson"
 OUT = ROOT / "results" / "county_performance" / "county_performance.md"
 
-MODEL = "p|M3|gbm"   # scored model; baselines: p_clim (climatology), p_pers (persistence)
+MODEL = "p|M3_anomaly|gbm"   # scored model (same as the report); baselines: p_clim (climatology), p_pers (persistence)
 FAR = 0.10           # alarm cutoff = model score exceeded by 10% of non-flood rows, set once nationally per target
 MIN_N = 20           # a county is scored only with >= 20 flood rows and >= 20 non-flood rows
 SKIP = {"lat", "lon", "months", "y", "nbr", "crop_pct", "hw", "hw_dist"}   # hw is off in the main model

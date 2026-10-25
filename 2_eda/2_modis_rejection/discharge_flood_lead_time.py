@@ -1,4 +1,10 @@
+"""Mean discharge at Dartmouth station 100205 in the 14 days before MODIS/VIIRS flood events within 1 degree of the
+station, against random non-flood days.
 
+    python 2_eda/2_modis_rejection/discharge_flood_lead_time.py
+
+Writes results/discharge_flood_lead_time/: 16_discharge_lead_time.csv, 16_discharge_lead_time.png.
+"""
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -92,7 +98,7 @@ def main():
     profile.to_csv(OUT_DIR / "16_discharge_lead_time.csv")
     print(f"\nSaved: {OUT_DIR / '16_discharge_lead_time.csv'}")
 
-    section("STEP 6: Plot")
+    section("Plot")
     fig, ax = plt.subplots(figsize=(10, 6))
     ax.plot(profile.index, profile.values, marker="o", color="tab:purple", linewidth=2)
     ax.fill_between(profile.index, profile - profile_std, profile + profile_std,

@@ -383,15 +383,16 @@ def main(out_dir=OUT):
                         rows.append(dict(zip(KEYS, key), subset=sub, model=col.replace("p|", "").replace("|", ": ").replace("p_", ""),
                                          recall_at_fpr05=recall_at(y, gg[col].to_numpy(float), 0.05),
                                          recall_at_fpr10=recall_at(y, gg[col].to_numpy(float), 0.10)))
-        if f.name.startswith("preds_strict_h1.") or f.name == "preds_strict_h1.parquet":
+        if f.name == "preds_strict_h1.parquet":
+            d1 = next(strict_frames(out_dir))           # h=1 raw-input predictions + anomaly-input model columns
             yr = []
-            for (target, Y), g in d.groupby(["target", "test_year"]):
+            for (target, Y), g in d1.groupby(["target", "test_year"]):
                 for sub, m in subsets(g).items():
                     if sub not in ("all", "cropland"):
                         continue
                     gg = g[m]
                     r = {"target": target, "test_year": Y, "subset": sub, "n": len(gg)}
-                    for col in ["p_clim", "p_pers", "p|M1|gbm", "p|M3|gbm"]:
+                    for col in ["p_clim", "p_pers", "p|H|gbm", "p|M1|gbm", "p|M3|gbm", "p|M1_anomaly|gbm", "p|M3_anomaly|gbm"]:
                         mm = metrics(gg.y.to_numpy(), gg[col].to_numpy(float)) if col in gg else None
                         r[col.replace("p|", "").replace("|", ": ").replace("p_", "")] = mm["pr_auc"] if mm else np.nan
                     yr.append(r)

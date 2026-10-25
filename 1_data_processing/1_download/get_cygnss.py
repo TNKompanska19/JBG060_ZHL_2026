@@ -12,7 +12,6 @@ Needs a free NASA Earthdata account (urs.earthdata.nasa.gov). The first run asks
 for username and password and stores them in your home folder. Rerunning skips
 files already downloaded.
 
-    pip install earthaccess
     python 1_data_processing/1_download/get_cygnss.py
 """
 from pathlib import Path

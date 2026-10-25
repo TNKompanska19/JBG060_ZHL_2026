@@ -1,6 +1,11 @@
+"""Map of the Dartmouth stations coloured by their discharge-flood correlation, and the correlation against each
+station's distance to South Sudan. Run discharge_flood_correlation.py first.
 
+    python 2_eda/2_modis_rejection/discharge_station_map.py
+
+Writes results/discharge_station_map/: 19_station_distance_vs_correlation.csv, 19_station_map.png.
+"""
 import pandas as pd
-import geopandas as gpd
 import matplotlib.pyplot as plt
 from pathlib import Path
 from shapely.geometry import Point

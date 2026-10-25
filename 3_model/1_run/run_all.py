@@ -3,7 +3,7 @@
     python 3_model/1_run/run_all.py
     python 3_model/1_run/run_all.py --no-build --stages s1 as1     (only these stages; keys below)
 
-Stage keys: s/y/f + 1/2/3 = raw-input models, strict/year-only/forward validation, 1/2/3 months ahead (s1 y2 f3 ...);
+Stage keys: s/y/f + 1/2/3 = raw-input models, strict/leave-one-year-out/forward validation, 1/2/3 months ahead (s1 y2 f3 ...);
 an extra a in front (as1 ay2 af3 ...) = anomaly-input models; susc = susceptibility; map = harvest map 2022.
 Outputs: results/run_all/ (results.md, scores.csv, ablation.csv, preds_*.parquet, run_log.txt)
 """

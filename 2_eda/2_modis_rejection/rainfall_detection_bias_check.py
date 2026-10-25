@@ -146,9 +146,9 @@ def main():
     print(f"  High-detection-month events (Oct-Mar): {len(high_events)}")
 
     if len(low_events) < 10 or len(high_events) < 10:
-        print(f"\nWARNING: one group has very few events (<10) - results below will be noisy. "
-              f"Consider loosening the onset threshold (currently extent > 1.5x its 7-day "
-              f"rolling average) if this keeps happening.")
+        print("\nWARNING: one group has very few events (<10) - results below will be noisy. "
+              "Consider loosening the onset threshold (currently extent > 1.5x its 7-day "
+              "rolling average) if this keeps happening.")
 
     section("STEP 3: Build lead-time profiles for each group separately")
     low_profile = build_lead_profile(low_events, tp_national, ro_national, "Low-detection events")
